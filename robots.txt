@@ -1,0 +1,13 @@
+Sitemap: http://charles.pub/sitemap.xml
+Sitemap: http://charles.pub/baidusitemap.xml
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/ 
+Disallow: /vendors/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/

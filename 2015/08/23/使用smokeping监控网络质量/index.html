@@ -1,0 +1,925 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="smokeping,network," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1、安装rrdtool与依赖库12345678yum -y install perl perl-Net-Telnet perl-Net-DNS perl-LDAP \       perl-libwww-perl perl-RadiusPerl perl-IO-Socket-SSL \       perl-Socket6 perl-CGI-SpeedyCGI perl-FCGI perl-CGI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用smokeping监控网络质量">
+<meta property="og:url" content="http://charles.pub/2015/08/23/使用smokeping监控网络质量/index.html">
+<meta property="og:site_name" content="“运维 - 架构”">
+<meta property="og:description" content="1、安装rrdtool与依赖库12345678yum -y install perl perl-Net-Telnet perl-Net-DNS perl-LDAP \       perl-libwww-perl perl-RadiusPerl perl-IO-Socket-SSL \       perl-Socket6 perl-CGI-SpeedyCGI perl-FCGI perl-CGI">
+<meta property="og:updated_time" content="2017-03-08T02:57:38.986Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用smokeping监控网络质量">
+<meta name="twitter:description" content="1、安装rrdtool与依赖库12345678yum -y install perl perl-Net-Telnet perl-Net-DNS perl-LDAP \       perl-libwww-perl perl-RadiusPerl perl-IO-Socket-SSL \       perl-Socket6 perl-CGI-SpeedyCGI perl-FCGI perl-CGI">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'U8RQYDSHQE',
+      apiKey: '4e3ee6017aa53b87273a8f9c07c6fad8',
+      indexName: 'BlogIndex',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://charles.pub/2015/08/23/使用smokeping监控网络质量/"/>
+
+
+
+
+
+  <title> 使用smokeping监控网络质量 | “运维 - 架构” </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b71d9b907f3535ada947168b45eb247b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">“运维 - 架构”</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2015/08/23/使用smokeping监控网络质量/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                使用smokeping监控网络质量
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-23T16:42:10+08:00">
+                2015-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/08/23/使用smokeping监控网络质量/" class="leancloud_visitors" data-flag-title="使用smokeping监控网络质量">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1、安装rrdtool与依赖库"><a href="#1、安装rrdtool与依赖库" class="headerlink" title="1、安装rrdtool与依赖库"></a>1、安装rrdtool与依赖库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">yum -y install perl perl-Net-Telnet perl-Net-DNS perl-LDAP \</div><div class="line">       perl-libwww-perl perl-RadiusPerl perl-IO-Socket-SSL \</div><div class="line">       perl-Socket6 perl-CGI-SpeedyCGI perl-FCGI perl-CGI-SpeedCGI \</div><div class="line">       perl-Time-HiRes perl-ExtUtils-MakeMaker perl-RRD-Simple \</div><div class="line">       rrdtool rrdtool-perl curl fping echoping  httpd httpd-devel \</div><div class="line">       gcc make  wget libxml2-devel libpng-devel glib pango pango-devel \</div><div class="line">       freetype freetype-devel fontconfig cairo cairo-devel libart_lgpl \</div><div class="line">       libart_lgpl-devel mod_fastcgi wqy*</div></pre></td></tr></table></figure>
+<h2 id="2、下载与安装smokeping"><a href="#2、下载与安装smokeping" class="headerlink" title="2、下载与安装smokeping"></a>2、下载与安装smokeping</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">wget http://oss.oetiker.ch/smokeping/pub/smokeping-2.6.8.tar.gz</div><div class="line">tar zxvf smokeping-2.6.8.tar.gz</div><div class="line"><span class="built_in">cd</span> smokeping-2.6.8</div><div class="line">./configure --prefix=/usr/<span class="built_in">local</span>/smokeping</div><div class="line"><span class="comment"># 需要安装perl的模块，根据提示运行脚本即可</span></div><div class="line">./setup/build-perl-modules.sh /usr/<span class="built_in">local</span>/smokeping/thirdparty</div><div class="line"><span class="comment"># 重新编译</span></div><div class="line">./configure --prefix=/usr/<span class="built_in">local</span>/smokeping</div><div class="line">/usr/bin/gmake install</div></pre></td></tr></table></figure>
+<h2 id="3、配置smokeping"><a href="#3、配置smokeping" class="headerlink" title="3、配置smokeping"></a>3、配置smokeping</h2><h3 id="（1）创建cache、data、var目录及日志文件"><a href="#（1）创建cache、data、var目录及日志文件" class="headerlink" title="（1）创建cache、data、var目录及日志文件"></a>（1）创建cache、data、var目录及日志文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/smokeping</div><div class="line">mkdir cache data var</div><div class="line">touch /var/<span class="built_in">log</span>/smokeping.log</div></pre></td></tr></table></figure>
+<h3 id="（2）授权"><a href="#（2）授权" class="headerlink" title="（2）授权"></a>（2）授权</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chown apache:apache cache data var</div><div class="line">chown apache:apache /var/<span class="built_in">log</span>/smokeping.log</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="（3）修改配置文件"><a href="#（3）修改配置文件" class="headerlink" title="（3）修改配置文件"></a>（3）修改配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/smokeping/htdocs/</div><div class="line">cp smokeping.fcgi.dist smokeping.fcgi</div><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/smokeping/etc</div><div class="line">cp config.dist config</div><div class="line">vim config</div><div class="line"><span class="comment"># some.url 修改为ip或者域名</span></div><div class="line">cgiurl   = http://some.url/smokeping.cgi</div><div class="line"><span class="comment"># 修改step，从300改为60，这是检测的时间。</span></div><div class="line">step     = 60</div><div class="line"><span class="comment"># 修改字符编码</span></div><div class="line">*** Presentation ***</div><div class="line">charset = utf-8</div></pre></td></tr></table></figure>
+<h3 id="（4）配置完成之后修改密码文件权限"><a href="#（4）配置完成之后修改密码文件权限" class="headerlink" title="（4）配置完成之后修改密码文件权限"></a>（4）配置完成之后修改密码文件权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod 600 /usr/<span class="built_in">local</span>/smokeping/etc/smokeping_secrets.dist</div></pre></td></tr></table></figure>
+<h3 id="（5）修改apache的配置"><a href="#（5）修改apache的配置" class="headerlink" title="（5）修改apache的配置"></a>（5）修改apache的配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">vim /etc/httpd/conf/httpd.conf</div><div class="line"><span class="comment"># 添加如下代码</span></div><div class="line">Alias /cache <span class="string">"/usr/local/smokeping/cache/"</span></div><div class="line">Alias /cropper <span class="string">"/usr/local/smokeping/htdocs/cropper/"</span></div><div class="line">Alias /smokeping <span class="string">"/usr/local/smokeping/htdocs/smokeping.fcgi"</span></div><div class="line">&lt;Directory <span class="string">"/usr/local/smokeping"</span>&gt;</div><div class="line">AllowOverride None</div><div class="line">Options All</div><div class="line">AddHandler cgi-script .fcgi .cgi</div><div class="line">AllowOverride AuthConfig</div><div class="line">Order allow,deny</div><div class="line">Allow from all</div><div class="line">AuthName <span class="string">"Smokeping"</span></div><div class="line">AuthType Basic</div><div class="line">AuthUserFile /usr/<span class="built_in">local</span>/smokeping/htdocs/htpasswd</div><div class="line">Require valid-user</div><div class="line">DirectoryIndex smokeping.fcgi</div><div class="line">&lt;/Directory&gt;</div><div class="line"><span class="comment"># 修改apache密码认证</span></div><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/smokeping/htdocs</div><div class="line"><span class="comment"># 设置登录账户与密码</span></div><div class="line">htpasswd -c /usr/<span class="built_in">local</span>/smokeping/htdocs/htpasswd admin</div></pre></td></tr></table></figure>
+<h3 id="（6）修改开机自启动"><a href="#（6）修改开机自启动" class="headerlink" title="（6）修改开机自启动"></a>（6）修改开机自启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"/usr/local/smokeping/bin/smokeping --logfile=/var/log/smokeping.log 2&gt;&amp;1 &amp;"</span> &gt;&gt; /etc/rc.local</div></pre></td></tr></table></figure>
+<h3 id="（7）启动httpd与smokeping"><a href="#（7）启动httpd与smokeping" class="headerlink" title="（7）启动httpd与smokeping"></a>（7）启动httpd与smokeping</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/httpd start</div><div class="line">/usr/<span class="built_in">local</span>/smokeping/bin/smokeping --logfile=/var/<span class="built_in">log</span>/smokeping.log 2&gt;&amp;1 &amp;</div><div class="line"><span class="comment"># 然后访问在config里设置的cgiurl= http://some.url/smokeping</span></div><div class="line"><span class="comment"># 如果出现500错误，查看selinux与iptables设置。</span></div></pre></td></tr></table></figure>
+<h2 id="4、监控配置"><a href="#4、监控配置" class="headerlink" title="4、监控配置"></a>4、监控配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div></pre></td><td class="code"><pre><div class="line">vim /usr/<span class="built_in">local</span>/smokeping/etc/config</div><div class="line"><span class="comment"># 修改配置</span></div><div class="line">+ Other</div><div class="line">menu = 网络监控</div><div class="line">title = 所有网络监控列表</div><div class="line">++ dianxin</div><div class="line">menu = 电信网络监控</div><div class="line">title = 电信网络监控列表</div><div class="line">host = /Other/dianxin/dianxin-hlj /Other/dianxin/dianxin-gd /Other/dianxin/dianxin-gs /Other/dianxin/dianxin-sh</div><div class="line">+++ dianxin-hlj</div><div class="line">menu = 武汉电信</div><div class="line">title = 武汉电信</div><div class="line">alerts = someloss</div><div class="line">host = 221.232.129.35</div><div class="line">+++ dianxin-gd</div><div class="line">menu = 广东电信</div><div class="line">title = 广东电信</div><div class="line">alerts = someloss</div><div class="line">host = 211.136.192.6</div><div class="line">+++ dianxin-gs</div><div class="line">menu = 杭州电信</div><div class="line">title = 杭州电信</div><div class="line">alerts = someloss</div><div class="line">host = 202.96.96.68</div><div class="line">+++ dianxin-sh</div><div class="line">menu = 上海电信</div><div class="line">title = 上海电信</div><div class="line">host = 202.96.209.5</div><div class="line"></div><div class="line">++ liantong</div><div class="line">menu = 联通网络监控</div><div class="line">title = 联通网络监控列表</div><div class="line">host = /Other/liantong/liantong-hlj /Other/liantong/liantong-gd /Other/liantong/liantong-gs /Other/liantong/liantong-sh</div><div class="line">+++ liantong-hlj</div><div class="line">menu = 沈阳联通</div><div class="line">title = 沈阳联通</div><div class="line">alerts = someloss</div><div class="line">host = 113.224.187.254</div><div class="line">+++ liantong-gd</div><div class="line">menu = 广东联通</div><div class="line">title = 广东联通</div><div class="line">alerts = someloss</div><div class="line">host = 221.4.66.66</div><div class="line">+++ liantong-gs</div><div class="line">menu = 杭州联通</div><div class="line">title = 杭州联通</div><div class="line">alerts = someloss</div><div class="line">host = 221.12.31.58</div><div class="line">+++ liantong-sh</div><div class="line">menu = 南京联通</div><div class="line">title = 南京联通</div><div class="line">alerts = someloss</div><div class="line">host = 221.6.4.66</div><div class="line"></div><div class="line"></div><div class="line">++ yidong</div><div class="line">menu = 移动网络监控</div><div class="line">title = 移动网络监控列表</div><div class="line">host = /Other/yidong/yidong-hlj /Other/yidong/yidong-gd /Other/yidong/yidong-gs /Other/yidong/yidong-sh</div><div class="line">+++ yidong-hlj</div><div class="line">menu = 沈阳移动</div><div class="line">title = 沈阳移动</div><div class="line">alerts = someloss</div><div class="line">host = 211.137.32.178</div><div class="line">+++ yidong-gd</div><div class="line">menu = 广东移动</div><div class="line">title = 广东移动</div><div class="line">alerts = someloss</div><div class="line">host = 183.233.223.25</div><div class="line">+++ yidong-gs</div><div class="line">menu = 杭州移动</div><div class="line">title = 杭州移动</div><div class="line">alerts = someloss</div><div class="line">host =  211.140.10.2</div><div class="line">+++ yidong-sh</div><div class="line">menu = 上海移动</div><div class="line">title = 上海移动</div><div class="line">alerts = someloss</div><div class="line">host = 117.131.0.22</div><div class="line"></div><div class="line">++ jiaoyu</div><div class="line">menu = 教育网络监控</div><div class="line">title = 教育网络监控列表</div><div class="line">host = /Other/jiaoyu/jiaoyu-qh /Other/jiaoyu/jiaoyu-sh /Other/jiaoyu/jiaoyu-wh /Other/jiaoyu/jiaoyu-hn</div><div class="line">+++ jiaoyu-qh</div><div class="line">menu = 清华大学</div><div class="line">title = 清华大学</div><div class="line">alerts = someloss</div><div class="line">host = 166.111.8.28</div><div class="line">+++ jiaoyu-sh</div><div class="line">menu = 上海交大</div><div class="line">title = 上海交大</div><div class="line">alerts = someloss</div><div class="line">host = 202.112.26.34</div><div class="line">+++ jiaoyu-wh</div><div class="line">menu = 武汉科技大学</div><div class="line">title = 武汉科技大学</div><div class="line">alerts = someloss</div><div class="line">host = 202.114.240.6</div><div class="line">+++ jiaoyu-hn</div><div class="line">menu = 华南农业大学</div><div class="line">title = 华南农业大学</div><div class="line">alerts = someloss</div><div class="line">host = 202.116.160.33</div></pre></td></tr></table></figure>
+<h2 id="5、指标参考"><a href="#5、指标参考" class="headerlink" title="5、指标参考"></a>5、指标参考</h2><h3 id="BGP机房评定标准："><a href="#BGP机房评定标准：" class="headerlink" title="BGP机房评定标准："></a>BGP机房评定标准：</h3><p>（1）到全国各地的延时为20ms；<br>（2）丢包率为0.1%。</p>
+<blockquote>
+<p>参考：<a href="http://dl528888.blog.51cto.com/2382721/1266598" target="_blank" rel="external">http://dl528888.blog.51cto.com/2382721/1266598</a></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/smokeping/" rel="tag"># smokeping</a>
+          
+            <a href="/tags/network/" rel="tag"># network</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/17/Linux网关NAT配置/" rel="prev" title="Linux iptables端口转发配置">
+                Linux iptables端口转发配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="qingyu.li" />
+          <p class="site-author-name" itemprop="name">qingyu.li</p>
+           
+              <p class="site-description motion-element" itemprop="description">简单不先于复杂，而是在复杂之后</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://piandeng.com/" title="Piandeng" target="_blank">Piandeng</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、安装rrdtool与依赖库"><span class="nav-number">1.</span> <span class="nav-text">1、安装rrdtool与依赖库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、下载与安装smokeping"><span class="nav-number">2.</span> <span class="nav-text">2、下载与安装smokeping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、配置smokeping"><span class="nav-number">3.</span> <span class="nav-text">3、配置smokeping</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）创建cache、data、var目录及日志文件"><span class="nav-number">3.1.</span> <span class="nav-text">（1）创建cache、data、var目录及日志文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）授权"><span class="nav-number">3.2.</span> <span class="nav-text">（2）授权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）修改配置文件"><span class="nav-number">3.3.</span> <span class="nav-text">（3）修改配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）配置完成之后修改密码文件权限"><span class="nav-number">3.4.</span> <span class="nav-text">（4）配置完成之后修改密码文件权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）修改apache的配置"><span class="nav-number">3.5.</span> <span class="nav-text">（5）修改apache的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（6）修改开机自启动"><span class="nav-number">3.6.</span> <span class="nav-text">（6）修改开机自启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（7）启动httpd与smokeping"><span class="nav-number">3.7.</span> <span class="nav-text">（7）启动httpd与smokeping</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、监控配置"><span class="nav-number">4.</span> <span class="nav-text">4、监控配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、指标参考"><span class="nav-number">5.</span> <span class="nav-text">5、指标参考</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BGP机房评定标准："><span class="nav-number">5.1.</span> <span class="nav-text">BGP机房评定标准：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qingyu.li</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("FqAp90PI86NxdOHOxWQ0VrFS-gzGzoHsz", "GKvXMFDzPRF3a0w9BaOEx52z");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+  
+
+</body>
+</html>

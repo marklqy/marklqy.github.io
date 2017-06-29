@@ -1,0 +1,928 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ELK," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="生产上线ELK:
+日志分类系统日志 rsyslog  logstash syslog插件访问日志 nginx logstash codec json插件错误日志 file logstash file+mulitline多行插件运行日志 file logstash codec json设备日志 syslog logstash syslog插件debug日志 file logstash json or">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ELK（Elastic Search + LogStash + Kibana）">
+<meta property="og:url" content="http://charles.pub/2016/11/05/ELK（Elastic Search + LogStash + Kibana）/index.html">
+<meta property="og:site_name" content="“运维 - 架构”">
+<meta property="og:description" content="生产上线ELK:
+日志分类系统日志 rsyslog  logstash syslog插件访问日志 nginx logstash codec json插件错误日志 file logstash file+mulitline多行插件运行日志 file logstash codec json设备日志 syslog logstash syslog插件debug日志 file logstash json or">
+<meta property="og:updated_time" content="2017-05-24T08:24:26.232Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ELK（Elastic Search + LogStash + Kibana）">
+<meta name="twitter:description" content="生产上线ELK:
+日志分类系统日志 rsyslog  logstash syslog插件访问日志 nginx logstash codec json插件错误日志 file logstash file+mulitline多行插件运行日志 file logstash codec json设备日志 syslog logstash syslog插件debug日志 file logstash json or">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'U8RQYDSHQE',
+      apiKey: '4e3ee6017aa53b87273a8f9c07c6fad8',
+      indexName: 'BlogIndex',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://charles.pub/2016/11/05/ELK（Elastic Search + LogStash + Kibana）/"/>
+
+
+
+
+
+  <title> ELK（Elastic Search + LogStash + Kibana） | “运维 - 架构” </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b71d9b907f3535ada947168b45eb247b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">“运维 - 架构”</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/11/05/ELK（Elastic Search + LogStash + Kibana）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ELK（Elastic Search + LogStash + Kibana）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-05T11:10:50+08:00">
+                2016-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/11/05/ELK（Elastic Search + LogStash + Kibana）/" class="leancloud_visitors" data-flag-title="ELK（Elastic Search + LogStash + Kibana）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="生产上线ELK"><a href="#生产上线ELK" class="headerlink" title="生产上线ELK:"></a>生产上线ELK:</h1><ol>
+<li><p>日志分类<br>系统日志 rsyslog  logstash syslog插件<br>访问日志 nginx logstash codec json插件<br>错误日志 file logstash file+mulitline多行插件<br>运行日志 file logstash codec json<br>设备日志 syslog logstash syslog插件<br>debug日志 file logstash json or mulitline</p>
+</li>
+<li><p>日志标准化<br>路径  固定<br>格式  尽量json</p>
+</li>
+</ol>
+<p>系统日志开始-&gt;错误日志-&gt;运行日志-&gt;访问日志</p>
+<p>ELK EFK Flume  EHK heka<br>消息队列：redis rabbitmq kafka</p>
+<p>加密认证：<br><a href="https://github.com/elasticfence/elasticsearch-http-user-auth" target="_blank" rel="external">https://github.com/elasticfence/elasticsearch-http-user-auth</a></p>
+<h1 id="Elastic-Search"><a href="#Elastic-Search" class="headerlink" title="Elastic Search"></a>Elastic Search</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"># 安装</div><div class="line"># rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch</div><div class="line"># yum install -y java</div><div class="line"># java -version</div><div class="line"># vim /etc/yum.repos.d/elasticsearch.repo</div><div class="line">[elasticsearch-2.x]</div><div class="line">name=Elasticsearch repository for 2.x packages</div><div class="line">baseurl=http://packages.elastic.co/elasticsearch/2.x/centos</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=http://packages.elastic.co/GPG-KEY-elasticsearch</div><div class="line">enabled=1</div><div class="line"># yum install -y elasticsearch</div><div class="line">mkdir -p /data/es-data &amp;&amp; chown -R elasticsearch:elasticsearch /data/es-data/</div><div class="line"># vim /etc/elasticsearch/elasticsearch.yml</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">cluster.name: fuwo</div><div class="line">node.name: linux-node1</div><div class="line">path.data: /data/es-data</div><div class="line">path.logs: /var/log/elasticsearch</div><div class="line">bootstrap.memory_lock: true</div><div class="line">network.host: 192.168.56.11</div><div class="line">http.port: 9200</div><div class="line"># 集群时，如果找不到节点，把组播关闭，开单播</div><div class="line"># discovery.zen.ping.multicast.enabled: false</div><div class="line"># discovery.zen.ping.unicast.hosts: [&quot;192.168.56.11&quot;,&quot;192.168.56.12&quot;]</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">vim /etc/security/limits.conf # 需要重新登录生效</div><div class="line">elasticsearch soft memlock unlimited</div><div class="line">elasticsearch hard memlock unlimited</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">chkconfig --add elasticsearch</div><div class="line">/bin/systemctl daemon-reload</div><div class="line">/bin/systemctl enable elasticsearch.service</div><div class="line">systemctl start elasticsearch.service</div><div class="line"></div><div class="line">http://192.168.56.11:9200/</div><div class="line"># curl -i -XGET &apos;http://192.168.56.11:9200/_count?pretty&apos; -d &apos; &#123;</div><div class="line">&gt; &quot;query&quot;: &#123;</div><div class="line">&gt;     &quot;match_all&quot;: &#123;&#125;</div><div class="line">&gt; &#125;</div><div class="line">&gt; &#125;&apos;</div><div class="line"># 安装Marvel: Monitoring for Elasticsearch  收费插件，弃用</div><div class="line">/usr/share/elasticsearch/bin/plugin install marvel-agent</div><div class="line"># 第二方案：</div><div class="line">/usr/share/elasticsearch/bin/plugin remove marvel-agent</div><div class="line">/usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head</div><div class="line">http://192.168.56.11:9200/_plugin/head/</div><div class="line"># 安装监控插件</div><div class="line">/usr/share/elasticsearch/bin/plugin install lukas-vlcek/bigdesk #暂时不支持2.0版本</div><div class="line">/usr/share/elasticsearch/bin/plugin install lmenezes/elasticsearch-kopf</div><div class="line">http://192.168.56.11:9200/_plugin/kopf</div></pre></td></tr></table></figure>
+<h1 id="LogStash"><a href="#LogStash" class="headerlink" title="LogStash"></a>LogStash</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"># 安装</div><div class="line">rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch</div><div class="line">vim /etc/yum.repos.d/logstash.repo</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">[logstash-2.4]</div><div class="line">name=Logstash repository for 2.4.x packages</div><div class="line">baseurl=https://packages.elastic.co/logstash/2.4/centos</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=https://packages.elastic.co/GPG-KEY-elasticsearch</div><div class="line">enabled=1</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">yum install -y logstash</div><div class="line">/opt/logstash/bin/logstash -e &apos;input &#123; stdin&#123;&#125; &#125; output &#123; stdout&#123;&#125; &#125;&apos;</div><div class="line">/opt/logstash/bin/logstash -e &apos;input &#123; stdin&#123;&#125; &#125; output &#123; stdout&#123; codec =&gt; rubydebug &#125; &#125;&apos;  </div><div class="line">/opt/logstash/bin/logstash -e &apos;input &#123; stdin&#123;&#125; &#125; output &#123; elasticsearch &#123; hosts =&gt; [&quot;192.168.56.11:9200&quot;] &#125; &#125;&apos; </div><div class="line">/opt/logstash/bin/logstash -e &apos;input &#123; stdin&#123;&#125; &#125; output &#123; elasticsearch &#123; hosts =&gt; [&quot;192.168.56.11:9200&quot;] &#125;  stdout&#123; codec =&gt; rubydebug &#125; &#125;&apos; </div><div class="line"># 写配置文件</div><div class="line">vim /etc/logstash/conf.d/01-logstash.conf</div><div class="line">input &#123; stdin &#123; &#125; &#125;</div><div class="line">output &#123;</div><div class="line">  elasticsearch &#123; hosts =&gt; [&quot;192.168.56.11:9200&quot;] &#125;</div><div class="line">  stdout &#123; codec =&gt; rubydebug &#125;</div><div class="line">&#125;</div><div class="line"># 启用</div><div class="line">/opt/logstash/bin/logstash -f /etc/logstash/conf.d/01-logstash.conf</div><div class="line">cd /etc/logstash/conf.d/</div><div class="line">vim message.conf</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">input&#123;</div><div class="line">    syslog&#123;</div><div class="line">        type =&gt; &quot;system-syslog&quot;</div><div class="line">        host =&gt; &quot;192.168.56.11&quot;</div><div class="line">        port =&gt; &quot;514&quot;</div><div class="line">    &#125;</div><div class="line">    file &#123;</div><div class="line">        path =&gt; &quot;/var/log/messages&quot;</div><div class="line">        type =&gt; &quot;system&quot;</div><div class="line">        start_position =&gt; &quot;beginning&quot;</div><div class="line">    &#125;</div><div class="line">    file &#123;</div><div class="line">        path =&gt; &quot;/var/log/elasticsearch/fuwo.log&quot;</div><div class="line">        type =&gt; &quot;es-error&quot;</div><div class="line">        start_position =&gt; &quot;beginning&quot;</div><div class="line">        codec =&gt; multiline &#123;</div><div class="line">            pattern =&gt; &quot;^\[&quot;</div><div class="line">            negate =&gt; true</div><div class="line">            what =&gt; &quot;previous&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    file &#123;</div><div class="line">        path =&gt; &quot;/var/log/nginx/access_json.log&quot;</div><div class="line">        codec =&gt; json</div><div class="line">        type =&gt; &quot;nginx-log&quot;</div><div class="line">        start_position =&gt; &quot;beginning&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">output&#123;</div><div class="line">    if [type] == &quot;system&quot; &#123;</div><div class="line">        elasticsearch &#123;</div><div class="line">            hosts =&gt; [&quot;192.168.56.11:9200&quot;]</div><div class="line">            index =&gt; &quot;system-%&#123;+YYYY.MM.dd&#125;&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    if [type] == &quot;es-error&quot; &#123;</div><div class="line">        elasticsearch &#123;</div><div class="line">            hosts =&gt; [&quot;192.168.56.11:9200&quot;]</div><div class="line">            index =&gt; &quot;es-error-%&#123;+YYYY.MM.dd&#125;&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    if [type] == &quot;nginx-log&quot; &#123;</div><div class="line">        elasticsearch &#123;</div><div class="line">            hosts =&gt; [&quot;192.168.56.11:9200&quot;]</div><div class="line">            index =&gt; &quot;nginx-log-%&#123;+YYYY.MM.dd&#125;&quot;</div><div class="line">        &#125;   </div><div class="line">    &#125;</div><div class="line">    if [type] == &quot;system-syslog&quot; &#123;</div><div class="line">        elasticsearch &#123;</div><div class="line">            hosts =&gt; [&quot;192.168.56.11:9200&quot;]</div><div class="line">            index =&gt; &quot;system-syslog-%&#123;+YYYY.MM.dd&#125;&quot;</div><div class="line">        &#125;   </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">/opt/logstash/bin/logstash -f /etc/logstash/conf.d/message.conf</div></pre></td></tr></table></figure>
+<h1 id="Kibana"><a href="#Kibana" class="headerlink" title="Kibana"></a>Kibana</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"># 安装</div><div class="line">rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch</div><div class="line">vim /etc/yum.repos.d/kibana.repo</div><div class="line">[kibana-4.6]</div><div class="line">name=Kibana repository for 4.6.x packages</div><div class="line">baseurl=https://packages.elastic.co/kibana/4.6/centos</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=https://packages.elastic.co/GPG-KEY-elasticsearch</div><div class="line">enabled=1</div><div class="line">yum install kibana</div><div class="line">chkconfig --add kibana</div><div class="line">/bin/systemctl daemon-reload</div><div class="line">/bin/systemctl enable kibana.service</div><div class="line">vim /opt/kibana/config/kibana.yml</div><div class="line">server.port: 5601</div><div class="line">server.host: &quot;192.168.56.11&quot;</div><div class="line">elasticsearch.url: &quot;http://192.168.56.11:9200&quot;</div><div class="line">kibana.index: &quot;.kibana&quot;</div><div class="line">/bin/systemctl start kibana.service</div></pre></td></tr></table></figure>
+<h1 id="LogStash-1"><a href="#LogStash-1" class="headerlink" title="LogStash"></a>LogStash</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"># 收集nginx的JSON格式记录日志，注意log_format格式，单词颜色</div><div class="line">vim /etc/nginx/nginx.conf</div><div class="line">log_format json &apos;&#123;&quot;@timestamp&quot;:&quot;$time_iso8601&quot;,&apos;</div><div class="line">               &apos;&quot;@version&quot;:&quot;1&quot;,&apos;</div><div class="line">               &apos;&quot;client&quot;:&quot;$remote_addr&quot;,&apos;</div><div class="line">               &apos;&quot;request_method&quot;: &quot;$request_method&quot;, &apos;</div><div class="line">               &apos;&quot;url&quot;:&quot;$uri&quot;, &apos;</div><div class="line">               &apos;&quot;status&quot;:&quot;$status&quot;,&apos;</div><div class="line">               &apos;&quot;domain&quot;:&quot;$host&quot;,&apos;</div><div class="line">               &apos;&quot;host&quot;:&quot;$server_addr&quot;,&apos;</div><div class="line">               &apos;&quot;size&quot;:&quot;$body_bytes_sent&quot;,&apos;</div><div class="line">               &apos;&quot;responsetime&quot;:&quot;$request_time&quot;,&apos;</div><div class="line">               &apos;&quot;referer&quot;:&quot;$http_referer&quot;,&apos;</div><div class="line">               &apos;&quot;agent&quot;:&quot;$http_user_agent&quot;,&apos;</div><div class="line">               &apos;&quot;http_x_forwarded_for&quot;:&quot;$http_x_forwarded_for&quot;,&apos;</div><div class="line">               &apos;&quot;upstr_addr&quot;: &quot;$upstream_addr&quot;,&apos;</div><div class="line">               &apos;&quot;upstr_host&quot;: &quot;$upstream_http_host&quot;,&apos;</div><div class="line">               &apos;&quot;ups_resp_time&quot;: &quot;$upstream_response_time&quot; &#125;&apos;;</div><div class="line">access_log /var/log/nginx/access_json.log json;</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">#收集系统日志，修改rsyslog的配置</div><div class="line">vim /etc/rsyslog.conf</div><div class="line"># remote host is: name/ip:port, e.g. 192.168.0.1:514, port optional</div><div class="line">*.* @@192.168.56.11:514</div><div class="line">systemctl  restart rsyslog</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">#系统改造，引入redis</div><div class="line">input &#123;</div><div class="line">    redis &#123;</div><div class="line">      host =&gt; &quot;192.168.56.11&quot;</div><div class="line">      port =&gt; &quot;6379&quot;</div><div class="line">      db =&gt; &quot;6&quot;</div><div class="line">      data_type =&gt; &quot;list&quot;</div><div class="line">      key =&gt; &quot;demo&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">output &#123;</div><div class="line">    elasticsearch &#123;</div><div class="line">       hosts =&gt; [&quot;192.168.56.11:9200&quot;]</div><div class="line">       index =&gt; &quot;redis-demo-%&#123;+YYYY.MM.dd&#125;&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ELK/" rel="tag"># ELK</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/23/Nginx日志转储/" rel="next" title="Nginx日志转储">
+                <i class="fa fa-chevron-left"></i> Nginx日志转储
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/10/编译安装MySQL5.6.32/" rel="prev" title="编译安装MySQL5.6.32">
+                编译安装MySQL5.6.32 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="qingyu.li" />
+          <p class="site-author-name" itemprop="name">qingyu.li</p>
+           
+              <p class="site-description motion-element" itemprop="description">简单不先于复杂，而是在复杂之后</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://piandeng.com/" title="Piandeng" target="_blank">Piandeng</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#生产上线ELK"><span class="nav-number">1.</span> <span class="nav-text">生产上线ELK:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elastic-Search"><span class="nav-number">2.</span> <span class="nav-text">Elastic Search</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LogStash"><span class="nav-number">3.</span> <span class="nav-text">LogStash</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kibana"><span class="nav-number">4.</span> <span class="nav-text">Kibana</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LogStash-1"><span class="nav-number">5.</span> <span class="nav-text">LogStash</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qingyu.li</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("FqAp90PI86NxdOHOxWQ0VrFS-gzGzoHsz", "GKvXMFDzPRF3a0w9BaOEx52z");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+  
+
+</body>
+</html>

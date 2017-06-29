@@ -1,0 +1,966 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Zabbix," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Zabbix监控体系部署监控体系包含哪些
+硬件监控
+系统监控
+网络监控
+应用监控
+
+zabbix 服务端部署注意事项：
+zabbix_3.0 要求php版本至少在5.4以上
+php编译时，必须加上--with-mysqli=mysqlnd和--with-gettext，前者不装则安装zabbix时database type没有选项，默认出来的数据库是SqLite 3，且不能切换，后者不装则会报PH">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zabbix监控体系部署">
+<meta property="og:url" content="http://charles.pub/2016/07/25/Zabbix监控体系部署/index.html">
+<meta property="og:site_name" content="“运维 - 架构”">
+<meta property="og:description" content="Zabbix监控体系部署监控体系包含哪些
+硬件监控
+系统监控
+网络监控
+应用监控
+
+zabbix 服务端部署注意事项：
+zabbix_3.0 要求php版本至少在5.4以上
+php编译时，必须加上--with-mysqli=mysqlnd和--with-gettext，前者不装则安装zabbix时database type没有选项，默认出来的数据库是SqLite 3，且不能切换，后者不装则会报PH">
+<meta property="og:updated_time" content="2017-05-24T05:57:43.607Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Zabbix监控体系部署">
+<meta name="twitter:description" content="Zabbix监控体系部署监控体系包含哪些
+硬件监控
+系统监控
+网络监控
+应用监控
+
+zabbix 服务端部署注意事项：
+zabbix_3.0 要求php版本至少在5.4以上
+php编译时，必须加上--with-mysqli=mysqlnd和--with-gettext，前者不装则安装zabbix时database type没有选项，默认出来的数据库是SqLite 3，且不能切换，后者不装则会报PH">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'U8RQYDSHQE',
+      apiKey: '4e3ee6017aa53b87273a8f9c07c6fad8',
+      indexName: 'BlogIndex',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://charles.pub/2016/07/25/Zabbix监控体系部署/"/>
+
+
+
+
+
+  <title> Zabbix监控体系部署 | “运维 - 架构” </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b71d9b907f3535ada947168b45eb247b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">“运维 - 架构”</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/07/25/Zabbix监控体系部署/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Zabbix监控体系部署
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-25T18:45:20+08:00">
+                2016-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/07/25/Zabbix监控体系部署/" class="leancloud_visitors" data-flag-title="Zabbix监控体系部署">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Zabbix监控体系部署"><a href="#Zabbix监控体系部署" class="headerlink" title="Zabbix监控体系部署"></a>Zabbix监控体系部署</h1><h2 id="监控体系包含哪些"><a href="#监控体系包含哪些" class="headerlink" title="监控体系包含哪些"></a>监控体系包含哪些</h2><ul>
+<li>硬件监控</li>
+<li>系统监控</li>
+<li>网络监控</li>
+<li>应用监控</li>
+</ul>
+<h2 id="zabbix-服务端部署"><a href="#zabbix-服务端部署" class="headerlink" title="zabbix 服务端部署"></a>zabbix 服务端部署</h2><h3 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h3><ul>
+<li>zabbix_3.0 要求php版本至少在5.4以上</li>
+<li>php编译时，必须加上<code>--with-mysqli=mysqlnd</code>和<code>--with-gettext</code>，前者不装则安装zabbix时database type没有选项，默认出来的数据库是SqLite 3，且不能切换，后者不装则会报PHP gettext warning）。</li>
+</ul>
+<h3 id="1-安装配置NGINX"><a href="#1-安装配置NGINX" class="headerlink" title="1.安装配置NGINX"></a>1.安装配置NGINX</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm</div><div class="line"><span class="comment"># 安装一些依赖</span></div><div class="line">yum install pcre pcre-devel openssl openssl-devel -y</div><div class="line">yum install -y nginx</div><div class="line">/etc/init.d/nginx start</div><div class="line">chkconfig nginx on</div></pre></td></tr></table></figure>
+<h3 id="2-安装MySQL5-6"><a href="#2-安装MySQL5-6" class="headerlink" title="2.安装MySQL5.6"></a>2.安装MySQL5.6</h3><h4 id="配置mysql官方yum源"><a href="#配置mysql官方yum源" class="headerlink" title="配置mysql官方yum源"></a>配置mysql官方yum源</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># Centos6</div><div class="line">yum install -y http://dev.mysql.com/get/mysql57-community-release-el6-8.noarch.rpm</div><div class="line">yum clean all</div><div class="line"># 修改yum源mysql版本可用信息</div><div class="line">vim /etc/yum.repos.d/mysql-community.repo</div><div class="line"># 将[mysql57-community]设置成enabled=0，[mysql56-community]设置成enabled=1</div><div class="line">yum makecache</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="安装配置mysql"><a href="#安装配置mysql" class="headerlink" title="安装配置mysql"></a>安装配置mysql</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line">yum install -y mysql mysql-server mysql-devel</div><div class="line">mkdir -p /data/mysql/data</div><div class="line">chown mysql.mysql -R /data/mysql</div><div class="line"><span class="comment"># 编辑配置my.cnf文件</span></div><div class="line">vim /etc/my.cnf</div><div class="line">[client]</div><div class="line">port = 3306</div><div class="line">socket = /var/lib/mysql/mysql.sock</div><div class="line">default-character-set = utf8</div><div class="line"></div><div class="line">[mysql]</div><div class="line">no-auto-rehash</div><div class="line"></div><div class="line">[mysqld]</div><div class="line">user = mysql</div><div class="line">port = 3306</div><div class="line">socket = /var/lib/mysql/mysql.sock</div><div class="line">basedir = /usr/<span class="built_in">local</span>/mysql</div><div class="line">datadir = /data/mysql/data</div><div class="line">collation-server = utf8_general_ci</div><div class="line">init-connect = <span class="string">'SET NAMES UTF8'</span></div><div class="line">character-set-server = utf8</div><div class="line">open_files_limit = 1024</div><div class="line">back_log = 600</div><div class="line">max_connections = 800</div><div class="line">max_connect_errors = 3000</div><div class="line">external-locking = FALSE</div><div class="line">max_allowed_packet =8M</div><div class="line">sort_buffer_size = 1M</div><div class="line">join_buffer_size = 1M</div><div class="line">thread_cache_size = 100</div><div class="line">query_cache_size = 2M</div><div class="line">query_cache_limit = 1M</div><div class="line">query_cache_min_res_unit = 2k</div><div class="line">thread_stack = 192K</div><div class="line">tmp_table_size = 2M</div><div class="line">max_heap_table_size = 2M</div><div class="line">slow-query-log = 1</div><div class="line">long_query_time = 5</div><div class="line"><span class="built_in">log</span>-error = /data/mysql/error.log</div><div class="line">slow-query-log-file = /data/mysql/slow.log</div><div class="line">pid-file = /data/mysql/mysql.pid</div><div class="line"><span class="built_in">log</span>-bin = /data/mysql/mysql-bin</div><div class="line">relay-log = /data/mysql/relay-bin</div><div class="line">relay-log-info-file = /data/mysql/relay-log.info</div><div class="line">binlog_cache_size = 1M</div><div class="line">max_binlog_cache_size = 1M</div><div class="line">max_binlog_size = 2M</div><div class="line">expire_logs_days = 7</div><div class="line">key_buffer_size = 16M</div><div class="line">read_buffer_size = 1M</div><div class="line">read_rnd_buffer_size = 1M</div><div class="line">bulk_insert_buffer_size = 1M</div><div class="line">lower_case_table_names = 1</div><div class="line">skip-name-resolve</div><div class="line">slave-skip-errors = 1032,1062</div><div class="line">replicate-ignore-db=mysql</div><div class="line">server-id = 1</div><div class="line">innodb_additional_mem_pool_size = 4M</div><div class="line">innodb_buffer_pool_size = 32M</div><div class="line">innodb_data_file_path = ibdata1:128M:autoextend</div><div class="line">innodb_file_io_threads = 4</div><div class="line">innodb_thread_concurrency = 8</div><div class="line">innodb_flush_log_at_trx_commit = 2</div><div class="line">innodb_log_buffer_size = 2M</div><div class="line">innodb_log_file_size = 256M</div><div class="line">innodb_log_files_in_group = 3</div><div class="line">innodb_max_dirty_pages_pct = 90</div><div class="line">innodb_lock_wait_timeout = 120</div><div class="line">innodb_file_per_table = 0</div><div class="line">explicit_defaults_for_timestamp=<span class="literal">true</span></div><div class="line"></div><div class="line">[mysqldump]</div><div class="line">quick</div><div class="line">max_allowed_packet = 2M</div><div class="line"></div><div class="line">[mysqld_safe]</div><div class="line"><span class="built_in">log</span>-error=/data/mysql/mysql.err</div><div class="line">pid-file=/data/mysql/mysql.pid</div></pre></td></tr></table></figure>
+<h4 id="启动mysql服务"><a href="#启动mysql服务" class="headerlink" title="启动mysql服务"></a>启动mysql服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/mysqld start</div><div class="line"><span class="comment"># 加入开机自启动</span></div><div class="line">chkconfig mysqld on</div></pre></td></tr></table></figure>
+<h3 id="3-编译安装配置PHP5-5-38"><a href="#3-编译安装配置PHP5-5-38" class="headerlink" title="3.编译安装配置PHP5.5.38"></a>3.编译安装配置PHP5.5.38</h3><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">yum -y install libxml2-devel gd-devel  libcurl-devel \</div><div class="line">               libxslt-devel libmcrypt-devel mhash \</div><div class="line">               mhash-devel mcrypt zlib-devel  libjpeg-devel \</div><div class="line">               freetype-devel  libpng-devel </div><div class="line"><span class="comment"># 编译安装libiconv-devel包:</span></div><div class="line"><span class="built_in">cd</span> /tmp</div><div class="line">wget http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz</div><div class="line">tar zxf libiconv-1.14.tar.gz </div><div class="line"><span class="built_in">cd</span> libiconv-1.14</div><div class="line">./configure --prefix=/usr/<span class="built_in">local</span>/libiconv</div><div class="line">make &amp;&amp; make install</div><div class="line"><span class="built_in">cd</span> ../</div><div class="line">rm -rf libiconv-1.14 libiconv-1.14.tar.gz</div></pre></td></tr></table></figure>
+<h4 id="编译安装PHP5-5-38"><a href="#编译安装PHP5-5-38" class="headerlink" title="编译安装PHP5.5.38"></a>编译安装PHP5.5.38</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">tar xf php-5.5.38.tar.bz2</div><div class="line"><span class="built_in">cd</span> php-5.5.38</div><div class="line">./configure \</div><div class="line">--prefix=/usr/<span class="built_in">local</span>/php5.5.38 \</div><div class="line">--with-mysql \</div><div class="line">--with-mysqli=mysqlnd \</div><div class="line">--with-pdo-mysql=mysqlnd \</div><div class="line">--with-iconv-dir=/usr/<span class="built_in">local</span>/libiconv \</div><div class="line">--with-freetype-dir \</div><div class="line">--with-jpeg-dir \</div><div class="line">--with-png-dir \</div><div class="line">--with-gettext \</div><div class="line">--with-zlib \</div><div class="line">--with-libxml-dir=/usr \</div><div class="line">--enable-xml \</div><div class="line">--disable-rpath \</div><div class="line">--enable-bcmath \</div><div class="line">--enable-shmop \</div><div class="line">--enable-sysvsem \</div><div class="line">--enable-inline-optimization \</div><div class="line">--with-curl \</div><div class="line">--enable-mbregex \</div><div class="line">--enable-fpm \</div><div class="line">--enable-mbstring \</div><div class="line">--with-mcrypt \</div><div class="line">--with-gd \</div><div class="line">--enable-gd-native-ttf \</div><div class="line">--with-openssl \</div><div class="line">--with-mhash \</div><div class="line">--enable-pcntl \</div><div class="line">--enable-sockets \</div><div class="line">--with-xmlrpc \</div><div class="line">--enable-soap \</div><div class="line">--enable-short-tags \</div><div class="line">--enable-static \</div><div class="line">--with-xsl \</div><div class="line">--with-fpm-user=nginx \</div><div class="line">--with-fpm-group=nginx \</div><div class="line">--enable-ftp \</div><div class="line">--enable-zip</div><div class="line">make &amp;&amp; make install</div><div class="line">ln <span class="_">-s</span> /usr/<span class="built_in">local</span>/php5.5.38/ /usr/<span class="built_in">local</span>/php</div></pre></td></tr></table></figure>
+<h4 id="配置php-ini、php-fpm"><a href="#配置php-ini、php-fpm" class="headerlink" title="配置php.ini、php-fpm"></a>配置php.ini、php-fpm</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 拷贝php.ini文件</span></div><div class="line">cp php.ini-production /usr/<span class="built_in">local</span>/php/lib/php.ini</div><div class="line"></div><div class="line"><span class="comment"># 调整php.ini参数</span></div><div class="line">vim /usr/<span class="built_in">local</span>/php/lib/php.ini</div><div class="line"><span class="comment"># 主要为下面几个参数</span></div><div class="line">post_max_size = 16M</div><div class="line">max_execution_time = 300</div><div class="line">max_input_time = 300</div><div class="line">date.timezone = Asia/Shanghai</div><div class="line"><span class="comment"># 如果mysql配置socket文件不是默认路径，需要重新定义</span></div><div class="line">mysql.default_socket = /var/lib/mysql/mysql.sock</div><div class="line">pdo_mysql.default_socket = /var/lib/mysql/mysql.sock</div><div class="line">mysqli.default_socket = /var/lib/mysql/mysql.sock</div><div class="line"></div><div class="line"><span class="comment"># 配置php-fpm</span></div><div class="line">cat &lt;&lt;EOF &gt;/usr/<span class="built_in">local</span>/php/etc/php-fpm.conf</div><div class="line">[global]</div><div class="line">pid = /usr/<span class="built_in">local</span>/php/var/run/php-fpm.pid</div><div class="line">error_log = /usr/<span class="built_in">local</span>/php/var/<span class="built_in">log</span>/php-fpm.log</div><div class="line">log_level = error</div><div class="line">rlimit_files = 32768</div><div class="line">events.mechanism = epoll</div><div class="line">[www]</div><div class="line">user = nginx</div><div class="line">group = nginx</div><div class="line">listen = 127.0.0.1:9000</div><div class="line">listen.owner = nginx</div><div class="line">listen.group = nginx</div><div class="line">pm = dynamic</div><div class="line">pm.max_children = 1024</div><div class="line">pm.start_servers = 16</div><div class="line">pm.min_spare_servers = 5</div><div class="line">pm.max_spare_servers = 20</div><div class="line">pm.max_requests = 2048</div><div class="line">slowlog = /usr/<span class="built_in">local</span>/php/var/<span class="built_in">log</span>/<span class="variable">$pool</span>.log.slow</div><div class="line">request_slowlog_timeout = 10</div><div class="line">EOF</div></pre></td></tr></table></figure>
+<h4 id="启动PHP"><a href="#启动PHP" class="headerlink" title="启动PHP"></a>启动PHP</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/usr/<span class="built_in">local</span>/php/sbin/php-fpm</div><div class="line"><span class="comment"># 加入开机自启动</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"/usr/local/php/sbin/php-fpm"</span> &gt;&gt; /etc/rc.local</div></pre></td></tr></table></figure>
+<h3 id="4-配置zabbix"><a href="#4-配置zabbix" class="headerlink" title="4.配置zabbix"></a>4.配置zabbix</h3><h4 id="部署zabbix-server代码"><a href="#部署zabbix-server代码" class="headerlink" title="部署zabbix-server代码"></a>部署zabbix-server代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 安装依赖包</span></div><div class="line">yum install -y gcc gcc-c++ glibc curl curl-devel net-snmp net-snmp-devel libssh2-devel OpenIPMI-devel</div><div class="line"><span class="comment"># 创建zabbix用户</span></div><div class="line">useradd zabbix <span class="_">-s</span> /sbin/nologin -M</div><div class="line"><span class="comment"># 编译安装</span></div><div class="line">tar xf zabbix-3.0.4.tar.gz</div><div class="line"><span class="built_in">cd</span> zabbix-3.0.4</div><div class="line">./configure --prefix=/usr/<span class="built_in">local</span>/zabbix --enable-server --enable-agent --with-mysql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2 --with-openipmi --with-ssh2</div><div class="line">make install</div><div class="line"><span class="comment"># 拷贝代码</span></div><div class="line">mkdir -p /data/www/zabbix</div><div class="line"><span class="built_in">cd</span> frontends/php/</div><div class="line">mv * /data/www/zabbix/</div><div class="line">chown -R nginx.nginx /data/www/zabbix/</div><div class="line"><span class="built_in">cd</span> ../../</div></pre></td></tr></table></figure>
+<h4 id="配置启动脚本"><a href="#配置启动脚本" class="headerlink" title="配置启动脚本"></a>配置启动脚本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cp /usr/<span class="built_in">local</span>/zabbix/sbin/* /usr/<span class="built_in">local</span>/sbin/</div><div class="line"><span class="comment"># 进入源码包目录</span></div><div class="line">cp misc/init.d/fedora/core/zabbix_server /etc/init.d/zabbix_server</div><div class="line">cp misc/init.d/fedora/core/zabbix_agentd /etc/init.d/zabbix_agentd</div></pre></td></tr></table></figure>
+<h4 id="创建mysql数据库"><a href="#创建mysql数据库" class="headerlink" title="创建mysql数据库"></a>创建mysql数据库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">shell&gt; mysql -uroot -p&lt;password&gt;</div><div class="line">mysql&gt; create database zabbix character <span class="built_in">set</span> utf8 collate utf8_bin;</div><div class="line">mysql&gt; grant all privileges on zabbix.* to zabbix@localhost identified by <span class="string">'&lt;password&gt;'</span>;</div><div class="line">mysql&gt; flush privileges;</div><div class="line">mysql&gt; quit;</div><div class="line">按照SQL语句顺序导入SQL：</div><div class="line">shell&gt; mysql -uzabbix -p&lt;password&gt; zabbix &lt; database/mysql/schema.sql</div><div class="line"><span class="comment"># stop here if you are creating database for Zabbix proxy</span></div><div class="line">shell&gt; mysql -uzabbix -p&lt;password&gt; zabbix &lt; database/mysql/images.sql</div><div class="line">shell&gt; mysql -uzabbix -p&lt;password&gt; zabbix &lt; database/mysql/data.sql</div></pre></td></tr></table></figure>
+<h4 id="配置zabbix-server-conf"><a href="#配置zabbix-server-conf" class="headerlink" title="配置zabbix_server.conf"></a>配置zabbix_server.conf</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/zabbix/etc/</div><div class="line">cp zabbix_server.conf zabbix_server.conf.ori</div><div class="line">vim zabbix_server.conf</div><div class="line">DBUser=zabbix <span class="comment">#数据库用户名 </span></div><div class="line">DBName=zabbix <span class="comment">#数据库名称 </span></div><div class="line">DBPassword=zabbix <span class="comment">#数据库密码</span></div><div class="line"><span class="comment"># 根据实际情况修改mysql的socket文件</span></div><div class="line">DBSocket=/data/mysql/mysql.sock</div></pre></td></tr></table></figure>
+<h4 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">vim /etc/nginx/nginx.conf</div><div class="line">user  nginx;</div><div class="line">worker_processes  1;</div><div class="line">error_log  /var/<span class="built_in">log</span>/nginx/error.log warn;</div><div class="line">pid        /var/run/nginx.pid;</div><div class="line">events &#123;</div><div class="line">    worker_connections  1024;</div><div class="line">&#125;</div><div class="line">http &#123;</div><div class="line">    include       /etc/nginx/mime.types;</div><div class="line">    default_type  application/octet-stream;</div><div class="line">    log_format  main  <span class="string">'$remote_addr - $remote_user [$time_local] "$request" '</span></div><div class="line">                      <span class="string">'$status $body_bytes_sent "$http_referer" '</span></div><div class="line">                      <span class="string">'"$http_user_agent" "$http_x_forwarded_for"'</span>;</div><div class="line">    access_log  /var/<span class="built_in">log</span>/nginx/access.log  main;</div><div class="line">    sendfile        on;</div><div class="line">    <span class="comment">#tcp_nopush     on;</span></div><div class="line">    keepalive_timeout  65;</div><div class="line">    <span class="comment">#gzip  on;</span></div><div class="line">    server &#123;</div><div class="line">       listen      80;</div><div class="line">       server_name  localhost;</div><div class="line">       location / &#123;</div><div class="line">          root   /data/www;</div><div class="line">          index  index.php index.html index.htm;</div><div class="line">       &#125;</div><div class="line">       error_page   500 502 503 504  /50x.html;</div><div class="line">       location = /50x.html &#123;</div><div class="line">         root   html;</div><div class="line">       &#125;</div><div class="line">       location ~ .*\.(php|php5)?$ &#123;</div><div class="line">          root  /data/www;</div><div class="line">          fastcgi_pass 127.0.0.1:9000;</div><div class="line">          fastcgi_index index.php;</div><div class="line">          fastcgi_param SCRIPT_FILENAME <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</div><div class="line">          include    fastcgi_params;</div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line">    include /etc/nginx/conf.d/*.conf;</div><div class="line">&#125;</div><div class="line"><span class="comment"># 重启nginx服务</span></div><div class="line">/etc/init.d/nginx restart</div></pre></td></tr></table></figure>
+<h4 id="替换zabbix字体，解决图形中文字体乱码问题"><a href="#替换zabbix字体，解决图形中文字体乱码问题" class="headerlink" title="替换zabbix字体，解决图形中文字体乱码问题"></a>替换zabbix字体，解决图形中文字体乱码问题</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 切换到zabbix的web目录下</span></div><div class="line"><span class="built_in">cd</span> /data/www/zabbix/fonts/</div><div class="line">mv DejaVuSans.ttf DejaVuSans.ttf.bak</div><div class="line"><span class="comment"># 下载上传微软雅黑msyh.ttf字体</span></div><div class="line">mv msyh.ttf DejaVuSans.ttf</div><div class="line">chown nginx.nginx DejaVuSans.ttf</div></pre></td></tr></table></figure>
+<h4 id="启动zabbix服务"><a href="#启动zabbix服务" class="headerlink" title="启动zabbix服务"></a>启动zabbix服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/zabbix_server start</div><div class="line">/etc/init.d/zabbix_agentd start</div><div class="line"><span class="comment"># 开机自启动</span></div><div class="line">chkconfig zabbix_server on</div><div class="line">chkconfig --add zabbix_agentd</div><div class="line">chkconfig zabbix_agentd on</div></pre></td></tr></table></figure>
+<h3 id="5-访问zabbix"><a href="#5-访问zabbix" class="headerlink" title="5.访问zabbix"></a>5.访问zabbix</h3><p><a href="http://主机IP地址/zabbix" target="_blank" rel="external">http://主机IP地址/zabbix</a></p>
+<h3 id="6-被监控服务器安装agent"><a href="#6-被监控服务器安装agent" class="headerlink" title="6.被监控服务器安装agent"></a>6.被监控服务器安装agent</h3><p>yum install -y <a href="http://mirrors.aliyun.com/zabbix/zabbix/3.0/rhel/6/x86_64/zabbix-agent-3.0.4-1.el6.x86_64.rpm" target="_blank" rel="external">http://mirrors.aliyun.com/zabbix/zabbix/3.0/rhel/6/x86_64/zabbix-agent-3.0.4-1.el6.x86_64.rpm</a></p>
+<h3 id="7-Zatree-for-zabbix-3-0-x-安装"><a href="#7-Zatree-for-zabbix-3-0-x-安装" class="headerlink" title="7.Zatree for zabbix 3.0.x 安装"></a>7.Zatree for zabbix 3.0.x 安装</h3><h4 id="zatree3-0-x-快速部署方法"><a href="#zatree3-0-x-快速部署方法" class="headerlink" title="zatree3.0.x 快速部署方法"></a>zatree3.0.x 快速部署方法</h4><p>部署方法很简单<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> https://github.com/BillWang139967/zatree.git</div><div class="line"><span class="built_in">cd</span> <span class="built_in">cd</span> zatree/zabbix-3.0.x/</div><div class="line"><span class="comment"># 编辑start.sh，编辑修改ZABBIX_PATH</span></div><div class="line">sh start.sh</div><div class="line"><span class="comment"># 执行过程中需要输入zabbix admin的账号和密码</span></div></pre></td></tr></table></figure></p>
+<h4 id="zatree3-0-x-实现原理及排错"><a href="#zatree3-0-x-实现原理及排错" class="headerlink" title="zatree3.0.x 实现原理及排错"></a>zatree3.0.x 实现原理及排错</h4><p><a href="https://github.com/BillWang139967/zatree/tree/master/zabbix-3.0.x" target="_blank" rel="external">https://github.com/BillWang139967/zatree/tree/master/zabbix-3.0.x</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Zabbix/" rel="tag"># Zabbix</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/18/SaltStack安装、部署及实践/" rel="next" title="SaltStack安装、部署及实践">
+                <i class="fa fa-chevron-left"></i> SaltStack安装、部署及实践
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/05/Hexo搭建博客配置过程/" rel="prev" title="Hexo搭建博客配置过程">
+                Hexo搭建博客配置过程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="qingyu.li" />
+          <p class="site-author-name" itemprop="name">qingyu.li</p>
+           
+              <p class="site-description motion-element" itemprop="description">简单不先于复杂，而是在复杂之后</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://piandeng.com/" title="Piandeng" target="_blank">Piandeng</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Zabbix监控体系部署"><span class="nav-number">1.</span> <span class="nav-text">Zabbix监控体系部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#监控体系包含哪些"><span class="nav-number">1.1.</span> <span class="nav-text">监控体系包含哪些</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zabbix-服务端部署"><span class="nav-number">1.2.</span> <span class="nav-text">zabbix 服务端部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项："><span class="nav-number">1.2.1.</span> <span class="nav-text">注意事项：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装配置NGINX"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.安装配置NGINX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装MySQL5-6"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.安装MySQL5.6</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置mysql官方yum源"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">配置mysql官方yum源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装配置mysql"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">安装配置mysql</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动mysql服务"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">启动mysql服务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-编译安装配置PHP5-5-38"><span class="nav-number">1.2.4.</span> <span class="nav-text">3.编译安装配置PHP5.5.38</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装依赖"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">安装依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编译安装PHP5-5-38"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">编译安装PHP5.5.38</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置php-ini、php-fpm"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">配置php.ini、php-fpm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动PHP"><span class="nav-number">1.2.4.4.</span> <span class="nav-text">启动PHP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-配置zabbix"><span class="nav-number">1.2.5.</span> <span class="nav-text">4.配置zabbix</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#部署zabbix-server代码"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">部署zabbix-server代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置启动脚本"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">配置启动脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建mysql数据库"><span class="nav-number">1.2.5.3.</span> <span class="nav-text">创建mysql数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置zabbix-server-conf"><span class="nav-number">1.2.5.4.</span> <span class="nav-text">配置zabbix_server.conf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置nginx"><span class="nav-number">1.2.5.5.</span> <span class="nav-text">配置nginx</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#替换zabbix字体，解决图形中文字体乱码问题"><span class="nav-number">1.2.5.6.</span> <span class="nav-text">替换zabbix字体，解决图形中文字体乱码问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动zabbix服务"><span class="nav-number">1.2.5.7.</span> <span class="nav-text">启动zabbix服务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-访问zabbix"><span class="nav-number">1.2.6.</span> <span class="nav-text">5.访问zabbix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-被监控服务器安装agent"><span class="nav-number">1.2.7.</span> <span class="nav-text">6.被监控服务器安装agent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Zatree-for-zabbix-3-0-x-安装"><span class="nav-number">1.2.8.</span> <span class="nav-text">7.Zatree for zabbix 3.0.x 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#zatree3-0-x-快速部署方法"><span class="nav-number">1.2.8.1.</span> <span class="nav-text">zatree3.0.x 快速部署方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#zatree3-0-x-实现原理及排错"><span class="nav-number">1.2.8.2.</span> <span class="nav-text">zatree3.0.x 实现原理及排错</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qingyu.li</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("FqAp90PI86NxdOHOxWQ0VrFS-gzGzoHsz", "GKvXMFDzPRF3a0w9BaOEx52z");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+  
+
+</body>
+</html>

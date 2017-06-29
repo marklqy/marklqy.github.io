@@ -1,0 +1,2166 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Qingyu Li,李庆愉,运维,架构,devops" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="简单不先于复杂，而是在复杂之后">
+<meta property="og:type" content="website">
+<meta property="og:title" content="“运维 - 架构”">
+<meta property="og:url" content="http://charles.pub/page/3/index.html">
+<meta property="og:site_name" content="“运维 - 架构”">
+<meta property="og:description" content="简单不先于复杂，而是在复杂之后">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="“运维 - 架构”">
+<meta name="twitter:description" content="简单不先于复杂，而是在复杂之后">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'U8RQYDSHQE',
+      apiKey: '4e3ee6017aa53b87273a8f9c07c6fad8',
+      indexName: 'BlogIndex',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://charles.pub/page/3/"/>
+
+
+
+
+
+  <title> Qingyu Li,李庆愉,运维,架构,devops - “运维 - 架构”简单不先于复杂，而是在复杂之后 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b71d9b907f3535ada947168b45eb247b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">“运维 - 架构”</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/07/10/OpenStack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/10/OpenStack/" itemprop="url">
+                  OpenStack
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-10T11:02:50+08:00">
+                2016-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/07/10/OpenStack/" class="leancloud_visitors" data-flag-title="OpenStack">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="一些组件"><a href="#一些组件" class="headerlink" title="一些组件"></a>一些组件</h1><p>keystone 用户认证和服务目录<br>RabbitMQ 消息队列<br>MySQL 提供数据存储</p>
+<p>Nova-nova compute-libvirt<br>KVM虚拟机-qemu-kvm进程<br>nova-scheduler 调度，找可用的计算节点</p>
+<p>glance 提供镜像 qcow2 raw<br>neutron 提供网络 FLAT VLAN GRE vxlan<br>cinder 提供硬盘（可选） cinder-scheduler cinder-volume</p>
+<p><strong>Openstack 私有云 用于开发 测试 生产，时间部署注意：</strong><br>IO；不要改主机名；内网DNS；时间同步；弱口令；组件注册的IP绑定；熟悉virsh libvirt；桌面虚拟化</p>
+<ul>
+<li>基础服务：<br>MySQL 3306<br>RabbitMQ 5672 15672 25672<br>Keystone （权限管理、服务目录） 5000 35357<br>memcached 11211</li>
+<li>镜像服务：<br>Glance glance-api 9292  glance-registry 9191</li>
+<li>计算服务：<br>Nova api 8774 metadata 8775 Nova Scheduler 1.过滤 2.权值 novncproxy 6080</li>
+<li>网络服务：<br>neutron </li>
+</ul>
+<p>OSI七层：<br>传输层： LBaas Haproxy 4层和7层<br>网络层： L3-agent Linux静态路由+NAT<br>数据链路层： ML2 linuxbridge openvswith 商业插件<br>块存储：<br>cinder cinder-api cinder-scheduler cinder-volume</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/07/10/OpenStack/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/05/30/KVM相关/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/30/KVM相关/" itemprop="url">
+                  KVM相关
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-30T10:26:10+08:00">
+                2016-05-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/05/30/KVM相关/" class="leancloud_visitors" data-flag-title="KVM相关">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">yum install qemu-kvm qemu-kvm-tools virt-manager libvirt virt-install -y</div><div class="line"><span class="comment">#查看CPU是否支持虚拟化</span></div><div class="line">egrep --color <span class="string">'vmx|svm'</span> /proc/cpuinfo </div><div class="line"><span class="comment">#查看是否加载有kvm内核</span></div><div class="line">lsmod | grep kvm</div><div class="line"><span class="comment">#查看服务状态</span></div><div class="line">systemctl <span class="built_in">enable</span> libvirtd.service</div><div class="line">systemctl start libvirtd.service</div><div class="line">systemctl status libvirtd.service</div></pre></td></tr></table></figure>
+<h1 id="创建虚拟机"><a href="#创建虚拟机" class="headerlink" title="创建虚拟机"></a>创建虚拟机</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#创建虚拟机磁盘</span></div><div class="line">qemu-img create <span class="_">-f</span> raw /opt/CentOS-7.1-x86_64.raw 10G</div><div class="line"><span class="comment">#在虚拟机里创建CentOS7安装镜像</span></div><div class="line">dd <span class="keyword">if</span>=/dev/cdrom of=/opt/CentOS-7.1.iso</div><div class="line"><span class="comment">#安装，需要有VNC支持</span></div><div class="line">virt-install --name CentOS-7.1-x86_64 --virt-type kvm --ram 1024 --cdrom=/opt/CentOS-7.1.iso --disk path=/opt/CentOS-7.1-x86_64.raw --network network=default --graphics vnc,listen=0.0.0.0 --noautoconsole</div><div class="line"><span class="comment">#windows</span></div><div class="line">virt-install --name win7 --vcpus=2 --os-type=windows --os-variant=win7 --virt-type kvm --ram 4096 --cdrom=/var/lib/libvirt/images/win7.iso --disk path=/data/kvm/win7.raw --network network=default --graphics vnc,listen=0.0.0.0 --noautoconsole</div></pre></td></tr></table></figure>
+<h1 id="管理虚拟机"><a href="#管理虚拟机" class="headerlink" title="管理虚拟机"></a>管理虚拟机</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#查看虚拟机列表</span></div><div class="line">virsh list --all</div><div class="line"><span class="comment">#启动虚拟机</span></div><div class="line">virsh start CentOS-7.1-x86_64</div><div class="line"><span class="comment">#关闭虚拟机</span></div><div class="line">virsh shutdown CentOS-7.1-x86_64</div><div class="line"><span class="comment">#删除虚拟机</span></div><div class="line">virsh undefine</div><div class="line"><span class="comment">#编辑虚拟机配置</span></div><div class="line">virsh edit CentOS-7.1-x86_64</div><div class="line"><span class="comment">#修改CPU，最大4，当前1</span></div><div class="line">&lt;vcpu placement=<span class="string">'auto'</span> current=<span class="string">"1"</span>&gt;4&lt;/vcpu&gt;</div><div class="line"><span class="comment">#动态修改CPU数量，热添加，总数不能超过最大限制，不能热减少</span></div><div class="line">virsh setvcpus CentOS-7.1-x86_64 2 --live</div><div class="line"><span class="comment">#内存热膨胀和压缩，总数不能超过最大内存</span></div><div class="line">virsh edit CentOS-7.1-x86_64</div><div class="line">&lt;memory unit=<span class="string">'KiB'</span>&gt;4048576&lt;/memory&gt;   <span class="comment">#最大内存限制，修改完需要重启虚拟机</span></div><div class="line">&lt;currentMemory unit=<span class="string">'KiB'</span>&gt;1048576&lt;/currentMemory&gt;</div><div class="line">virsh qemu-monitor-command CentOS-7.1-x86_64 --hmp --cmd info balloon</div><div class="line"> <span class="comment">#查看当前内存</span></div><div class="line">virsh qemu-monitor-command CentOS-7.1-x86_64 --hmp --cmd balloon 600</div><div class="line"><span class="comment">#修改内存为600M</span></div><div class="line"></div><div class="line"><span class="comment">#硬盘：</span></div><div class="line">全镜像模式  稀疏模式</div><div class="line">raw              qcow2</div><div class="line">qemu-img</div><div class="line"></div><div class="line"><span class="comment">#网卡，手动设置为桥接</span></div><div class="line">[root@oldboy opt]<span class="comment"># brctl addbr br0</span></div><div class="line">[root@oldboy opt]<span class="comment"># brctl show</span></div><div class="line">[root@oldboy ~]<span class="comment"># brctl addif br0 eth0 &amp;&amp; ip addr del dev eth0 10.0.0.111/24 &amp;&amp; ifconfig br0 10.0.0.111/24 up &amp;&amp; route add default gw 10.0.0.2 &amp;&amp; iptables -F</span></div><div class="line"></div><div class="line"><span class="comment">#CPU优化  vt-x</span></div><div class="line">taskset 绑定KVM进程到固定的CPU，减少Cache Miss</div><div class="line">CPU node core 一样。L2 L3 一个单独的node上是共享的。</div><div class="line"></div><div class="line"><span class="comment">#内存优化</span></div><div class="line"></div><div class="line">寻址-EPT</div><div class="line"></div><div class="line">KSM 内存合并  相同内存合并  ksmd</div><div class="line">大页内存  khugepaged 把连续的4k内存合并成为2M </div><div class="line"></div><div class="line">1.宿主机虚拟内存 -&gt; 宿主机物理内存</div><div class="line">虚拟机的虚拟内存  -&gt; 虚拟机的物理内存</div><div class="line">影子页表</div><div class="line">虚拟机的虚拟内存 -&gt; 宿主机物理内存</div><div class="line">Inter EPT技术  AMD RVI技术实现</div><div class="line"></div><div class="line"><span class="comment">#I/O  </span></div><div class="line"> Virtio  virio-net virtio-blk 半虚拟化</div><div class="line"><span class="comment">#scheudler   </span></div><div class="line"></div><div class="line">[root@oldboy ~]<span class="comment"># dmesg | grep -i scheduler</span></div><div class="line">[    0.775193] io scheduler noop registered</div><div class="line">[    0.775195] io scheduler deadline registered (default)</div><div class="line">[    0.775396] io scheduler cfq registered</div><div class="line">[root@oldboy ~]<span class="comment"># cat /sys/block/sda/queue/scheduler </span></div><div class="line">noop [deadline] cfq </div><div class="line">[root@oldboy ~]<span class="comment"># echo cfq &gt; /sys/block/sda/queue/scheduler </span></div><div class="line">[root@oldboy ~]<span class="comment"># cat /sys/block/sda/queue/scheduler </span></div><div class="line">noop deadline [cfq]</div><div class="line"></div><div class="line">永久修改 加入内核参数    elevator=noop</div></pre></td></tr></table></figure>
+<h1 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h1><p>镜像制作：<br>1.分区的时候，只分一个/分区。<br>2.删除虚拟机网卡的UUID MAC<br>3.安装基础软件包 net-tools lrzsz screen tree vim wget </p>
+<p>KVM管理平台：<br>OpenStack<br>CloudStack  cloud.com公司-》Ctrix-》Apache基金会-》Java<br>OpenNebula<br>oVirt RHEV开源实现 Fedora Centos RHEL<br>管理端+客户端组成。oVrit Engine oVirt主机/节点<br>vCenter      ESXi</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">http://www.ovirt.org/Download</div><div class="line">yum localinstall http://resources.ovirt.org/pub/yum-repo/ovirt-release36.rpm</div><div class="line"> yum install -y ovirt-engine</div><div class="line"> yum install -y ovirt-engine-setup-plugin-allinone</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/04/15/分布式文件系统GlusterFS FastDFS、数据存储/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/15/分布式文件系统GlusterFS FastDFS、数据存储/" itemprop="url">
+                  分布式文件系统GlusterFS FastDFS、数据存储
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-15T10:25:10+08:00">
+                2016-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/04/15/分布式文件系统GlusterFS FastDFS、数据存储/" class="leancloud_visitors" data-flag-title="分布式文件系统GlusterFS FastDFS、数据存储">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="GlusterFS"><a href="#GlusterFS" class="headerlink" title="GlusterFS"></a>GlusterFS</h1><p><a href="https://www.gluster.org" target="_blank" rel="external">https://www.gluster.org</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Centos6:</div><div class="line">yum install -y centos-release-gluster</div><div class="line">yum install -y glusterfs-server</div><div class="line">Centos7:</div><div class="line">http://buildlogs.centos.org/centos/7/storage/x86_64/gluster-3.8/</div><div class="line">#快速部署文档</div><div class="line">http://gluster.readthedocs.io/en/latest/Quick-Start-Guide/Quickstart/</div></pre></td></tr></table></figure>
+<h1 id="FastDFS"><a href="#FastDFS" class="headerlink" title="FastDFS"></a>FastDFS</h1><p><a href="https://github.com/happyfish100/" target="_blank" rel="external">https://github.com/happyfish100/</a></p>
+<h2 id="配置详解："><a href="#配置详解：" class="headerlink" title="配置详解："></a>配置详解：</h2><p><a href="http://bbs.chinaunix.net/thread-1941456-1-1.html" target="_blank" rel="external">http://bbs.chinaunix.net/thread-1941456-1-1.html</a></p>
+<h2 id="启动脚本报错，注意路径问题"><a href="#启动脚本报错，注意路径问题" class="headerlink" title="启动脚本报错，注意路径问题"></a>启动脚本报错，注意路径问题</h2><p>/usr/local/bin    改：  /usr/bin  核查文件是否存在</p>
+<h1 id="阿里开源TFS"><a href="#阿里开源TFS" class="headerlink" title="阿里开源TFS"></a>阿里开源TFS</h1><p>LevelDB</p>
+<p>NOSQL数据库：SSDB  100G左右最佳实践</p>
+<h1 id="tmpfs"><a href="#tmpfs" class="headerlink" title="tmpfs"></a>tmpfs</h1><p>基于内存的文件系统  RAM+SWAP  虚拟内存<br>1.tmpfs使用的虚拟内存；<br>2./dev/shm共享内存；<br>3.动态的使用虚拟内存，文件删除后释放内存。</p>
+<p>特性：1.动态空间使用和动态变化；2.速度；3.没有持久性</p>
+<p>应用场景：<br>1.缓存  Squid  Nginx<br>2.PHP Session  /tmp<br>3.存放socket<br>4.自定义缓存</p>
+<p>写入/etc/fstab</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">tmpfs  /mnt/tmp  tmpfs size=50M 0 0</div><div class="line"></div><div class="line">mount -t tmpfs -o size=50m tmpfs /mnt</div><div class="line">mount -o remount,size=100m /mnt 重新挂载分配size大小</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/04/15/NOSQL - Memcached、Redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/15/NOSQL - Memcached、Redis/" itemprop="url">
+                  NOSQL - Memcached、Redis
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-15T10:25:10+08:00">
+                2016-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NoSQL/" itemprop="url" rel="index">
+                    <span itemprop="name">NoSQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/04/15/NOSQL - Memcached、Redis/" class="leancloud_visitors" data-flag-title="NOSQL - Memcached、Redis">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="随笔记录："><a href="#随笔记录：" class="headerlink" title="随笔记录："></a>随笔记录：</h1><p>防爬虫，分析web 软件： AWSTATS<br>搜索服务软件Sphinx<br>适用nginx的proxy_cache缓存功能取代squid   <a href="http://zyan.cc/nginx_cache">http://zyan.cc/nginx_cache</a></p>
+<h1 id="Memcache"><a href="#Memcache" class="headerlink" title="Memcache"></a>Memcache</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"># 安装</div><div class="line">rpm -qa libevent libevent-devel nc telnet</div><div class="line">yum install -y libevent libevent-devel nc telnet</div><div class="line">rpm -qa memcached</div><div class="line">yum install -y memcached</div><div class="line"></div><div class="line">which memcached  ==&gt; /usr/bin/memcached</div><div class="line"></div><div class="line"># 启动</div><div class="line">memcached -m 16m -p 11211 -d -u root -c 8192  ：</div><div class="line">memcached -h 查看启动相关参数</div><div class="line">-d 以守护进程（daemon）方式运行服务</div><div class="line">-u 指定运行memcached的用户</div><div class="line">-l 指定进程监听的服务器IP地址，可不设置</div><div class="line">-p 指定监听TCP端口号。默认为11211。修改端口号，即可启动多实例</div><div class="line">-P 设置保存memcached的pid文件，保存PID到指定文件</div><div class="line">-m 指定可以缓存数据的最大内存，默认为64m</div><div class="line">-M 服务内存不够时禁止LRU，如果内存满了会报错</div><div class="line">-c 最大的并发连接数，默认是1024</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/04/15/NOSQL - Memcached、Redis/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/03/20/MYSQL常用基本命令结构化查询语言SQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/20/MYSQL常用基本命令结构化查询语言SQL/" itemprop="url">
+                  MYSQL常用基本命令结构化查询语言SQL（Structured Query Language）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-20T09:29:10+08:00">
+                2016-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/03/20/MYSQL常用基本命令结构化查询语言SQL/" class="leancloud_visitors" data-flag-title="MYSQL常用基本命令结构化查询语言SQL（Structured Query Language）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="SQL语句分类："><a href="#SQL语句分类：" class="headerlink" title="SQL语句分类："></a>SQL语句分类：</h1><ul>
+<li>DDL（Data Definition Language）数据定义语言：CREATE ALTER DROP</li>
+<li>DCL（Date Control Language）数据控制语言：GRANT REVOKE COMMIT ROLLBACK</li>
+<li>DML（Date Manipulation Language）数据操作语言：SELECT INSERT DELETE UPDATE</li>
+</ul>
+<p>mysql5.1及以前默认引擎为MyISAM ，mysql5.5.5以后默认为InnoDB</p>
+<h1 id="常用命令："><a href="#常用命令：" class="headerlink" title="常用命令："></a>常用命令：</h1><ul>
+<li>启动mysql命令：/etc/init.d/mysqld start</li>
+<li>查看mysql端口： ss -lnt|grep 3306</li>
+<li>查看mysql进程：ps -ef|grep mysql|grep -v grep</li>
+<li>优雅关闭数据库的方法：mysqladmin -uroot -p123456 shutdown</li>
+<li>配置文件修改登录提示符，在my.cnf [mysql]模块下添加如下内容，无需重启，退出当前session重新登录即可：prompt=\u@主机名 \r:\m:\s-&gt;</li>
+<li>多实例登录：（1）本地：mysql -u -p -S /data/3306/mysql.sock （2）远程：mysql -u -p -h -P3306</li>
+<li>添加超级管理员：grant all privileges on <em>.</em> to system@’localhost’ identified by ‘123456’ with grant option;</li>
+<li>设置密码：mysqladmin -u root password ‘123456’;</li>
+<li>多实例修改密码：mysqladmin -uroot -p’123456’ password ‘   ‘ -S /data/3306/mysql.sock<br>或者在MYSQL里面用sql语句：UPDATE mysql.user SET password=PASSWORD(“123456”) WHERE user=’root’ and host=’localhost’;<br>修改单用户密码，set password=PASSWORD(“123456”);</li>
+<li>忘记root密码修改方法：停止mysql服务，使用–skip-grant-tables启动MYSQL，用上述后两种方法修改密码：mysqld_safe –skip-grant-tables –user=mysql &amp;（多实例需要指定配置文件：mysqld_safe –defaults-file=/data/3306/my.cnf –skip-grant-tables &amp;  需要注意参CREATE DATABASE 数据库名 CHARACTER SET GBK COLLATE gbk_chinese_ci;数前后顺序）  再用空密码登录mysql </li>
+<li>创建数据库：create database 数据库名;  show databases like ‘  ‘;</li>
+<li>指定字符集：show character set;<br>CREATE DATABASE 数据库名 CHARACTER SET GBK COLLATE gbk_chinese_ci;</li>
+<li>use &lt;数据库名&gt; 相当于linux cd命令<br>select user();  相当于whoami   select database(); 相当于pwd</li>
+<li>drop user “user”@”主机域”  删除用户  drop database &lt;数据库名&gt;;  删除数据库</li>
+<li>grant all on dbname.* to username@’localhost’ identified by ‘passwd’;  flush privileges; show grants for ‘username’@’localhost’;  IP授权形式：  10.0.0.%   10.0.0.0/255.255.255.0</li>
+<li>回收权限：REVOKE INSERT ON <em>.</em> FROM ‘jeffrey’@’localhost’; flush privileges;  show grants for ‘username’@’localhost’;<br>常规情况下授权 select insert delete update 4个权限即可。</li>
+<li>desc &lt;表名&gt;; 查看表结构。   show create table &lt;表名&gt;; 查看创表的语句。</li>
+<li>primary key(id) 主键 一般主键配自增属性 auto_increment  KEY index_name(name) 普通索引<br>增加普通索引：alter table &lt;表名&gt; add index <code>索引名</code>(<code>字段</code>);  删除索引把add换成drop<br>对字段前N个字符创建普通索引：create index 索引名 on 表名(列(N));<br>联合索引具有前缀性，经常用于条件查询的放前面。</li>
+<li>insert into &lt;表名&gt; [(&lt;字段名1&gt;,&lt;字段名2&gt;..)] values(  ,  ); 数字可以不加引号，字符串需要加引号</li>
+<li>select &lt;字段1，字段2…&gt; from &lt;表&gt; where 条件  （limit 0,2;查部分数据，从第0行开始查两行）（order by 排序 desc降序 asc升序）（INTO OUTFILE ‘/tmp/a.txt’导出数据到文件）</li>
+<li>explain +select语句 获取select的相关信息，查看是否用索引，做优化：<br>（1）抓慢查询：<br>现场抓：mysql -uroot -p123456 -S /data/3306/mysql.sock -e “show full processlist;”|grep select -i<br>分析慢查询日志：<br>long_query_time = 1<br>log-slow-queries = /data/3306/slow.log<br>log_queries_not_using_indexes<br>每天零点定时任务切割日志：<br>cd  /data/3306<br>/bin/mv slow.log /backup/$(date +%F)_slow.log<br>mysqladmin -uroot -p123456 -S /data/3306/mysql.sock flush-logs<br>（2）explain语句检查索引执行情况<br>（3）对需要建索引的列建立索引<br>（4）分析慢查询的工具，每天发邮件。工具：mysqlsla </li>
+<li>profile 查询优化 SQL语句执行细节</li>
+<li>update 表名 set 字段=新值，…… where 条件（一定要注意加条件）<br>登录mysql时加入 -U 参数，使用安全模式，防止误更新 alias mysql=’mysql -U’</li>
+<li>delete from 表名 where 条件表达式 </li>
+<li>truncate table 表名 速度更快，直接清空对应数据的物理文件。</li>
+<li>alter table 表名 add 字段 类型 其他;</li>
+<li>rename table 原表名 to 新表名;</li>
+<li>show variables like “character_set%”; 查看mysql字符集</li>
+<li><p>mysqldump 备份数据库命令，恢复用mysql命令重定向&lt;<br>mysqldump -uroot -p123456 -S /data/3306/mysql.sock 库名 &gt; 备份路径.sql<br>备份完成检查：egrep -v “#|*|–|^$” 备份数据库文件路径<br>（1）-B 参数：表示接多个库，会加入建库及use库的过程。没有特殊情况一般都要加此参数。加入-B参数，后面可以直接接多个库名进行备份<br>（2）–compact 优化输出的大小，让容量更少，适合调试用。<br>（3）mysqldump …|gzip &gt; 路径.sql.gz   一般加入gzip管道压缩备份数据库<br>（4）–default-character-set=需要备份的数据库的字符集（备份出现乱码的时候用，一般不用）<br>（5）备份单表或多表：前面不加-B参数 前面加数据库名，后接表名，就是备份单表或多表<br>（6）-d 只备份表结构   -t 只备份数据  -T –tab=name 分离库表和数据成不同的文件，数据是文本，非SQL语句。<br>（7）-F 刷新bin-log日志，重新生成新的bin-log文件。可以理解为切割bin-log<br>（8）–master-data=1/2 在备份语句里添加change master语句和binlog文件对应的位置点。值为1为可执行的change master语句，为2是注释的change master语句。<br>（9）–single-transaction 适合innodb事务数据库备份，保持数据一致性<br>（10）-A 备份所有库<br>（11）-x 锁表 –lock-all-tables  -l –lock-tables 只读锁表<br>（12）-R 备份额外的存储过程和函数</p>
+</li>
+<li><p>生产场景，不同引擎mysqldump备份命令：<br>myisam引擎企业生产备份命令（适合所有引擎或混合引擎）：<br>mysqldump -uroot -p密码 -A -B -F -R–master-data=2 -x –events|gzip &gt; /opt/bak<em>$(date +%F).sql.gz  (-F也可以不用，与–master-data有重复)<br>innodb引擎备份命令：推荐使用：<br>mysqldump -uroot -p密码 -A -B -F -R –master-data=2 –events –single-transaction|gzip &gt; /opt/bak</em>$(date +%F).sql.gz (-F也可以不用，与–master-data有重复)</p>
+</li>
+<li><p>mysqldump命令逻辑备份，效率不是特别搞，简单、方便、可靠。适用与数据量不是特别大的场景，50G以内数据。  xtrabackup物理备份工具：全备和增量。   物理备份方案：从库停止SQL线程，打包，CP。</p>
+</li>
+<li><p>数据库恢复命令  source 备份数据库文件路径.sql （执行前，确保字符集正确），需要先登录mysql，use库。<br>数据库恢复标准命令 mysql -uroot -p密码 -S &lt; 备份文件; （如果备份没有加-B参数，需要建库，use库，mysql后需加数据库名） gzip -d 解压文件，会删除压缩原文件。 gunzip &lt;备份文件.sql.gz|mysql -u -p -S 此方法不会删除压缩源文件</p>
+</li>
+<li>生产场景常用命令：<br>show processlist;  查看正在执行的sql语句，看不全。<br>show full processlist; 查看正在执行的完整sql语句，完整显示<br>set global key_buffer_size = 32777218;  不重启数据库调整数据库参数，重启失效<br>show variables;  查看数据库的参数信息，例如my.cnf参数生效情况<br>kill ID  杀掉线程的命令，ID为线程号<br>show status; 查看当前回话的数据库状态信息<br>show global status;  查看整个数据库运行状态信息，很重要，要分析并做好监控。（工具mysqlreport）<br>show engine innodb status\G 显示INNODB引擎的性能状态（早起版本show innodb status;）</li>
+<li><p>mysqladmin的相关命令：<br>mysqladmin -uroot -p123456 status<br>mysqladmin -uroot -p123456  -S /data/3306/mysql.sock -i 1 status<br>mysqladmin -uroot -p123456 flush-logs<br>mysqladmin -uroot -p123456 processlist<br>mysqladmin -uroot -p123456 extended-status<br>mysqladmin -uroot -p123456 processlist -i 1 实时跟踪。<br>watch mysqladmin -uroot -p123456 -S /data/3306/mysql.sock processlist</p>
+</li>
+<li><p>mysqlbinlog -d 参数解析指定库的binlog日志 -r 生成文件，相当于重定向”&gt;”<br>mysqlbinlog –base64-output=”decode-rows” –verbose 解析行模式下binlog日志<br>mysqlbinlog mysql-bin.000020 –start-position=365 –stop-position=456 -r pos.sql<br>mysqlbinlog mysql-bin.000020 –start-datetime=’2014-10-16 17:14:15’ –stop-datetime=’2014-10-16 17:15:15’ -r time.sql</p>
+</li>
+<li><p>导出表数据到csv文件：<br>SELECT id,NAME,slug FROM location_area<br>INTO OUTFILE ‘/tmp/location_area.csv’<br>FIELDS TERMINATED BY ‘,’<br>OPTIONALLY ENCLOSED BY ‘“‘<br>LINES TERMINATED BY ‘\n’;</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2015/10/18/创建本地YUM仓库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/18/创建本地YUM仓库/" itemprop="url">
+                  创建本地YUM仓库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-18T11:35:50+08:00">
+                2015-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/10/18/创建本地YUM仓库/" class="leancloud_visitors" data-flag-title="创建本地YUM仓库">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="创建本地YUM仓库，每天同步mirrors-ustc-edu-cn"><a href="#创建本地YUM仓库，每天同步mirrors-ustc-edu-cn" class="headerlink" title="创建本地YUM仓库，每天同步mirrors.ustc.edu.cn"></a>创建本地YUM仓库，每天同步mirrors.ustc.edu.cn</h1><h2 id="加入定时任务"><a href="#加入定时任务" class="headerlink" title="加入定时任务"></a>加入定时任务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># rsync_yumrepo.sh</span></div><div class="line">00 00 * * * /bin/sh  /application/yum/rsync_yumrepo.sh</div></pre></td></tr></table></figure>
+<h2 id="同步脚本"><a href="#同步脚本" class="headerlink" title="同步脚本"></a>同步脚本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="comment">#Script name:rsync_yumrepo.sh</span></div><div class="line">RsyncB<span class="keyword">in</span>=<span class="string">"/usr/bin/rsync"</span></div><div class="line">RsyncPerm=<span class="string">'-avrt --delete --no-iconv'</span></div><div class="line">Centos_7_base=<span class="string">'/application/yum/Centos-7/Base/'</span></div><div class="line">Centos_7_epel=<span class="string">'/application/yum/Centos-7/Epel/'</span></div><div class="line">Centos_7_rpmforge=<span class="string">'/application/yum/Centos-7/Rpmforge/'</span></div><div class="line">Centos_6_base=<span class="string">'/application/yum/Centos-6/Base/'</span></div><div class="line">Centos_6_epel=<span class="string">'/application/yum/Centos-6/Epel/'</span></div><div class="line">Centos_6_rpmforge=<span class="string">'/application/yum/Centos-6/Rpmforge/'</span></div><div class="line">LogFile=<span class="string">'/application/yum/rsync_yum_log'</span></div><div class="line">Date=`date +%Y-%m-%d`</div><div class="line"><span class="comment">#check</span></div><div class="line"><span class="keyword">function</span> check &#123;</div><div class="line"><span class="keyword">if</span> [ $? <span class="_">-eq</span> 0 ];<span class="keyword">then</span></div><div class="line">    <span class="built_in">echo</span> <span class="_">-e</span> <span class="string">"\033[1;32mRsync is success!\033[0m"</span> &gt;&gt;<span class="variable">$LogFile</span>/<span class="variable">$Date</span>.log</div><div class="line"><span class="keyword">else</span></div><div class="line">    <span class="built_in">echo</span> <span class="_">-e</span> <span class="string">"\033[1;31mRsync is fail!\033[0m"</span> &gt;&gt;<span class="variable">$LogFile</span>/<span class="variable">$Date</span>.log</div><div class="line"><span class="keyword">fi</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span> [ ! <span class="_">-d</span> <span class="string">"<span class="variable">$LogFile</span>"</span> ];<span class="keyword">then</span></div><div class="line">    mkdir -p  <span class="variable">$LogFile</span></div><div class="line"><span class="keyword">fi</span></div><div class="line"><span class="comment">#rsync centos 7 base</span></div><div class="line"><span class="built_in">echo</span> <span class="string">'Now start to rsync centos 7 base!'</span> &gt;&gt;<span class="variable">$LogFile</span>/<span class="variable">$Date</span>.log</div><div class="line"><span class="variable">$RsyncBin</span> <span class="variable">$RsyncPerm</span> rsync://rsync.mirrors.ustc.edu.cn/centos/7/os/ <span class="variable">$Centos_7_base</span> &gt;&gt;<span class="variable">$LogFile</span>/<span class="variable">$Date</span>.log</div><div class="line">check</div><div class="line"></div><div class="line"><span class="comment">#rsync centos 7 epel</span></div><div class="line"><span class="built_in">echo</span> <span class="string">'Now start to rsync centos 7 epel!'</span> &gt;&gt;<span class="variable">$LogFile</span>/<span class="variable">$Date</span>.log</div><div class="line"><span class="variable">$RsyncBin</span> <span class="variable">$RsyncPerm</span> --exclude=SRPMS/ --exclude=ppc/ rsync://rsync.mirrors.ustc.edu.cn/epel/7/ <span class="variable">$Centos_7_epel</span> &gt;&gt;<span class="variable">$LogFile</span>/<span class="variable">$Date</span>.log</div><div class="line">check</div><div class="line"></div><div class="line"><span class="comment">#rsync centos 7 rpmforge</span></div><div class="line"><span class="built_in">echo</span> <span class="string">'Now start to rsync centos 7 x86_64 rpmforge!'</span> &gt;&gt;<span class="variable">$LogFile</span>/<span class="variable">$Date</span>.log</div><div class="line"><span class="variable">$RsyncBin</span> <span class="variable">$RsyncPerm</span> rsync://ftp-stud.fht-esslingen.de/dag/redhat/el7/en/x86_64/rpmforge/ <span class="variable">$Centos_7_rpmforge</span>/x86_64/ &gt;&gt;<span class="variable">$LogFile</span>/<span class="variable">$Date</span>.log</div><div class="line">check</div><div class="line"></div><div class="line"><span class="comment">#rsync centos 6 base</span></div><div class="line"><span class="built_in">echo</span> <span class="string">'Now start to rsync centos 6 base!'</span> &gt;&gt;<span class="variable">$LogFile</span>/<span class="variable">$Date</span>.log</div><div class="line"><span class="variable">$RsyncBin</span> <span class="variable">$RsyncPerm</span> --exclude=isos/ rsync://rsync.mirrors.ustc.edu.cn/centos/6/ <span class="variable">$Centos_6_base</span> &gt;&gt;<span class="variable">$LogFile</span>/<span class="variable">$Date</span>.log</div><div class="line">check</div><div class="line"></div><div class="line"><span class="comment">#rsync centos 6 epel</span></div><div class="line"><span class="built_in">echo</span> <span class="string">'Now start to rsync centos 6 epel!'</span> &gt;&gt;<span class="variable">$LogFile</span>/<span class="variable">$Date</span>.log</div><div class="line"><span class="variable">$RsyncBin</span>  <span class="variable">$RsyncPerm</span> --exclude=SRPMS/ --exclude=ppc64/ rsync://rsync.mirrors.ustc.edu.cn/epel/6/ <span class="variable">$Centos_6_epel</span>  &gt;&gt;<span class="variable">$LogFile</span>/<span class="variable">$Date</span>.log</div><div class="line">check</div><div class="line"></div><div class="line"><span class="comment">#rsync centos 6 rpmforge</span></div><div class="line"><span class="built_in">echo</span> <span class="string">'Now start to rsync centos 6 i386 rpmforge!'</span> &gt;&gt;<span class="variable">$LogFile</span>/<span class="variable">$Date</span>.log</div><div class="line"><span class="variable">$RsyncBin</span> <span class="variable">$RsyncPerm</span> rsync://ftp-stud.fht-esslingen.de/dag/redhat/el6/en/i386/rpmforge/ <span class="variable">$Centos_6_rpmforge</span>/i386/ &gt;&gt;<span class="variable">$LogFile</span>/<span class="variable">$Date</span>.log</div><div class="line">check</div><div class="line"><span class="built_in">echo</span> <span class="string">'Now start to rsync centos 6 x86_64 rpmforge!'</span> &gt;&gt;<span class="variable">$LogFile</span>/<span class="variable">$Date</span>.log</div><div class="line"><span class="variable">$RsyncBin</span> <span class="variable">$RsyncPerm</span> rsync://ftp-stud.fht-esslingen.de/dag/redhat/el6/en/x86_64/rpmforge/ <span class="variable">$Centos_6_rpmforge</span>/x86_64/ &gt;&gt;<span class="variable">$LogFile</span>/<span class="variable">$Date</span>.log</div><div class="line">check</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2015/10/17/Linux iptables端口转发配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/17/Linux iptables端口转发配置/" itemprop="url">
+                  Linux iptables端口转发配置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-17T15:45:39+08:00">
+                2015-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/10/17/Linux iptables端口转发配置/" class="leancloud_visitors" data-flag-title="Linux iptables端口转发配置">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="服务器地址"><a href="#服务器地址" class="headerlink" title="#服务器地址"></a>#服务器地址</h3><p>外网IP：外网访问端口 ==&gt; 内网IP：内网访问端口</p>
+<h3 id="查看当前NAT表配置"><a href="#查看当前NAT表配置" class="headerlink" title="#查看当前NAT表配置"></a>#查看当前NAT表配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -t nat -L -n --line-numbers</div></pre></td></tr></table></figure>
+<h3 id="删除指定Chain链规则，例如PREROUTING-1"><a href="#删除指定Chain链规则，例如PREROUTING-1" class="headerlink" title="#删除指定Chain链规则，例如PREROUTING 1"></a>#删除指定Chain链规则，例如PREROUTING 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -t nat -D PREROUTING 1</div></pre></td></tr></table></figure>
+<h3 id="配置NAT转发"><a href="#配置NAT转发" class="headerlink" title="#配置NAT转发"></a>#配置NAT转发</h3><h4 id="例如外网IP：外网访问端口-映射到内网IP：内网访问端口"><a href="#例如外网IP：外网访问端口-映射到内网IP：内网访问端口" class="headerlink" title="#例如外网IP：外网访问端口,映射到内网IP：内网访问端口"></a>#例如外网IP：外网访问端口,映射到内网IP：内网访问端口</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">iptables -t nat -A PREROUTING <span class="_">-d</span> 外网IP -p tcp --dport 外网端口 -j DNAT --to-destination 内网IP:内网端口</div><div class="line">iptables -t nat -A POSTROUTING <span class="_">-d</span> 内网IP -p tcp --dport 内网端口 -j SNAT --to 外网IP</div><div class="line">iptables -A FORWARD <span class="_">-d</span> 内网IP -p tcp --dport 内网端口 -j ACCEPT</div><div class="line">iptables -A FORWARD <span class="_">-s</span> 内网IP -p tcp --sport 内网端口 -j ACCEPT</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2015/10/17/Linux网关NAT配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/17/Linux网关NAT配置/" itemprop="url">
+                  Linux iptables端口转发配置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-17T15:45:39+08:00">
+                2015-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/10/17/Linux网关NAT配置/" class="leancloud_visitors" data-flag-title="Linux iptables端口转发配置">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="服务器地址"><a href="#服务器地址" class="headerlink" title="#服务器地址"></a>#服务器地址</h3><p>外网IP：外网访问端口 ==&gt; 内网IP：内网访问端口</p>
+<h3 id="查看当前NAT表配置"><a href="#查看当前NAT表配置" class="headerlink" title="#查看当前NAT表配置"></a>#查看当前NAT表配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -t nat -L -n --line-numbers</div></pre></td></tr></table></figure>
+<h3 id="删除指定Chain链规则，例如PREROUTING-1"><a href="#删除指定Chain链规则，例如PREROUTING-1" class="headerlink" title="#删除指定Chain链规则，例如PREROUTING 1"></a>#删除指定Chain链规则，例如PREROUTING 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -t nat -D PREROUTING 1</div></pre></td></tr></table></figure>
+<h3 id="配置NAT转发"><a href="#配置NAT转发" class="headerlink" title="#配置NAT转发"></a>#配置NAT转发</h3><h4 id="例如外网IP：外网访问端口-映射到内网IP：内网访问端口"><a href="#例如外网IP：外网访问端口-映射到内网IP：内网访问端口" class="headerlink" title="#例如外网IP：外网访问端口,映射到内网IP：内网访问端口"></a>#例如外网IP：外网访问端口,映射到内网IP：内网访问端口</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">iptables -t nat -A PREROUTING <span class="_">-d</span> 外网IP -p tcp --dport 外网端口 -j DNAT --to-destination 内网IP:内网端口</div><div class="line">iptables -t nat -A POSTROUTING <span class="_">-d</span> 内网IP -p tcp --dport 内网端口 -j SNAT --to 外网IP</div><div class="line">iptables -A FORWARD <span class="_">-d</span> 内网IP -p tcp --dport 内网端口 -j ACCEPT</div><div class="line">iptables -A FORWARD <span class="_">-s</span> 内网IP -p tcp --sport 内网端口 -j ACCEPT</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2015/08/23/使用smokeping监控网络质量/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/08/23/使用smokeping监控网络质量/" itemprop="url">
+                  使用smokeping监控网络质量
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-23T16:42:10+08:00">
+                2015-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/08/23/使用smokeping监控网络质量/" class="leancloud_visitors" data-flag-title="使用smokeping监控网络质量">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="1、安装rrdtool与依赖库"><a href="#1、安装rrdtool与依赖库" class="headerlink" title="1、安装rrdtool与依赖库"></a>1、安装rrdtool与依赖库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">yum -y install perl perl-Net-Telnet perl-Net-DNS perl-LDAP \</div><div class="line">       perl-libwww-perl perl-RadiusPerl perl-IO-Socket-SSL \</div><div class="line">       perl-Socket6 perl-CGI-SpeedyCGI perl-FCGI perl-CGI-SpeedCGI \</div><div class="line">       perl-Time-HiRes perl-ExtUtils-MakeMaker perl-RRD-Simple \</div><div class="line">       rrdtool rrdtool-perl curl fping echoping  httpd httpd-devel \</div><div class="line">       gcc make  wget libxml2-devel libpng-devel glib pango pango-devel \</div><div class="line">       freetype freetype-devel fontconfig cairo cairo-devel libart_lgpl \</div><div class="line">       libart_lgpl-devel mod_fastcgi wqy*</div></pre></td></tr></table></figure>
+<h2 id="2、下载与安装smokeping"><a href="#2、下载与安装smokeping" class="headerlink" title="2、下载与安装smokeping"></a>2、下载与安装smokeping</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">wget http://oss.oetiker.ch/smokeping/pub/smokeping-2.6.8.tar.gz</div><div class="line">tar zxvf smokeping-2.6.8.tar.gz</div><div class="line"><span class="built_in">cd</span> smokeping-2.6.8</div><div class="line">./configure --prefix=/usr/<span class="built_in">local</span>/smokeping</div><div class="line"><span class="comment"># 需要安装perl的模块，根据提示运行脚本即可</span></div><div class="line">./setup/build-perl-modules.sh /usr/<span class="built_in">local</span>/smokeping/thirdparty</div><div class="line"><span class="comment"># 重新编译</span></div><div class="line">./configure --prefix=/usr/<span class="built_in">local</span>/smokeping</div><div class="line">/usr/bin/gmake install</div></pre></td></tr></table></figure>
+<h2 id="3、配置smokeping"><a href="#3、配置smokeping" class="headerlink" title="3、配置smokeping"></a>3、配置smokeping</h2><h3 id="（1）创建cache、data、var目录及日志文件"><a href="#（1）创建cache、data、var目录及日志文件" class="headerlink" title="（1）创建cache、data、var目录及日志文件"></a>（1）创建cache、data、var目录及日志文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/smokeping</div><div class="line">mkdir cache data var</div><div class="line">touch /var/<span class="built_in">log</span>/smokeping.log</div></pre></td></tr></table></figure>
+<h3 id="（2）授权"><a href="#（2）授权" class="headerlink" title="（2）授权"></a>（2）授权</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chown apache:apache cache data var</div><div class="line">chown apache:apache /var/<span class="built_in">log</span>/smokeping.log</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/08/23/使用smokeping监控网络质量/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+
+          
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="qingyu.li" />
+          <p class="site-author-name" itemprop="name">qingyu.li</p>
+           
+              <p class="site-description motion-element" itemprop="description">简单不先于复杂，而是在复杂之后</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://piandeng.com/" title="Piandeng" target="_blank">Piandeng</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qingyu.li</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("FqAp90PI86NxdOHOxWQ0VrFS-gzGzoHsz", "GKvXMFDzPRF3a0w9BaOEx52z");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,2316 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Qingyu Li,李庆愉,运维,架构,devops" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="简单不先于复杂，而是在复杂之后">
+<meta property="og:type" content="website">
+<meta property="og:title" content="“运维 - 架构”">
+<meta property="og:url" content="http://charles.pub/index.html">
+<meta property="og:site_name" content="“运维 - 架构”">
+<meta property="og:description" content="简单不先于复杂，而是在复杂之后">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="“运维 - 架构”">
+<meta name="twitter:description" content="简单不先于复杂，而是在复杂之后">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'U8RQYDSHQE',
+      apiKey: '4e3ee6017aa53b87273a8f9c07c6fad8',
+      indexName: 'BlogIndex',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://charles.pub/"/>
+
+
+
+
+
+  <title> Qingyu Li,李庆愉,运维,架构,devops - “运维 - 架构”简单不先于复杂，而是在复杂之后 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b71d9b907f3535ada947168b45eb247b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">“运维 - 架构”</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2017/06/27/Secure SSH with Google Authenticator Two-Factor Authentication on CentOS 7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/27/Secure SSH with Google Authenticator Two-Factor Authentication on CentOS 7/" itemprop="url">
+                  Secure SSH with Google Authenticator Two-Factor Authentication on CentOS 7
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-27T18:16:50+08:00">
+                2017-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/06/27/Secure SSH with Google Authenticator Two-Factor Authentication on CentOS 7/" class="leancloud_visitors" data-flag-title="Secure SSH with Google Authenticator Two-Factor Authentication on CentOS 7">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Install-the-open-source-Google-Authenticator-PAM-module"><a href="#Install-the-open-source-Google-Authenticator-PAM-module" class="headerlink" title="Install the open source Google Authenticator PAM module"></a>Install the open source Google Authenticator PAM module</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 需要安装阿里云epel源</span></div><div class="line">yum install google-authenticator pam-devel libpng-devel</div></pre></td></tr></table></figure>
+<h2 id="Install-Google-Authenticator"><a href="#Install-Google-Authenticator" class="headerlink" title="Install Google Authenticator"></a>Install Google Authenticator</h2><ul>
+<li><p><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" title="Android手机下载" target="_blank" rel="external">Android手机下载</a></p>
+</li>
+<li><p><a href="https://itunes.apple.com/us/app/google-authenticator/id388497605" title="IOS手机下载" target="_blank" rel="external">IOS手机下载</a></p>
+</li>
+</ul>
+<h2 id="Get-the-verification-code"><a href="#Get-the-verification-code" class="headerlink" title="Get the verification code"></a>Get the verification code</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 切换用户</span></div><div class="line">[user@locaohost ~]$ google-authenticator <span class="_">-l</span> <span class="built_in">test</span>@test.com -t <span class="_">-d</span> -r 3 -R 30 -w 3</div><div class="line"></div><div class="line"><span class="comment"># 参数说明：</span></div><div class="line"><span class="comment"># google-authenticator -h 能看到可用的参数。上面命令用到的参数解释如下：</span></div><div class="line"><span class="comment"># -l 设置移动设备上的程序对应的 OTP 码的标签，便于区分不同的应用。</span></div><div class="line"><span class="comment"># -t 设置采用基于时间的验证。相应的也可以 -c 参数采用基于计数的验证。</span></div><div class="line"><span class="comment"># -d 禁止重用基于时间的验证码</span></div><div class="line"><span class="comment"># -r 限制登录频率</span></div><div class="line"><span class="comment"># -R 设置登录频率限制的时间间隔</span></div><div class="line"><span class="comment"># -w 设置时间窗的大小，主要在移动设备的时间不是准确同步的情况下比较有用</span></div></pre></td></tr></table></figure>
+<h2 id="Change-etc-ssh-sshd-config"><a href="#Change-etc-ssh-sshd-config" class="headerlink" title="Change /etc/ssh/sshd_config"></a>Change /etc/ssh/sshd_config</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 配置采用Public Key + Google Authenticator 认证</span></div><div class="line">[root@wanmei ~]<span class="comment"># vim /etc/ssh/sshd_config </span></div><div class="line">Protocol 2</div><div class="line">AuthenticationMethods  publickey,keyboard-interactive</div><div class="line">AuthorizedKeysFile      .ssh/authorized_keys</div><div class="line">PasswordAuthentication no</div><div class="line">ChallengeResponseAuthentication yes</div><div class="line">UsePAM yes</div></pre></td></tr></table></figure>
+<h2 id="Change-etc-pam-d-sshd"><a href="#Change-etc-pam-d-sshd" class="headerlink" title="Change /etc/pam.d/sshd"></a>Change /etc/pam.d/sshd</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@wanmei ~]<span class="comment"># vim /etc/pam.d/sshd</span></div><div class="line"><span class="comment"># 第一行添加：</span></div><div class="line">auth [success=<span class="keyword">done</span> new_authtok_reqd=<span class="keyword">done</span> default=die] pam_google_authenticator.so nullok</div></pre></td></tr></table></figure>
+<p><strong>According to the pam.d man page:</strong></p>
+<blockquote>
+<p>success=done means that if Google Authenticator signs off, no more authentication will be performed, meaning no additional password prompt.<br>default=die means that if Google Authenticator rejects the login attempt, authentication will immediately fail, skipping the password prompt.</p>
+</blockquote>
+<p>Note that the <strong>nullok</strong> argument to pam_google_authenticator.so means that if a ~/.google_authenticator file is not found for a user, public-key authentication proceeds as normal. # This is useful if I want to lock down only a subset of my accounts with 2FA.</p>
+<h2 id="Restart-SSH-Service"><a href="#Restart-SSH-Service" class="headerlink" title="Restart SSH Service"></a>Restart SSH Service</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl restart sshd</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2017/05/18/Redis开发运维实践指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/18/Redis开发运维实践指南/" itemprop="url">
+                  Redis开发运维实践指南
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-18T17:30:39+08:00">
+                2017-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NoSQL/" itemprop="url" rel="index">
+                    <span itemprop="name">NoSQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/05/18/Redis开发运维实践指南/" class="leancloud_visitors" data-flag-title="Redis开发运维实践指南">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Redis开发运维实践指南"><a href="#Redis开发运维实践指南" class="headerlink" title="Redis开发运维实践指南"></a>Redis开发运维实践指南</h1><p>Redis一些技术点值得参考：<br><a href="https://www.gitbook.com/book/gnuhpc/redis-all-about/details" target="_blank" rel="external">https://www.gitbook.com/book/gnuhpc/redis-all-about/details</a></p>
+<p>作者相关信息：</p>
+<blockquote>
+<p>本手册是我在一家中国大陆的中型商业银行做大数据系统工程师中进行的总结归纳，包含开发和运维的各方面的使用、应用场景和最佳实践，以及各个高可用架构的搭建和测试。</p>
+<p>下载和线上阅读最新版请访问：<br><a href="https://www.gitbook.com/book/gnuhpc/redis-all-about/details" target="_blank" rel="external">https://www.gitbook.com/book/gnuhpc/redis-all-about/details</a></p>
+<p>我会定期持续更新此指南，以供各位了解认识redis。</p>
+<p>其中会有引用的各种文献和图片，我会尽可能的标注引用，如果您发现您的文字或者图片未标注引用，请fork本手册的github并pull request：<br><a href="https://github.com/gnuhpc/All-About-Redis" target="_blank" rel="external">https://github.com/gnuhpc/All-About-Redis</a></p>
+<p>本手册符合共同创作协议, 协议文本见<br><a href="http://creativecommons.net.cn/licenses/meet-the-licenses/" target="_blank" rel="external">http://creativecommons.net.cn/licenses/meet-the-licenses/</a></p>
+<p>有不正确的地方，请通过gnuhpc@weibo或者<br>huangpengcheng#cmbc.com.cn (:s/#/@)联系我。</p>
+<p>如果你觉得这些内容有帮助，欢迎Star我，也欢迎打赏 ^_^ ，我会不定期公布支持我的好朋友名单。</p>
+<p>— Pengcheng Huang</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2017/05/18/Git-2-x-安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/18/Git-2-x-安装/" itemprop="url">
+                  Git 2.x 安装
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-18T16:53:06+08:00">
+                2017-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/05/18/Git-2-x-安装/" class="leancloud_visitors" data-flag-title="Git 2.x 安装">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="YUM安装方式"><a href="#YUM安装方式" class="headerlink" title="YUM安装方式"></a>YUM安装方式</h1><h2 id="Install-WANDisco-repo-package"><a href="#Install-WANDisco-repo-package" class="headerlink" title="Install WANDisco repo package:"></a>Install WANDisco repo package:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># CentOS6:</div><div class="line"># yum install http://opensource.wandisco.com/centos/6/git/x86_64/wandisco-git-release-6-1.noarch.rpm</div><div class="line"># CentOS7:</div><div class="line"># yum install http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-1.noarch.rpm</div><div class="line"># yum install http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm</div></pre></td></tr></table></figure>
+<h2 id="Install-the-latest-version-of-Git-2-x"><a href="#Install-the-latest-version-of-Git-2-x" class="headerlink" title="Install the latest version of Git 2.x:"></a>Install the latest version of Git 2.x:</h2><p><code># yum install git</code></p>
+<h2 id="Verify-the-version-of-Git-that-was-installed"><a href="#Verify-the-version-of-Git-that-was-installed" class="headerlink" title="Verify the version of Git that was installed:"></a>Verify the version of Git that was installed:</h2><p><code># git --version</code></p>
+<h1 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h1><h2 id="Step-1-Install-Required-Packages"><a href="#Step-1-Install-Required-Packages" class="headerlink" title="Step 1: Install Required Packages"></a>Step 1: Install Required Packages</h2><p>Firstly we need to make sure that we have installed required packages on your system. Use following command to install required packages before compiling Git source.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel</div><div class="line"># yum install  gcc perl-ExtUtils-MakeMaker</div></pre></td></tr></table></figure>
+<h2 id="Step-2-Uninstall-old-Git-RPM"><a href="#Step-2-Uninstall-old-Git-RPM" class="headerlink" title="Step 2: Uninstall old Git RPM"></a>Step 2: Uninstall old Git RPM</h2><p>Now remove any prior installation of Git through RPM file or Yum package manager. If your older version is also compiled through source, then skip this step.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># yum remove git</div></pre></td></tr></table></figure>
+<h2 id="Step-3-Download-and-Compile-Git-Source"><a href="#Step-3-Download-and-Compile-Git-Source" class="headerlink" title="Step 3: Download and Compile Git Source"></a>Step 3: Download and Compile Git Source</h2><p>Download git source code from kernel git or simply use following command to download Git 2.0.5.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># cd /usr/src</div><div class="line"># wget https://www.kernel.org/pub/software/scm/git/git-2.0.5.tar.gz</div><div class="line"># tar xzf git-2.0.5.tar.gz</div></pre></td></tr></table></figure>
+<p>After downloading and extracting Git source code, Use following command to compile source code.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># cd git-2.0.5</div><div class="line"># make prefix=/usr/local/git all</div><div class="line"># make prefix=/usr/local/git install</div><div class="line"># echo &quot;export PATH=$PATH:/usr/local/git/bin&quot; &gt;&gt; /etc/bashrc</div><div class="line"># source /etc/bashrc</div></pre></td></tr></table></figure>
+<h2 id="Step-4-Check-Git-Version"><a href="#Step-4-Check-Git-Version" class="headerlink" title="Step 4. Check Git Version"></a>Step 4. Check Git Version</h2><p>One completion of above steps, you have successfully install Git in your system. Let use following command to check git version</p>
+<p><code># git --version</code></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2017/03/19/Django 中文文档 1.8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/19/Django 中文文档 1.8/" itemprop="url">
+                  Django 中文文档 1.8
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-19T09:15:50+08:00">
+                2017-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/03/19/Django 中文文档 1.8/" class="leancloud_visitors" data-flag-title="Django 中文文档 1.8">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.gitbook.com/book/wizardforcel/django-chinese-docs-18/details" title="gitbook在线阅读" target="_blank" rel="external">gitbook在线阅读</a></p>
+<blockquote>
+<p>译者：Django 文档协作翻译小组，来源：Django documentation，最后更新：2017.2.15。</p>
+<p>本文档以 CC BY-NC-SA 3.0 协议发布，转载请保留作者署名和文章出处。</p>
+<p>Django 文档协作翻译小组人手紧缺，有兴趣的朋友可以加入我们，完全公益性质。交流群：467338606。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/12/19/Zabbix发送警告信息实现方式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/19/Zabbix发送警告信息实现方式/" itemprop="url">
+                  Zabbix发送警告信息实现方式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-19T10:55:10+08:00">
+                2016-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/12/19/Zabbix发送警告信息实现方式/" class="leancloud_visitors" data-flag-title="Zabbix发送警告信息实现方式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="微信公众号发送"><a href="#微信公众号发送" class="headerlink" title="微信公众号发送"></a>微信公众号发送</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/local/bin/python2.7</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="comment"># @Time    : 2017/1/17 14:20</span></div><div class="line"><span class="keyword">import</span> functools</div><div class="line"><span class="keyword">import</span> os,sys</div><div class="line"><span class="keyword">import</span> cPickle</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">import</span> urllib,urllib2</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_msg</span><span class="params">(**kwargs)</span>:</span></div><div class="line"><span class="comment"># 获取token</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">gettoken</span><span class="params">(token=None, tokenfile=<span class="string">"/var/run/myweixin.token"</span>)</span>:</span></div><div class="line"><span class="keyword">if</span> os.path.isfile(tokenfile):</div><div class="line"><span class="keyword">with</span> open(tokenfile, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</div><div class="line">                token_dict = cPickle.load(f)</div><div class="line"><span class="keyword">if</span> token_dict[<span class="string">"mtime"</span>] &gt; time.time():</div><div class="line">                token = token_dict[<span class="string">"access_token"</span>]</div><div class="line"><span class="keyword">if</span> <span class="keyword">not</span> token:</div><div class="line">            corpid = <span class="string">' '</span>  <span class="comment"># 修改自己的corpid</span></div><div class="line">secret = <span class="string">'  '</span>  <span class="comment"># 修改自己的secret</span></div><div class="line">gettoken_url = <span class="string">"https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=%s&amp;corpsecret=%s"</span> % (corpid, secret)</div><div class="line"><span class="keyword">try</span>:</div><div class="line">                token_file = urllib2.urlopen(gettoken_url)</div><div class="line"><span class="keyword">except</span> urllib2.HTTPError <span class="keyword">as</span> e:</div><div class="line"><span class="keyword">print</span> e.code</div><div class="line"><span class="keyword">print</span> e.read().decode(<span class="string">"utf8"</span>)</div><div class="line">                sys.exit()</div><div class="line">            token_dict = json.loads(token_file.read().decode(<span class="string">'utf-8'</span>))</div><div class="line">            token_dict.keys()</div><div class="line"><span class="keyword">if</span> <span class="string">'access_token'</span> <span class="keyword">in</span> token_dict:</div><div class="line">                token_dict[<span class="string">"mtime"</span>] = time.time() + float(token_dict.get(<span class="string">"expires_in"</span>))</div><div class="line"><span class="keyword">with</span> open(tokenfile,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</div><div class="line">                    cPickle.dump(token_dict, f)</div><div class="line">                token = token_dict.get(<span class="string">"access_token"</span>)</div><div class="line"><span class="keyword">return</span> token</div><div class="line">    send_dic = &#123;</div><div class="line"><span class="string">"touser"</span> : <span class="string">'''必须指定消息接收者，多个接收者用'|'分隔，指定为@all则向关注该企业应用的全部成员发送'''</span>,</div><div class="line"><span class="string">"toparty"</span>: <span class="string">'''必须指定部门ID，多个ID用'|'分隔，当touser为@all时忽略本参数'''</span>,</div><div class="line"><span class="string">"totag"</span>  : <span class="string">'''标签ID列表，多个接收者用'|'分隔，当touser为@all时忽略本参数'''</span>,</div><div class="line"><span class="string">"msgtype"</span>: <span class="string">'''消息类型，此时固定为text'''</span>,</div><div class="line"><span class="string">"agentid"</span>: <span class="string">'''企业应用的ID，可在应用的设置页面查看'''</span>,</div><div class="line"><span class="string">"content"</span>: <span class="string">'''消息内容'''</span>,</div><div class="line"><span class="string">"safe"</span>   : <span class="string">'''是否需要加密 0为不加密，1为加密'''</span></div><div class="line">&#125;</div><div class="line"><span class="comment"># 检查send_dic的参数是否完整</span></div><div class="line"><span class="keyword">for</span> k <span class="keyword">in</span> send_dic:</div><div class="line"><span class="keyword">if</span> k <span class="keyword">in</span> kwargs:</div><div class="line">            send_dic[k] = kwargs.get(k)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">print(<span class="string">"%s, %s"</span> % (k, send_dic[k]))</div><div class="line"><span class="keyword">return</span>  <span class="keyword">None</span></div><div class="line"><span class="comment"># 检查发送消息content编码</span></div><div class="line"><span class="keyword">try</span>:</div><div class="line">        send_dic[<span class="string">"text"</span>] = &#123;<span class="string">"content"</span>: unicode(send_dic.pop(<span class="string">"content"</span>), <span class="string">'utf8'</span>).encode(encoding=<span class="string">'utf-8'</span>)&#125;</div><div class="line"><span class="keyword">except</span>(UnicodeDecodeError, TypeError), error:</div><div class="line">print(<span class="string">"charset only support utf8 encoding"</span>)</div><div class="line"><span class="keyword">return</span> <span class="keyword">None</span></div><div class="line"><span class="comment"># 发送消息</span></div><div class="line">send_url = <span class="string">"https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=&#123;0&#125;"</span>.format(gettoken())</div><div class="line">    send_data = json.dumps(send_dic, ensure_ascii=<span class="keyword">False</span>)</div><div class="line">    send_request = urllib2.Request(send_url, send_data)</div><div class="line">    response = json.loads(urllib2.urlopen(send_request).read())</div><div class="line"><span class="keyword">print</span> str(response)</div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    send_weixin = functools.partial(send_msg, toparty=<span class="string">'2'</span>, totag=<span class="string">''</span>, msgtype=<span class="string">'text'</span>, agentid=<span class="string">'1'</span>, safe=<span class="string">'0'</span>)</div><div class="line">    user = str(sys.argv[<span class="number">1</span>])</div><div class="line">    contents = str(sys.argv[<span class="number">2</span>]) + <span class="string">'\r\n'</span> + str(sys.argv[<span class="number">3</span>])</div><div class="line"><span class="comment">#print send_weixin(touser = '@all', content = 'hello world')</span></div><div class="line">send_weixin(touser = user, content = contents)</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/19/Zabbix发送警告信息实现方式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/12/10/编译安装MySQL5.6.32/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/10/编译安装MySQL5.6.32/" itemprop="url">
+                  编译安装MySQL5.6.32
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-10T10:36:20+08:00">
+                2016-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/12/10/编译安装MySQL5.6.32/" class="leancloud_visitors" data-flag-title="编译安装MySQL5.6.32">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="编译安装MySQL5-6-32"><a href="#编译安装MySQL5-6-32" class="headerlink" title="编译安装MySQL5.6.32"></a>编译安装MySQL5.6.32</h1><h2 id="安装mysql5-6-32"><a href="#安装mysql5-6-32" class="headerlink" title="安装mysql5.6.32"></a>安装mysql5.6.32</h2><p>1、安装依赖软件包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum -y install ncurses-devel libaio-devel cmake</div><div class="line">rpm -qa ncurses-devel libaio-devel</div></pre></td></tr></table></figure></p>
+<p>2、创建用户和组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">useradd -s /sbin/nologin -M mysql</div><div class="line">mkdir -p /data/mysql</div></pre></td></tr></table></figure></p>
+<p>4、安装mysql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">cd /tmp</div><div class="line">wget http://120.52.72.22/cdn.mysql.com/c3pr90ntc0td//Downloads/MySQL-5.6/mysql-5.6.32.tar.gz</div><div class="line">tar xf mysql-5.6.32.tar.gz</div><div class="line">cd mysql-5.6.32</div><div class="line"># 编译</div><div class="line">cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql-5.6.32 \</div><div class="line">-DMYSQL_DATADIR=/usr/local/mysql-5.6.32/data \</div><div class="line">-DMYSQL_UNIX_ADDR=/usr/local/mysql-5.6.32/tmp/mysql.sock \</div><div class="line">-DDEFAULT_CHARSET=utf8 \</div><div class="line">-DDEFAULT_COLLATION=utf8_general_ci \</div><div class="line">-DEXTRA_CHARSETS=gbk,gb2312,utf8,ascii \</div><div class="line">-DWITH_INNOBASE_STORAGE_ENGINE=1 \</div><div class="line">-DWITH_FEDERATED_STORAGE_ENGINE=1 \</div><div class="line">-DWITH_BLACKHOLE_STORAGE_ENGINE=1 \</div><div class="line">-DWITH_EXAMPLE_STORAGE_ENGINE=1 \</div><div class="line">-DWITH_PARTITION_STORAGE_ENGINE=1 \</div><div class="line">-DWITH_FAST_MUTEXES=1 \</div><div class="line">-DWITH_ZLIB=bundled \</div><div class="line">-DENABLED_LOCAL_INFILE=1 \</div><div class="line">-DWITH_READLINE=1 \</div><div class="line">-DWITH_EMBEDDED_SERVER=1 \</div><div class="line">-DWITH_DEBUG=0  </div><div class="line"># 安装</div><div class="line">make &amp;&amp; make install</div><div class="line"># 软连接</div><div class="line">ln -s /usr/local/mysql-5.6.32 /usr/local/mysql</div></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/10/编译安装MySQL5.6.32/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/11/05/ELK（Elastic Search + LogStash + Kibana）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/05/ELK（Elastic Search + LogStash + Kibana）/" itemprop="url">
+                  ELK（Elastic Search + LogStash + Kibana）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-05T11:10:50+08:00">
+                2016-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/11/05/ELK（Elastic Search + LogStash + Kibana）/" class="leancloud_visitors" data-flag-title="ELK（Elastic Search + LogStash + Kibana）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="生产上线ELK"><a href="#生产上线ELK" class="headerlink" title="生产上线ELK:"></a>生产上线ELK:</h1><ol>
+<li><p>日志分类<br>系统日志 rsyslog  logstash syslog插件<br>访问日志 nginx logstash codec json插件<br>错误日志 file logstash file+mulitline多行插件<br>运行日志 file logstash codec json<br>设备日志 syslog logstash syslog插件<br>debug日志 file logstash json or mulitline</p>
+</li>
+<li><p>日志标准化<br>路径  固定<br>格式  尽量json</p>
+</li>
+</ol>
+<p>系统日志开始-&gt;错误日志-&gt;运行日志-&gt;访问日志</p>
+<p>ELK EFK Flume  EHK heka<br>消息队列：redis rabbitmq kafka</p>
+<p>加密认证：<br><a href="https://github.com/elasticfence/elasticsearch-http-user-auth" target="_blank" rel="external">https://github.com/elasticfence/elasticsearch-http-user-auth</a></p>
+<h1 id="Elastic-Search"><a href="#Elastic-Search" class="headerlink" title="Elastic Search"></a>Elastic Search</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"># 安装</div><div class="line"># rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch</div><div class="line"># yum install -y java</div><div class="line"># java -version</div><div class="line"># vim /etc/yum.repos.d/elasticsearch.repo</div><div class="line">[elasticsearch-2.x]</div><div class="line">name=Elasticsearch repository for 2.x packages</div><div class="line">baseurl=http://packages.elastic.co/elasticsearch/2.x/centos</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=http://packages.elastic.co/GPG-KEY-elasticsearch</div><div class="line">enabled=1</div><div class="line"># yum install -y elasticsearch</div><div class="line">mkdir -p /data/es-data &amp;&amp; chown -R elasticsearch:elasticsearch /data/es-data/</div><div class="line"># vim /etc/elasticsearch/elasticsearch.yml</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">cluster.name: fuwo</div><div class="line">node.name: linux-node1</div><div class="line">path.data: /data/es-data</div><div class="line">path.logs: /var/log/elasticsearch</div><div class="line">bootstrap.memory_lock: true</div><div class="line">network.host: 192.168.56.11</div><div class="line">http.port: 9200</div><div class="line"># 集群时，如果找不到节点，把组播关闭，开单播</div><div class="line"># discovery.zen.ping.multicast.enabled: false</div><div class="line"># discovery.zen.ping.unicast.hosts: [&quot;192.168.56.11&quot;,&quot;192.168.56.12&quot;]</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">vim /etc/security/limits.conf # 需要重新登录生效</div><div class="line">elasticsearch soft memlock unlimited</div><div class="line">elasticsearch hard memlock unlimited</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">chkconfig --add elasticsearch</div><div class="line">/bin/systemctl daemon-reload</div><div class="line">/bin/systemctl enable elasticsearch.service</div><div class="line">systemctl start elasticsearch.service</div><div class="line"></div><div class="line">http://192.168.56.11:9200/</div><div class="line"># curl -i -XGET &apos;http://192.168.56.11:9200/_count?pretty&apos; -d &apos; &#123;</div><div class="line">&gt; &quot;query&quot;: &#123;</div><div class="line">&gt;     &quot;match_all&quot;: &#123;&#125;</div><div class="line">&gt; &#125;</div><div class="line">&gt; &#125;&apos;</div><div class="line"># 安装Marvel: Monitoring for Elasticsearch  收费插件，弃用</div><div class="line">/usr/share/elasticsearch/bin/plugin install marvel-agent</div><div class="line"># 第二方案：</div><div class="line">/usr/share/elasticsearch/bin/plugin remove marvel-agent</div><div class="line">/usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head</div><div class="line">http://192.168.56.11:9200/_plugin/head/</div><div class="line"># 安装监控插件</div><div class="line">/usr/share/elasticsearch/bin/plugin install lukas-vlcek/bigdesk #暂时不支持2.0版本</div><div class="line">/usr/share/elasticsearch/bin/plugin install lmenezes/elasticsearch-kopf</div><div class="line">http://192.168.56.11:9200/_plugin/kopf</div></pre></td></tr></table></figure>
+<h1 id="LogStash"><a href="#LogStash" class="headerlink" title="LogStash"></a>LogStash</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"># 安装</div><div class="line">rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch</div><div class="line">vim /etc/yum.repos.d/logstash.repo</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">[logstash-2.4]</div><div class="line">name=Logstash repository for 2.4.x packages</div><div class="line">baseurl=https://packages.elastic.co/logstash/2.4/centos</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=https://packages.elastic.co/GPG-KEY-elasticsearch</div><div class="line">enabled=1</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">yum install -y logstash</div><div class="line">/opt/logstash/bin/logstash -e &apos;input &#123; stdin&#123;&#125; &#125; output &#123; stdout&#123;&#125; &#125;&apos;</div><div class="line">/opt/logstash/bin/logstash -e &apos;input &#123; stdin&#123;&#125; &#125; output &#123; stdout&#123; codec =&gt; rubydebug &#125; &#125;&apos;  </div><div class="line">/opt/logstash/bin/logstash -e &apos;input &#123; stdin&#123;&#125; &#125; output &#123; elasticsearch &#123; hosts =&gt; [&quot;192.168.56.11:9200&quot;] &#125; &#125;&apos; </div><div class="line">/opt/logstash/bin/logstash -e &apos;input &#123; stdin&#123;&#125; &#125; output &#123; elasticsearch &#123; hosts =&gt; [&quot;192.168.56.11:9200&quot;] &#125;  stdout&#123; codec =&gt; rubydebug &#125; &#125;&apos; </div><div class="line"># 写配置文件</div><div class="line">vim /etc/logstash/conf.d/01-logstash.conf</div><div class="line">input &#123; stdin &#123; &#125; &#125;</div><div class="line">output &#123;</div><div class="line">  elasticsearch &#123; hosts =&gt; [&quot;192.168.56.11:9200&quot;] &#125;</div><div class="line">  stdout &#123; codec =&gt; rubydebug &#125;</div><div class="line">&#125;</div><div class="line"># 启用</div><div class="line">/opt/logstash/bin/logstash -f /etc/logstash/conf.d/01-logstash.conf</div><div class="line">cd /etc/logstash/conf.d/</div><div class="line">vim message.conf</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">input&#123;</div><div class="line">    syslog&#123;</div><div class="line">        type =&gt; &quot;system-syslog&quot;</div><div class="line">        host =&gt; &quot;192.168.56.11&quot;</div><div class="line">        port =&gt; &quot;514&quot;</div><div class="line">    &#125;</div><div class="line">    file &#123;</div><div class="line">        path =&gt; &quot;/var/log/messages&quot;</div><div class="line">        type =&gt; &quot;system&quot;</div><div class="line">        start_position =&gt; &quot;beginning&quot;</div><div class="line">    &#125;</div><div class="line">    file &#123;</div><div class="line">        path =&gt; &quot;/var/log/elasticsearch/fuwo.log&quot;</div><div class="line">        type =&gt; &quot;es-error&quot;</div><div class="line">        start_position =&gt; &quot;beginning&quot;</div><div class="line">        codec =&gt; multiline &#123;</div><div class="line">            pattern =&gt; &quot;^\[&quot;</div><div class="line">            negate =&gt; true</div><div class="line">            what =&gt; &quot;previous&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    file &#123;</div><div class="line">        path =&gt; &quot;/var/log/nginx/access_json.log&quot;</div><div class="line">        codec =&gt; json</div><div class="line">        type =&gt; &quot;nginx-log&quot;</div><div class="line">        start_position =&gt; &quot;beginning&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">output&#123;</div><div class="line">    if [type] == &quot;system&quot; &#123;</div><div class="line">        elasticsearch &#123;</div><div class="line">            hosts =&gt; [&quot;192.168.56.11:9200&quot;]</div><div class="line">            index =&gt; &quot;system-%&#123;+YYYY.MM.dd&#125;&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    if [type] == &quot;es-error&quot; &#123;</div><div class="line">        elasticsearch &#123;</div><div class="line">            hosts =&gt; [&quot;192.168.56.11:9200&quot;]</div><div class="line">            index =&gt; &quot;es-error-%&#123;+YYYY.MM.dd&#125;&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    if [type] == &quot;nginx-log&quot; &#123;</div><div class="line">        elasticsearch &#123;</div><div class="line">            hosts =&gt; [&quot;192.168.56.11:9200&quot;]</div><div class="line">            index =&gt; &quot;nginx-log-%&#123;+YYYY.MM.dd&#125;&quot;</div><div class="line">        &#125;   </div><div class="line">    &#125;</div><div class="line">    if [type] == &quot;system-syslog&quot; &#123;</div><div class="line">        elasticsearch &#123;</div><div class="line">            hosts =&gt; [&quot;192.168.56.11:9200&quot;]</div><div class="line">            index =&gt; &quot;system-syslog-%&#123;+YYYY.MM.dd&#125;&quot;</div><div class="line">        &#125;   </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">/opt/logstash/bin/logstash -f /etc/logstash/conf.d/message.conf</div></pre></td></tr></table></figure>
+<h1 id="Kibana"><a href="#Kibana" class="headerlink" title="Kibana"></a>Kibana</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"># 安装</div><div class="line">rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch</div><div class="line">vim /etc/yum.repos.d/kibana.repo</div><div class="line">[kibana-4.6]</div><div class="line">name=Kibana repository for 4.6.x packages</div><div class="line">baseurl=https://packages.elastic.co/kibana/4.6/centos</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=https://packages.elastic.co/GPG-KEY-elasticsearch</div><div class="line">enabled=1</div><div class="line">yum install kibana</div><div class="line">chkconfig --add kibana</div><div class="line">/bin/systemctl daemon-reload</div><div class="line">/bin/systemctl enable kibana.service</div><div class="line">vim /opt/kibana/config/kibana.yml</div><div class="line">server.port: 5601</div><div class="line">server.host: &quot;192.168.56.11&quot;</div><div class="line">elasticsearch.url: &quot;http://192.168.56.11:9200&quot;</div><div class="line">kibana.index: &quot;.kibana&quot;</div><div class="line">/bin/systemctl start kibana.service</div></pre></td></tr></table></figure>
+<h1 id="LogStash-1"><a href="#LogStash-1" class="headerlink" title="LogStash"></a>LogStash</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"># 收集nginx的JSON格式记录日志，注意log_format格式，单词颜色</div><div class="line">vim /etc/nginx/nginx.conf</div><div class="line">log_format json &apos;&#123;&quot;@timestamp&quot;:&quot;$time_iso8601&quot;,&apos;</div><div class="line">               &apos;&quot;@version&quot;:&quot;1&quot;,&apos;</div><div class="line">               &apos;&quot;client&quot;:&quot;$remote_addr&quot;,&apos;</div><div class="line">               &apos;&quot;request_method&quot;: &quot;$request_method&quot;, &apos;</div><div class="line">               &apos;&quot;url&quot;:&quot;$uri&quot;, &apos;</div><div class="line">               &apos;&quot;status&quot;:&quot;$status&quot;,&apos;</div><div class="line">               &apos;&quot;domain&quot;:&quot;$host&quot;,&apos;</div><div class="line">               &apos;&quot;host&quot;:&quot;$server_addr&quot;,&apos;</div><div class="line">               &apos;&quot;size&quot;:&quot;$body_bytes_sent&quot;,&apos;</div><div class="line">               &apos;&quot;responsetime&quot;:&quot;$request_time&quot;,&apos;</div><div class="line">               &apos;&quot;referer&quot;:&quot;$http_referer&quot;,&apos;</div><div class="line">               &apos;&quot;agent&quot;:&quot;$http_user_agent&quot;,&apos;</div><div class="line">               &apos;&quot;http_x_forwarded_for&quot;:&quot;$http_x_forwarded_for&quot;,&apos;</div><div class="line">               &apos;&quot;upstr_addr&quot;: &quot;$upstream_addr&quot;,&apos;</div><div class="line">               &apos;&quot;upstr_host&quot;: &quot;$upstream_http_host&quot;,&apos;</div><div class="line">               &apos;&quot;ups_resp_time&quot;: &quot;$upstream_response_time&quot; &#125;&apos;;</div><div class="line">access_log /var/log/nginx/access_json.log json;</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">#收集系统日志，修改rsyslog的配置</div><div class="line">vim /etc/rsyslog.conf</div><div class="line"># remote host is: name/ip:port, e.g. 192.168.0.1:514, port optional</div><div class="line">*.* @@192.168.56.11:514</div><div class="line">systemctl  restart rsyslog</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">#系统改造，引入redis</div><div class="line">input &#123;</div><div class="line">    redis &#123;</div><div class="line">      host =&gt; &quot;192.168.56.11&quot;</div><div class="line">      port =&gt; &quot;6379&quot;</div><div class="line">      db =&gt; &quot;6&quot;</div><div class="line">      data_type =&gt; &quot;list&quot;</div><div class="line">      key =&gt; &quot;demo&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">output &#123;</div><div class="line">    elasticsearch &#123;</div><div class="line">       hosts =&gt; [&quot;192.168.56.11:9200&quot;]</div><div class="line">       index =&gt; &quot;redis-demo-%&#123;+YYYY.MM.dd&#125;&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/10/23/Nginx日志转储/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/23/Nginx日志转储/" itemprop="url">
+                  Nginx日志转储
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-23T10:46:56+08:00">
+                2016-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/10/23/Nginx日志转储/" class="leancloud_visitors" data-flag-title="Nginx日志转储">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Nginx日志转储"><a href="#Nginx日志转储" class="headerlink" title="Nginx日志转储"></a>Nginx日志转储</h1><h2 id="Nginx在安装时加入了一个logrotate任务"><a href="#Nginx在安装时加入了一个logrotate任务" class="headerlink" title="Nginx在安装时加入了一个logrotate任务:"></a>Nginx在安装时加入了一个logrotate任务:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"># /etc/logrotate.d/nginx </div><div class="line">/var/log/nginx/*.log &#123; </div><div class="line">        daily </div><div class="line">        missingok </div><div class="line">        rotate 52 </div><div class="line">        compress </div><div class="line">        delaycompress </div><div class="line">        notifempty </div><div class="line">        create 640 nginx adm </div><div class="line">        sharedscripts </div><div class="line">        postrotate </div><div class="line">                [ -f /var/run/nginx.pid ] &amp;&amp; kill -USR1 `cat /var/run/nginx.pid` </div><div class="line">        endscript </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Linux日志管理服务logrotate会定时读取该文件，根据设置按日志大小或天数删除/归档旧日志，创建新日志。 </p>
+<h2 id="配置说明"><a href="#配置说明" class="headerlink" title="配置说明:"></a>配置说明:</h2><p>daily: 日志文件每天进行滚动<br>missingok: 如果找不到这个log档案,就忽略过去<br>rotate: 保留最进52次滚动的日志<br>compress: 通过gzip压缩转储以后的日志<br>delaycompress: 和compress一起使用时,转储的日志文件到下一次转储时才压缩<br>notifempty 如果是空文件的话,不转储<br>create mode owner group:转储文件,使用指定的文件模式创建新的日志文件<br>sharedscripts: 运行postrotate脚本(该脚本作用为让nginx重新生成日志文件)<br>postrotate/endscript: 在转储以后需要执行的命令可以放入这个对,这两个关键字必须单独成行 </p>
+<p>logrotate默认被加入到cron的/etc/cron.daily中作为每日任务执行,配置定义在:<br>/etc/cron.daily/logrotate<br>查看logrotate最近进行了哪些日志归档:<br>less /var/lib/logrotate.status<br>查看/etc/cron.daily每日任务是什么时候运行的:<br>less /etc/crontab</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/09/20/VPN-OPENVPN部署/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/20/VPN-OPENVPN部署/" itemprop="url">
+                  VPN-OPENVPN部署
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-20T15:30:50+08:00">
+                2016-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/09/20/VPN-OPENVPN部署/" class="leancloud_visitors" data-flag-title="VPN-OPENVPN部署">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="搭建办公网络VPN-OPENVPN部署文档"><a href="#搭建办公网络VPN-OPENVPN部署文档" class="headerlink" title="搭建办公网络VPN-OPENVPN部署文档"></a>搭建办公网络VPN-OPENVPN部署文档</h1><h2 id="部署环境"><a href="#部署环境" class="headerlink" title="部署环境"></a>部署环境</h2><ul>
+<li>服务器： Linux网关服务器</li>
+<li>IP地址： 140.206.0.0（外） 10.10.10.14（内）</li>
+<li>软件版本： openvpn-2.2.2</li>
+<li>配置时间同步： /usr/sbin/ntpdate pool.ntp.org</li>
+</ul>
+<h2 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install openvpn lzo</div></pre></td></tr></table></figure>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="生成CA证书、服务端、客户端证书"><a href="#生成CA证书、服务端、客户端证书" class="headerlink" title="生成CA证书、服务端、客户端证书"></a>生成CA证书、服务端、客户端证书</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 进入源码包目录</span></div><div class="line"><span class="built_in">cd</span> openvpn-2.2.2/easy-rsa/2.0/</div><div class="line">cp vars vars.bak</div><div class="line"></div><div class="line">vim vars</div><div class="line"><span class="comment">#修改对应默认配置</span></div><div class="line">&gt; <span class="built_in">export</span> KEY_COUNTRY=<span class="string">"CN"</span></div><div class="line">&gt; <span class="built_in">export</span> KEY_PROVINCE=<span class="string">"SH"</span></div><div class="line">&gt; <span class="built_in">export</span> KEY_CITY=<span class="string">"Shanghai"</span></div><div class="line">&gt; <span class="built_in">export</span> KEY_ORG=<span class="string">"fuwo"</span></div><div class="line">&gt; <span class="built_in">export</span> KEY_EMAIL=<span class="string">"charles.li@fuwo.com"</span></div><div class="line">&gt; <span class="built_in">export</span> KEY_EMAIL=charles.li@fuwo.com</div><div class="line">&gt; <span class="built_in">export</span> KEY_CN=CN</div><div class="line">&gt; <span class="built_in">export</span> KEY_NAME=fuwo</div><div class="line">&gt; <span class="built_in">export</span> KEY_OU=fuwo</div><div class="line">&gt; <span class="built_in">export</span> PKCS11_MODULE_PATH=changeme</div><div class="line">&gt; <span class="built_in">export</span> PKCS11_PIN=1234</div><div class="line"></div><div class="line"><span class="built_in">source</span>  vars</div><div class="line">./clean-all</div><div class="line"></div><div class="line"><span class="comment">#生成服务端证书和密钥文件</span></div><div class="line">./build-ca</div><div class="line">ll keys/</div><div class="line"></div><div class="line"><span class="comment">#生成服务端证书和密钥文件</span></div><div class="line">./build-key-server server</div><div class="line"></div><div class="line"><span class="comment">#生成客户端证书和密钥文件</span></div><div class="line"><span class="comment">#如果退出了bash，之后需要加新密钥，需要重新source  vars，但是不要./clean-all</span></div><div class="line">./build-key <span class="built_in">test</span></div><div class="line">ll keys/</div><div class="line"><span class="comment">#如果需要加密客户端密钥：</span></div><div class="line">./build-key-pass ett</div><div class="line"></div><div class="line"><span class="comment">#生成交换密钥协议文件</span></div><div class="line"> ./build-dh</div><div class="line">ll keys/dh1024.pem</div><div class="line"></div><div class="line"><span class="comment">#为防止恶意攻击如DOS，UDP flooding，生成一个“HMAC firewall”</span></div><div class="line">openvpn --genkey --secret keys/ta.key</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/20/VPN-OPENVPN部署/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/09/08/挂载阿里云数据盘/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/08/挂载阿里云数据盘/" itemprop="url">
+                  挂载阿里云数据盘
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-08T11:30:20+08:00">
+                2016-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/阿里云/" itemprop="url" rel="index">
+                    <span itemprop="name">阿里云</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/09/08/挂载阿里云数据盘/" class="leancloud_visitors" data-flag-title="挂载阿里云数据盘">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="挂载阿里云数据盘"><a href="#挂载阿里云数据盘" class="headerlink" title="挂载阿里云数据盘"></a>挂载阿里云数据盘</h1><h2 id="操作须知"><a href="#操作须知" class="headerlink" title="操作须知"></a>操作须知</h2><p>在挂载数据盘之前，请了解以下注意事项：</p>
+<ul>
+<li>挂载磁盘时，实例需要满足以下条件：<ul>
+<li>状态必须为 运行中 (Running) 或者 已停止（Stopped）</li>
+<li>安全控制标识不能为 锁定 (Locked)</li>
+<li>不欠费</li>
+<li>本地磁盘不能挂载、或卸载。</li>
+</ul>
+</li>
+<li>挂载磁盘时，云盘的状态必须为 待挂载 (Available)。</li>
+<li>一台实例最多能挂载 ４ 块数据盘(包含所有磁盘种类)。</li>
+<li>云盘只能挂载在同一可用区内的实例上，不能跨可用区挂载。</li>
+<li>同一时刻，一块云盘只能挂载到一个实例上，不支持挂载到多个实例上。</li>
+<li>按量付费云盘可以挂载到同一地域下的同一可用区的任意实例上（包括包年包月和按量付费的实例）。</li>
+<li>云盘作为实例系统盘时，不支持单独的挂载操作。</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/08/挂载阿里云数据盘/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+          
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="qingyu.li" />
+          <p class="site-author-name" itemprop="name">qingyu.li</p>
+           
+              <p class="site-description motion-element" itemprop="description">简单不先于复杂，而是在复杂之后</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://piandeng.com/" title="Piandeng" target="_blank">Piandeng</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qingyu.li</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("FqAp90PI86NxdOHOxWQ0VrFS-gzGzoHsz", "GKvXMFDzPRF3a0w9BaOEx52z");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,942 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="OpenStack," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="一些组件keystone 用户认证和服务目录RabbitMQ 消息队列MySQL 提供数据存储
+Nova-nova compute-libvirtKVM虚拟机-qemu-kvm进程nova-scheduler 调度，找可用的计算节点
+glance 提供镜像 qcow2 rawneutron 提供网络 FLAT VLAN GRE vxlancinder 提供硬盘（可选） cinder-schedul">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenStack">
+<meta property="og:url" content="http://charles.pub/2016/07/10/OpenStack/index.html">
+<meta property="og:site_name" content="“运维 - 架构”">
+<meta property="og:description" content="一些组件keystone 用户认证和服务目录RabbitMQ 消息队列MySQL 提供数据存储
+Nova-nova compute-libvirtKVM虚拟机-qemu-kvm进程nova-scheduler 调度，找可用的计算节点
+glance 提供镜像 qcow2 rawneutron 提供网络 FLAT VLAN GRE vxlancinder 提供硬盘（可选） cinder-schedul">
+<meta property="og:updated_time" content="2017-05-24T08:15:50.755Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenStack">
+<meta name="twitter:description" content="一些组件keystone 用户认证和服务目录RabbitMQ 消息队列MySQL 提供数据存储
+Nova-nova compute-libvirtKVM虚拟机-qemu-kvm进程nova-scheduler 调度，找可用的计算节点
+glance 提供镜像 qcow2 rawneutron 提供网络 FLAT VLAN GRE vxlancinder 提供硬盘（可选） cinder-schedul">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'U8RQYDSHQE',
+      apiKey: '4e3ee6017aa53b87273a8f9c07c6fad8',
+      indexName: 'BlogIndex',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://charles.pub/2016/07/10/OpenStack/"/>
+
+
+
+
+
+  <title> OpenStack | “运维 - 架构” </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b71d9b907f3535ada947168b45eb247b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">“运维 - 架构”</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/07/10/OpenStack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                OpenStack
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-10T11:02:50+08:00">
+                2016-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/07/10/OpenStack/" class="leancloud_visitors" data-flag-title="OpenStack">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一些组件"><a href="#一些组件" class="headerlink" title="一些组件"></a>一些组件</h1><p>keystone 用户认证和服务目录<br>RabbitMQ 消息队列<br>MySQL 提供数据存储</p>
+<p>Nova-nova compute-libvirt<br>KVM虚拟机-qemu-kvm进程<br>nova-scheduler 调度，找可用的计算节点</p>
+<p>glance 提供镜像 qcow2 raw<br>neutron 提供网络 FLAT VLAN GRE vxlan<br>cinder 提供硬盘（可选） cinder-scheduler cinder-volume</p>
+<p><strong>Openstack 私有云 用于开发 测试 生产，时间部署注意：</strong><br>IO；不要改主机名；内网DNS；时间同步；弱口令；组件注册的IP绑定；熟悉virsh libvirt；桌面虚拟化</p>
+<ul>
+<li>基础服务：<br>MySQL 3306<br>RabbitMQ 5672 15672 25672<br>Keystone （权限管理、服务目录） 5000 35357<br>memcached 11211</li>
+<li>镜像服务：<br>Glance glance-api 9292  glance-registry 9191</li>
+<li>计算服务：<br>Nova api 8774 metadata 8775 Nova Scheduler 1.过滤 2.权值 novncproxy 6080</li>
+<li>网络服务：<br>neutron </li>
+</ul>
+<p>OSI七层：<br>传输层： LBaas Haproxy 4层和7层<br>网络层： L3-agent Linux静态路由+NAT<br>数据链路层： ML2 linuxbridge openvswith 商业插件<br>块存储：<br>cinder cinder-api cinder-scheduler cinder-volume</p>
+<a id="more"></a>
+<h1 id="OpenStack环境准备"><a href="#OpenStack环境准备" class="headerlink" title="OpenStack环境准备"></a>OpenStack环境准备</h1><h2 id="案例环境："><a href="#案例环境：" class="headerlink" title="案例环境："></a>案例环境：</h2><p>1.CentOS 7.1系统2台。每台2G内存。<br> linux-node1  192.168.56.11  网卡NAT  eth0  控制节点<br> linux-node2  192.168.56.12  网卡NAT  eth0  计算节点<br>2.域名解析：<br>/etc/hosts<br>192.168.56.11  linux-node1<br>192.168.56.12  linux-node2<br>3.硬盘50G。<br>4.Tightvnc view  VNC客户端</p>
+<h2 id="各组件安装"><a href="#各组件安装" class="headerlink" title="各组件安装:"></a>各组件安装:</h2><h3 id="时间同步"><a href="#时间同步" class="headerlink" title="时间同步"></a>时间同步</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">yum install -y chrony</div><div class="line">vim /etc/chrony.conf #修改允许的主机访问</div><div class="line">allow 192.168.0.0/16</div><div class="line">systemctl enable chronyd.service</div><div class="line">systemctl start chronyd.service</div><div class="line"># 设置时区</div><div class="line">timedatectl set-timezone Asia/Shanghai</div></pre></td></tr></table></figure>
+<h3 id="Base"><a href="#Base" class="headerlink" title="Base"></a>Base</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install -y http://mirrors.aliyun.com/centos/7/extras/x86_64/Packages/centos-release-openstack-liberty-1-4.el7.noarch.rpm</div><div class="line">yum install -y centos-release-openstack-liberty python-openstackclient</div></pre></td></tr></table></figure>
+<h3 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">yum install -y mariadb mariadb-server MySQL-python</div><div class="line"># 根据情况配置my.cnf</div><div class="line">#cp /usr/share/mysql/my-medium.cnf /etc/my.cnf</div><div class="line">systemctl enable mariadb.service</div><div class="line">systemctl start mariadb.service</div><div class="line">mysql_secure_installation #设置密码</div><div class="line"># 创建数据库</div><div class="line"># Keystone数据库</div><div class="line">CREATE DATABASE keystone;</div><div class="line">GRANT ALL PRIVILEGES ON keystone.* TO &apos;keystone&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;keystone&apos;;</div><div class="line">GRANT ALL PRIVILEGES ON keystone.* TO &apos;keystone&apos;@&apos;%&apos; IDENTIFIED BY &apos;keystone&apos;;</div><div class="line"># Glance数据库</div><div class="line">CREATE DATABASE glance;</div><div class="line">GRANT ALL PRIVILEGES ON glance.* TO &apos;glance&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;glance&apos;;</div><div class="line">GRANT ALL PRIVILEGES ON glance.* TO &apos;glance&apos;@&apos;%&apos; IDENTIFIED BY &apos;glance&apos;;</div><div class="line"># Nova数据库</div><div class="line">CREATE DATABASE nova;</div><div class="line">GRANT ALL PRIVILEGES ON nova.* TO &apos;nova&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;nova&apos;;</div><div class="line">GRANT ALL PRIVILEGES ON nova.* TO &apos;nova&apos;@&apos;%&apos; IDENTIFIED BY &apos;nova&apos;;</div><div class="line"># Neutron数据库</div><div class="line">CREATE DATABASE neutron;</div><div class="line">GRANT ALL PRIVILEGES ON neutron.* TO &apos;neutron&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;neutron&apos;;</div><div class="line">GRANT ALL PRIVILEGES ON neutron.* TO &apos;neutron&apos;@&apos;%&apos; IDENTIFIED BY &apos;neutron&apos;;</div><div class="line"># Cinder数据库</div><div class="line">CREATE DATABASE cinder;</div><div class="line">GRANT ALL PRIVILEGES ON cinder.* TO &apos;cinder&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;cinder&apos;;</div><div class="line">GRANT ALL PRIVILEGES ON cinder.* TO &apos;cinder&apos;@&apos;%&apos; IDENTIFIED BY &apos;cinder&apos;;</div></pre></td></tr></table></figure>
+<h3 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">yum install -y rabbitmq-server</div><div class="line">systemctl enable rabbitmq-server.service</div><div class="line">systemctl start rabbitmq-server.service</div><div class="line"># 创建用户，授权</div><div class="line">rabbitmqctl add_user openstack openstack</div><div class="line">rabbitmqctl set_permissions openstack &quot;.*&quot; &quot;.*&quot; &quot;.*&quot;</div><div class="line"># 查看支持的插件 </div><div class="line">rabbitmq-plugins list</div><div class="line"># 打开管理插件</div><div class="line">rabbitmq-plugins enable rabbitmq_management</div><div class="line">systemctl restart rabbitmq-server.service</div><div class="line">http://192.168.56.11:15672/  用户名密码都为guest</div></pre></td></tr></table></figure>
+<h3 id="Keystone"><a href="#Keystone" class="headerlink" title="Keystone"></a>Keystone</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div></pre></td><td class="code"><pre><div class="line">yum install -y openstack-keystone httpd mod_wsgi memcached python-memcached</div><div class="line"># 修改配置文件</div><div class="line">vim /etc/keystone/keystone.conf</div><div class="line"># 可以打开调试模式 verbose = true</div><div class="line"># 修改默认管理账号token</div><div class="line">admin_token = 863d35676a5632e846d9</div><div class="line"># 配置数据库</div><div class="line">[database]</div><div class="line"># keystone分别对应用户名，密码，数据库名</div><div class="line">connection = mysql://keystone:keystone@192.168.56.11/keystone</div><div class="line">[memcache]</div><div class="line">servers = 192.168.56.11:11211</div><div class="line">[token]</div><div class="line">provider = uuid</div><div class="line">driver = memcache</div><div class="line">[revoke]</div><div class="line">driver = sql</div><div class="line"># 同步数据库</div><div class="line">su -s /bin/sh -c &quot;keystone-manage db_sync&quot; keystone</div><div class="line"># 启动服务</div><div class="line">systemctl enable memcached.service</div><div class="line">systemctl start memcached.service</div><div class="line"># 配置apache</div><div class="line">vim /etc/httpd/conf.d/wsgi-keystone.conf</div><div class="line">&gt; Listen 5000</div><div class="line">&gt; Listen 35357</div><div class="line">&gt; </div><div class="line">&gt; &lt;VirtualHost *:5000&gt;</div><div class="line">&gt;     WSGIDaemonProcess keystone-public processes=5 threads=1 user=keystone group=keystone display-name=%&#123;GROUP&#125;</div><div class="line">&gt;     WSGIProcessGroup keystone-public</div><div class="line">&gt;     WSGIScriptAlias / /usr/bin/keystone-wsgi-public</div><div class="line">&gt;     WSGIApplicationGroup %&#123;GLOBAL&#125;</div><div class="line">&gt;     WSGIPassAuthorization On</div><div class="line">&gt;     &lt;IfVersion &gt;= 2.4&gt;</div><div class="line">&gt;       ErrorLogFormat &quot;%&#123;cu&#125;t %M&quot;</div><div class="line">&gt;     &lt;/IfVersion&gt;</div><div class="line">&gt;     ErrorLog /var/log/httpd/keystone-error.log</div><div class="line">&gt;     CustomLog /var/log/httpd/keystone-access.log combined</div><div class="line">&gt; </div><div class="line">&gt;     &lt;Directory /usr/bin&gt;</div><div class="line">&gt;       &lt;IfVersion &gt;= 2.4&gt;</div><div class="line">&gt;           Require all granted</div><div class="line">&gt;       &lt;/IfVersion&gt;</div><div class="line">&gt;       &lt;IfVersion &lt; 2.4&gt;</div><div class="line">&gt;           Order allow,deny</div><div class="line">&gt;           Allow from all</div><div class="line">&gt;       &lt;/IfVersion&gt;</div><div class="line">&gt;     &lt;/Directory&gt;</div><div class="line">&gt; &lt;/VirtualHost&gt;</div><div class="line">&gt; </div><div class="line">&gt; </div><div class="line">&gt; &lt;VirtualHost *:35357&gt;</div><div class="line">&gt;     WSGIDaemonProcess keystone-admin processes=5 threads=1 user=keystone group=keystone display-name=%&#123;GROUP&#125;</div><div class="line">&gt;     WSGIProcessGroup keystone-admin</div><div class="line">&gt;     WSGIScriptAlias / /usr/bin/keystone-wsgi-admin</div><div class="line">&gt;     WSGIApplicationGroup %&#123;GLOBAL&#125;</div><div class="line">&gt;     WSGIPassAuthorization On</div><div class="line">&gt;     &lt;IfVersion &gt;= 2.4&gt;</div><div class="line">&gt;       ErrorLogFormat &quot;%&#123;cu&#125;t %M&quot;</div><div class="line">&gt;     &lt;/IfVersion&gt;</div><div class="line">&gt;     ErrorLog /var/log/httpd/keystone-error.log</div><div class="line">&gt;     CustomLog /var/log/httpd/keystone-access.log combined</div><div class="line">&gt; </div><div class="line">&gt;     &lt;Directory /usr/bin&gt;</div><div class="line">&gt;       &lt;IfVersion &gt;= 2.4&gt;</div><div class="line">&gt;           Require all granted</div><div class="line">&gt;       &lt;/IfVersion&gt;</div><div class="line">&gt;       &lt;IfVersion &lt; 2.4&gt;</div><div class="line">&gt;           Order allow,deny</div><div class="line">&gt;           Allow from all</div><div class="line">&gt;       &lt;/IfVersion&gt;</div><div class="line">&gt;     &lt;/Directory&gt;</div><div class="line">&gt; &lt;/VirtualHost&gt;</div><div class="line"></div><div class="line">vim /etc/httpd/conf/httpd.conf</div><div class="line">ServerName 192.168.56.11:80</div><div class="line">systemctl enable httpd.service</div><div class="line">systemctl start httpd.service</div><div class="line">export OS_TOKEN=863d35676a5632e846d9</div><div class="line">export OS_URL=http://192.168.56.11:35357/v3</div><div class="line">export OS_IDENTITY_API_VERSION=3</div><div class="line"></div><div class="line"># 创建用户、项目、角色、注册服务</div><div class="line">openstack project create --domain default --description &quot;Admin Project&quot; admin </div><div class="line">openstack user create --domain default --password-prompt admin</div><div class="line">openstack role create admin</div><div class="line">openstack role add --project admin --user admin admin</div><div class="line">openstack project create --domain default --description &quot;Demo Project&quot; demo</div><div class="line">openstack user create --domain default --password-prompt demo</div><div class="line">openstack role create user</div><div class="line">openstack role add --project demo --user demo user</div><div class="line">openstack project create --domain default --description &quot;Service Project&quot; service</div><div class="line">openstack service create --name keystone --description &quot;OpenStack Identity&quot; identity</div><div class="line">openstack endpoint create --region RegionOne identity public http://192.168.56.11:5000/v2.0</div><div class="line">openstack endpoint create --region RegionOne identity internal http://192.168.56.11:5000/v2.0</div><div class="line">openstack endpoint create --region RegionOne identity admin http://192.168.56.11:35357/v2.0</div><div class="line"># 去除环境变量</div><div class="line">unset OS_TOKEN OS_URL</div><div class="line"># 测试获取token</div><div class="line">openstack --os-auth-url http://192.168.56.11:35357/v3 --os-project-domain-id default --os-user-domain-id default --os-project-name admin --os-username admin --os-auth-type password token issue</div><div class="line"># 配置环境变量</div><div class="line">vim admin-openrc.sh</div><div class="line">export OS_PROJECT_DOMAIN_NAME=default</div><div class="line">export OS_USER_DOMAIN_NAME=default</div><div class="line">export OS_PROJECT_NAME=admin</div><div class="line">export OS_TENANT_NAME=admin</div><div class="line">export OS_USERNAME=admin</div><div class="line">export OS_PASSWORD=123456</div><div class="line">export OS_AUTH_URL=http://192.168.56.11:35357/v3</div><div class="line">export OS_IDENTITY_API_VERSION=3</div><div class="line">vim demo-openrc.sh</div><div class="line">export OS_PROJECT_DOMAIN_NAME=default</div><div class="line">export OS_USER_DOMAIN_NAME=default</div><div class="line">export OS_PROJECT_NAME=demo</div><div class="line">export OS_TENANT_NAME=demo</div><div class="line">export OS_USERNAME=demo</div><div class="line">export OS_PASSWORD=demo</div><div class="line">export OS_AUTH_URL=http://192.168.56.11:5000/v3</div><div class="line">export OS_IDENTITY_API_VERSION=3</div><div class="line">chmod +x admin-openrc.sh demo-openrc.sh</div><div class="line">source admin-openrc.sh</div></pre></td></tr></table></figure>
+<h3 id="Glance-registry-9191端口-api-9292端口"><a href="#Glance-registry-9191端口-api-9292端口" class="headerlink" title="Glance registry 9191端口 api 9292端口"></a>Glance registry 9191端口 api 9292端口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">yum install -y openstack-glance python-glance python-glanceclient</div><div class="line"># 修改配置</div><div class="line">vim /etc/glance/glance-api.conf</div><div class="line">[database]</div><div class="line">connection=mysql://glance:glance@192.168.56.11/glance</div><div class="line">[keystone_authtoken]</div><div class="line">auth_uri = http://192.168.56.11:5000</div><div class="line">auth_url = http://192.168.56.11:35357</div><div class="line">memcached_servers = 192.168.56.11:11211</div><div class="line">auth_plugin = password</div><div class="line">project_domain_id = default</div><div class="line">user_domain_id = default</div><div class="line">project_name = service</div><div class="line">username = glance</div><div class="line">password = glance</div><div class="line">[paste_deploy]</div><div class="line">flavor = keystone</div><div class="line">[DEFAULT]</div><div class="line">notification_driver = noop</div><div class="line">verbose=True</div><div class="line">[glance_store]</div><div class="line">default_store=file</div><div class="line">filesystem_store_datadir=/var/lib/glance/images/</div><div class="line">vim /etc/glance/glance-registry.conf</div><div class="line">[database]</div><div class="line">connection=mysql://glance:glance@192.168.56.11/glance</div><div class="line">[keystone_authtoken]</div><div class="line">auth_uri = http://192.168.56.11:5000</div><div class="line">auth_url = http://192.168.56.11:35357</div><div class="line">memcached_servers = 192.168.56.11:11211</div><div class="line">auth_plugin = password</div><div class="line">project_domain_id = default</div><div class="line">user_domain_id = default</div><div class="line">project_name = service</div><div class="line">username = glance</div><div class="line">password = glance</div><div class="line">[paste_deploy]</div><div class="line">flavor=keystone</div><div class="line"># 同步数据库</div><div class="line">su -s /bin/sh -c &quot;glance-manage db_sync&quot; glance</div><div class="line"># 创建keystone用户</div><div class="line">source admin-openrc.sh #获取环境配置</div><div class="line">openstack user create --domain default --password=glance glance</div><div class="line">openstack role add --project service --user glance admin</div><div class="line"># 注册服务</div><div class="line">openstack service create --name glance --description &quot;OpenStack Image&quot; image</div><div class="line">openstack endpoint create --region RegionOne image public http://192.168.56.11:9292</div><div class="line">openstack endpoint create --region RegionOne image internal http://192.168.56.11:9292</div><div class="line">openstack endpoint create --region RegionOne image admin http://192.168.56.11:9292</div><div class="line"># 启动服务</div><div class="line">systemctl enable openstack-glance-api.service</div><div class="line">systemctl enable openstack-glance-registry.service</div><div class="line">systemctl start openstack-glance-api.service</div><div class="line">systemctl start openstack-glance-registry.service</div><div class="line"># 加入环境变量</div><div class="line">echo &quot;export OS_IMAGE_API_VERSION=2&quot; | tee -a admin-openrc.sh demo-openrc.sh</div><div class="line">glance image-list</div><div class="line"># 上传镜像并加入系统管理</div><div class="line">wget http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img</div><div class="line">openstack image create &quot;cirros&quot; \</div><div class="line">  --file cirros-0.3.4-x86_64-disk.img \</div><div class="line">  --disk-format qcow2 --container-format bare \</div><div class="line">  --public</div></pre></td></tr></table></figure>
+<h3 id="Nova"><a href="#Nova" class="headerlink" title="Nova"></a>Nova</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line">yum install -y openstack-nova-api openstack-nova-cert openstack-nova-conductor openstack-nova-console openstack-nova-novncproxy openstack-nova-scheduler python-novaclient</div><div class="line"># 创建keystone-nova用户</div><div class="line">openstack user create --domain default --password=nova nova</div><div class="line">openstack role add --project service --user nova admin</div><div class="line"># 配置文件修改</div><div class="line">vim /etc/nova/nova.conf </div><div class="line">[DEFAULT]</div><div class="line">my_ip=192.168.56.11</div><div class="line">rpc_backend=rabbit</div><div class="line">auth_strategy=keystone</div><div class="line">verbose=true</div><div class="line">network_api_class=nova.network.neutronv2.api.API</div><div class="line">security_group_api=neutron</div><div class="line">linuxnet_interface_driver=nova.network.linux_net.NeutronLinuxBridgeInterfaceDriver</div><div class="line">firewall_driver=nova.virt.firewall.NoopFirewallDriver</div><div class="line">[oslo_messaging_rabbit]</div><div class="line">rabbit_host=192.168.56.11</div><div class="line">rabbit_port=5672</div><div class="line">rabbit_userid=guest</div><div class="line">rabbit_password=guest</div><div class="line">[database]</div><div class="line">connection=mysql://nova:nova@192.168.56.11/nova</div><div class="line">[keystone_authtoken]</div><div class="line">auth_uri = http://192.168.56.11:5000</div><div class="line">auth_url = http://192.168.56.11:35357</div><div class="line">memcached_servers = 192.168.56.11:11211</div><div class="line">auth_plugin = password</div><div class="line">project_domain_id = default</div><div class="line">user_domain_id = default</div><div class="line">project_name = service</div><div class="line">username = nova</div><div class="line">password = nova</div><div class="line">[vnc]</div><div class="line">vncserver_listen=$&#123;my_ip&#125;</div><div class="line">vncserver_proxyclient_address=$&#123;my_ip&#125;</div><div class="line">[glance]</div><div class="line">host=$my_ip</div><div class="line">lock_path=/var/lib/nova/tmp</div><div class="line">enabled_apis=osapi_compute,metadata</div><div class="line"># 同步数据库</div><div class="line">su -s /bin/sh -c &quot;nova-manage db sync&quot; nova</div><div class="line"># 启动服务</div><div class="line">systemctl enable openstack-nova-api.service openstack-nova-cert.service \</div><div class="line">  openstack-nova-consoleauth.service openstack-nova-scheduler.service \</div><div class="line">  openstack-nova-conductor.service openstack-nova-novncproxy.service</div><div class="line">systemctl start openstack-nova-api.service openstack-nova-cert.service \</div><div class="line">  openstack-nova-consoleauth.service openstack-nova-scheduler.service \</div><div class="line">  openstack-nova-conductor.service openstack-nova-novncproxy.service</div><div class="line"># 注册</div><div class="line">openstack service create --name nova --description &quot;OpenStack Compute&quot; compute</div><div class="line">openstack endpoint create --region RegionOne  compute public http://192.168.56.11:8774/v2/%\(tenant_id\)s</div><div class="line">openstack endpoint create --region RegionOne compute internal http://192.168.56.11:8774/v2/%\(tenant_id\)s</div><div class="line">openstack endpoint create --region RegionOne compute admin http://192.168.56.11:8774/v2/%\(tenant_id\)s</div><div class="line"># 检查</div><div class="line">openstack host list</div><div class="line">nova image-list</div><div class="line">nova endpoints</div><div class="line"># 计算节点，需要装KVM，openstack-nova-compute</div><div class="line">scp /etc/nova/nova.conf 192.168.56.12:/etc/nova/</div><div class="line">grep -E &apos;vmx|svm&apos; /proc/cpuinfo </div><div class="line">yum install -y qemu-kvm qemu-kvm-tools virt-manager libvirt virt-install</div><div class="line">yum install -y http://mirrors.aliyun.com/centos/7/extras/x86_64/Packages/centos-release-openstack-liberty-1-4.el7.noarch.rpm</div><div class="line">yum install -y centos-release-openstack-liberty python-openstackclient</div><div class="line">yum install -y openstack-nova-compute sysfsutils</div><div class="line">vim /etc/chrony.conf</div><div class="line">server 192.168.56.11 iburst #只配置这一行，其余删除</div><div class="line">timedatectl set-timezone Asia/Shanghai</div><div class="line">systemctl enable chronyd.service</div><div class="line">systemctl start chronyd.service</div><div class="line">vim /etc/nova/nova.conf </div><div class="line">[DEFAULT]</div><div class="line">my_ip=192.168.56.12</div><div class="line">[vnc]</div><div class="line">vncserver_listen=0.0.0.0</div><div class="line">novncproxy_base_url=http://192.168.56.11:6080/vnc_auto.html</div><div class="line">[glance]</div><div class="line">host=192.168.56.11</div><div class="line">virt_type=kvm</div><div class="line">#启动服务</div><div class="line">systemctl enable libvirtd openstack-nova-compute</div><div class="line">systemctl start libvirtd openstack-nova-compute</div></pre></td></tr></table></figure>
+<h3 id="Neutron-linux-node1"><a href="#Neutron-linux-node1" class="headerlink" title="Neutron linux-node1"></a>Neutron linux-node1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div></pre></td><td class="code"><pre><div class="line">yum install -y openstack-neutron openstack-neutron-ml2 openstack-neutron-linuxbridge python-neutronclient ebtables ipset</div><div class="line">openstack user create --domain default --password=neutron neutron</div><div class="line">openstack role add --project service --user neutron admin</div><div class="line">openstack service create --name neutron --description &quot;OpenStack Networking&quot; network</div><div class="line">openstack endpoint create --region RegionOne  network public http://192.168.56.11:9696</div><div class="line">openstack endpoint create --region RegionOne  network internal http://192.168.56.11:9696</div><div class="line">openstack endpoint create --region RegionOne  network admin http://192.168.56.11:9696</div><div class="line"># 修改配置文件</div><div class="line">vim /etc/neutron/neutron.conf </div><div class="line">lock_path = $state_path/lock</div><div class="line">auth_strategy = keystone</div><div class="line">[database]</div><div class="line">connection=mysql://neutron:neutron@192.168.56.11:3306/neutron</div><div class="line">[keystone_authtoken]</div><div class="line">auth_uri = http://192.168.56.11:5000</div><div class="line">auth_url = http://192.168.56.11:35357</div><div class="line">memcached_servers = 192.168.56.11:11211</div><div class="line">auth_plugin = password</div><div class="line">project_domain_id = default</div><div class="line">user_domain_id = default</div><div class="line">project_name = service</div><div class="line">username = neutron</div><div class="line">password = neutron</div><div class="line">[oslo_messaging_rabbit]</div><div class="line">rabbit_host = 192.168.56.11</div><div class="line">rabbit_port = 5672</div><div class="line">rabbit_userid = guest</div><div class="line">rabbit_password = guest</div><div class="line">core_plugin = ml2</div><div class="line">service_plugins = router</div><div class="line">notify_nova_on_port_status_changes = True</div><div class="line">notify_nova_on_port_data_changes = Ture</div><div class="line">nova_url = http://192.168.56.11:8774/v2</div><div class="line">[nova]</div><div class="line">auth_url = http://192.168.56.11:35357</div><div class="line">auth_plugin = password</div><div class="line">project_domain_id = default</div><div class="line">user_domain_id = default</div><div class="line">region_name = RegionOne</div><div class="line">project_name = service</div><div class="line">username = nova</div><div class="line">password = nova</div><div class="line">vim /etc/neutron/plugins/ml2/ml2_conf.ini</div><div class="line">type_drivers = flat,vlan,gre,vxlan,geneve</div><div class="line">tenant_network_types = vlan,gre,vxlan,geneve</div><div class="line">mechanism_drivers = openvswitch,linuxbridge</div><div class="line">extension_drivers = port_security</div><div class="line">flat_networks = physnet1</div><div class="line">vim /etc/neutron/plugins/ml2/linuxbridge_agent.ini  </div><div class="line">physical_interface_mappings = physnet1:eth0</div><div class="line">enable_vxlan = false</div><div class="line">[agent]</div><div class="line">prevent_arp_spoofing = True</div><div class="line">firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver</div><div class="line">enable_security_group = True</div><div class="line">vim /etc/neutron/dhcp_agent.ini</div><div class="line">interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver</div><div class="line">dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq</div><div class="line">enable_isolated_metadata = True</div><div class="line">vim /etc/neutron/metadata_agent.ini</div><div class="line">auth_uri = http://192.168.56.11:5000</div><div class="line">auth_url = http://192.168.56.11:35357</div><div class="line">auth_region = RegionOne</div><div class="line">auth_plugin = password</div><div class="line">project_domain_id = default</div><div class="line">user_domain_id = default</div><div class="line">project_name = service</div><div class="line">username = neutron</div><div class="line">password = neutron</div><div class="line">nova_metadata_ip = 192.168.56.11</div><div class="line">metadata_proxy_shared_secret = neutron</div><div class="line">vim /etc/nova/nova.conf</div><div class="line">[neutron]</div><div class="line">url = http://192.168.56.11:9696</div><div class="line">auth_url = http://192.168.56.11:35357</div><div class="line">auth_plugin = password</div><div class="line">project_domain_id = default</div><div class="line">user_domain_id = default</div><div class="line">region_name = RegionOne</div><div class="line">project_name = service</div><div class="line">username = neutron</div><div class="line">password = neutron</div><div class="line">service_metadata_proxy = True</div><div class="line">metadata_proxy_shared_secret = neutron</div><div class="line"># 同步数据库</div><div class="line">ln -s /etc/neutron/plugins/ml2/ml2_conf.ini /etc/neutron/plugin.ini</div><div class="line">su -s /bin/sh -c &quot;neutron-db-manage --config-file /etc/neutron/neutron.conf \</div><div class="line">  --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade head&quot; neutron</div><div class="line"># 启动服务</div><div class="line">systemctl restart openstack-nova-api.service</div><div class="line">systemctl enable neutron-server.service \</div><div class="line">  neutron-linuxbridge-agent.service neutron-dhcp-agent.service \</div><div class="line">  neutron-metadata-agent.service</div><div class="line">systemctl start neutron-server.service  neutron-linuxbridge-agent.service neutron-dhcp-agent.service neutron-metadata-agent.service</div><div class="line">neutron agent-list</div></pre></td></tr></table></figure>
+<h3 id="Neutron-linux-node2"><a href="#Neutron-linux-node2" class="headerlink" title="Neutron linux-node2"></a>Neutron linux-node2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">yum install -y openstack-neutron openstack-neutron-linuxbridge ebtables ipset</div><div class="line"># 拷贝node1的配置文件</div><div class="line">scp /etc/neutron/neutron.conf 192.168.56.12:/etc/neutron/</div><div class="line">scp /etc/neutron/plugins/ml2/linuxbridge_agent.ini 192.168.56.12:/etc/neutron/plugins/ml2/</div><div class="line">scp /etc/neutron/plugins/ml2/ml2_conf.ini 192.168.56.12:/etc/neutron/plugins/ml2/</div><div class="line">vim /etc/nova/nova.conf</div><div class="line">[neutron]</div><div class="line">url = http://192.168.56.11:9696</div><div class="line">auth_url = http://192.168.56.11:35357</div><div class="line">auth_plugin = password</div><div class="line">project_domain_id = default</div><div class="line">user_domain_id = default</div><div class="line">region_name = RegionOne</div><div class="line">project_name = service</div><div class="line">username = neutron</div><div class="line">password = neutron</div><div class="line">auth_strategy = keystone</div><div class="line"># 启动服务</div><div class="line">ln -s /etc/neutron/plugins/ml2/ml2_conf.ini /etc/neutron/plugin.ini</div><div class="line">systemctl restart openstack-nova-compute.service</div><div class="line">systemctl enable neutron-linuxbridge-agent.service</div><div class="line">systemctl start neutron-linuxbridge-agent.service</div><div class="line">neutron agent-list #检查node2节点Linux bridge agent</div><div class="line"># 创建虚拟机</div><div class="line"># 创建网络</div><div class="line">neutron net-create flat --shared --provider:physical_network physnet1 \</div><div class="line">  --provider:network_type flat</div><div class="line"># 根据实际情况配置IP</div><div class="line">neutron subnet-create flat 192.168.56.0/24 --name flat-subnet --allocation-pool start=192.168.56.100,end=192.168.56.200 --dns-nameserver 114.114.114.114 --gateway 192.168.56.2</div><div class="line">neutron net-list </div><div class="line"># 创建key</div><div class="line">source demo-openrc.sh</div><div class="line">ssh-keygen -q -N &quot;&quot;</div><div class="line">nova keypair-add --pub-key ~/.ssh/id_rsa.pub mykey</div><div class="line">nova keypair-list</div><div class="line"># 创建安全组</div><div class="line">nova secgroup-add-rule default icmp -1 -1 0.0.0.0/0</div><div class="line">nova secgroup-add-rule default tcp 22 22 0.0.0.0/0</div><div class="line"># 创建实例</div><div class="line">source demo-openrc.sh</div><div class="line">nova flavor-list</div><div class="line">nova image-list</div><div class="line">neutron net-list</div><div class="line">nova secgroup-list</div><div class="line">nova boot --flavor m1.tiny --image cirros --nic net-id=5a1c7934-3e48-4674-89aa-298cbda3ca0b --security-group default --key-name mykey hello-instance</div><div class="line">nova list</div><div class="line">nova get-vnc-console hello-instance novnc</div></pre></td></tr></table></figure>
+<h3 id="dashboard"><a href="#dashboard" class="headerlink" title="dashboard"></a>dashboard</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">yum install -y openstack-dashboard</div><div class="line">vim /etc/openstack-dashboard/local_settings</div><div class="line">OPENSTACK_HOST = &quot;192.168.56.11&quot;</div><div class="line">ALLOWED_HOSTS = [&apos;*&apos;, ]</div><div class="line">CACHES = &#123;</div><div class="line">    &apos;default&apos;: &#123;</div><div class="line">        &apos;BACKEND&apos;: &apos;django.core.cache.backends.memcached.MemcachedCache&apos;,</div><div class="line">        &apos;LOCATION&apos;: &apos;192.168.56.11:11211&apos;,</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">OPENSTACK_KEYSTONE_DEFAULT_ROLE = &quot;user&quot;</div><div class="line">TIME_ZONE = &quot;Asia/Shanghai&quot;</div><div class="line">systemctl enable httpd.service memcached.service</div><div class="line">systemctl restart httpd.service memcached.service</div></pre></td></tr></table></figure>
+<h3 id="Cinder"><a href="#Cinder" class="headerlink" title="Cinder"></a>Cinder</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">#控制节点</div><div class="line">yum install -y openstack-cinder python-cinderclient</div><div class="line">vim /etc/cinder/cinder.conf</div><div class="line">connection=mysql://cinder:cinder@192.168.56.11:3306/cinder</div><div class="line">glance_host = 192.168.56.11</div><div class="line">lock_path = /var/lib/cinder/tmp</div><div class="line">auth_strategy = keystone</div><div class="line">[keystone_authtoken]</div><div class="line">auth_uri = http://192.168.56.11:5000</div><div class="line">auth_url = http://192.168.56.11:35357</div><div class="line">auth_plugin = password</div><div class="line">project_domain_id = default</div><div class="line">user_domain_id = default</div><div class="line">project_name = service</div><div class="line">username = cinder</div><div class="line">password = cinder</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">rpc_backend = rabbit</div><div class="line">[oslo_messaging_amqp]</div><div class="line">rabbit_host = 192.168.56.11</div><div class="line">rabbit_port = 5672</div><div class="line">rabbit_userid = guest</div><div class="line">rabbit_password = guest</div><div class="line">--------------------------------------------------------------------------------</div><div class="line">vim /etc/nova/nova.conf</div><div class="line">[cinder]</div><div class="line">os_region_name = RegionOne</div><div class="line"># 同步数据库</div><div class="line">su -s /bin/sh -c &quot;cinder-manage db sync&quot; cinder</div><div class="line"># 创建用户角色等</div><div class="line">source admin-openrc.sh</div><div class="line">openstack user create --domain default --password=cinder cinder</div><div class="line">openstack role add --project service --user cinder admin</div><div class="line">openstack service create --name cinder --description &quot;OpenStack Block Storage&quot; volume</div><div class="line">openstack service create --name cinderv2 --description &quot;OpenStack Block Storage&quot; volumev2</div><div class="line">openstack endpoint create --region RegionOne volume public http://192.168.56.11:8776/v1/%\(tenant_id\)s</div><div class="line">openstack endpoint create --region RegionOne volume internal http://192.168.56.11:8776/v1/%\(tenant_id\)s</div><div class="line">openstack endpoint create --region RegionOne volume admin http://192.168.56.11:8776/v1/%\(tenant_id\)s</div><div class="line">openstack endpoint create --region RegionOne  volumev2 public http://192.168.56.11:8776/v2/%\(tenant_id\)s</div><div class="line">openstack endpoint create --region RegionOne  volumev2 internal http://192.168.56.11:8776/v2/%\(tenant_id\)s</div><div class="line">openstack endpoint create --region RegionOne volumev2 admin http://192.168.56.11:8776/v2/%\(tenant_id\)s</div><div class="line"># 重启服务</div><div class="line">systemctl restart openstack-nova-api.service</div><div class="line">systemctl enable openstack-cinder-api.service openstack-cinder-scheduler.service</div><div class="line">systemctl start openstack-cinder-api.service openstack-cinder-scheduler.service</div><div class="line"># 存储节点上</div><div class="line">yum install -y openstack-cinder targetcli python-oslo-policy</div><div class="line">scp /etc/cinder/cinder.conf 192.168.56.12:/etc/cinder/</div><div class="line">vim /etc/cinder/cinder.conf</div><div class="line">enabled_backends = lvm</div><div class="line">[lvm]</div><div class="line">volume_driver = cinder.volume.drivers.lvm.LVMVolumeDriver</div><div class="line">volume_group = cinder-volumes</div><div class="line">iscsi_protocol = iscsi</div><div class="line">iscsi_helper = lioadm</div><div class="line"># 创建LVM</div><div class="line">pvcreate /dev/sdc</div><div class="line">vgcreate cinder-volumes /dev/sdc</div><div class="line">vim /etc/lvm/lvm.conf</div><div class="line">devices &#123;</div><div class="line">...</div><div class="line">filter = [ &quot;a/sdb/&quot;, &quot;r/.*/&quot;]</div><div class="line"># 启动服务</div><div class="line">systemctl enable openstack-cinder-volume.service target.service</div><div class="line">systemctl start openstack-cinder-volume.service target.service</div><div class="line">cinder service-list</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OpenStack/" rel="tag"># OpenStack</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/30/KVM相关/" rel="next" title="KVM相关">
+                <i class="fa fa-chevron-left"></i> KVM相关
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/18/SaltStack安装、部署及实践/" rel="prev" title="SaltStack安装、部署及实践">
+                SaltStack安装、部署及实践 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="qingyu.li" />
+          <p class="site-author-name" itemprop="name">qingyu.li</p>
+           
+              <p class="site-description motion-element" itemprop="description">简单不先于复杂，而是在复杂之后</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://piandeng.com/" title="Piandeng" target="_blank">Piandeng</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一些组件"><span class="nav-number">1.</span> <span class="nav-text">一些组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenStack环境准备"><span class="nav-number">2.</span> <span class="nav-text">OpenStack环境准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#案例环境："><span class="nav-number">2.1.</span> <span class="nav-text">案例环境：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各组件安装"><span class="nav-number">2.2.</span> <span class="nav-text">各组件安装:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时间同步"><span class="nav-number">2.2.1.</span> <span class="nav-text">时间同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Base"><span class="nav-number">2.2.2.</span> <span class="nav-text">Base</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mysql"><span class="nav-number">2.2.3.</span> <span class="nav-text">Mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ"><span class="nav-number">2.2.4.</span> <span class="nav-text">RabbitMQ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Keystone"><span class="nav-number">2.2.5.</span> <span class="nav-text">Keystone</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Glance-registry-9191端口-api-9292端口"><span class="nav-number">2.2.6.</span> <span class="nav-text">Glance registry 9191端口 api 9292端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nova"><span class="nav-number">2.2.7.</span> <span class="nav-text">Nova</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Neutron-linux-node1"><span class="nav-number">2.2.8.</span> <span class="nav-text">Neutron linux-node1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Neutron-linux-node2"><span class="nav-number">2.2.9.</span> <span class="nav-text">Neutron linux-node2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dashboard"><span class="nav-number">2.2.10.</span> <span class="nav-text">dashboard</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cinder"><span class="nav-number">2.2.11.</span> <span class="nav-text">Cinder</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qingyu.li</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("FqAp90PI86NxdOHOxWQ0VrFS-gzGzoHsz", "GKvXMFDzPRF3a0w9BaOEx52z");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+  
+
+</body>
+</html>

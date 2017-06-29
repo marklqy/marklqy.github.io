@@ -1,0 +1,978 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="MySQL," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="SQL语句分类：
+DDL（Data Definition Language）数据定义语言：CREATE ALTER DROP
+DCL（Date Control Language）数据控制语言：GRANT REVOKE COMMIT ROLLBACK
+DML（Date Manipulation Language）数据操作语言：SELECT INSERT DELETE UPDATE
+
+mysql5.1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MYSQL常用基本命令结构化查询语言SQL（Structured Query Language）">
+<meta property="og:url" content="http://charles.pub/2016/03/20/MYSQL常用基本命令结构化查询语言SQL/index.html">
+<meta property="og:site_name" content="“运维 - 架构”">
+<meta property="og:description" content="SQL语句分类：
+DDL（Data Definition Language）数据定义语言：CREATE ALTER DROP
+DCL（Date Control Language）数据控制语言：GRANT REVOKE COMMIT ROLLBACK
+DML（Date Manipulation Language）数据操作语言：SELECT INSERT DELETE UPDATE
+
+mysql5.1">
+<meta property="og:updated_time" content="2017-05-24T07:18:35.909Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MYSQL常用基本命令结构化查询语言SQL（Structured Query Language）">
+<meta name="twitter:description" content="SQL语句分类：
+DDL（Data Definition Language）数据定义语言：CREATE ALTER DROP
+DCL（Date Control Language）数据控制语言：GRANT REVOKE COMMIT ROLLBACK
+DML（Date Manipulation Language）数据操作语言：SELECT INSERT DELETE UPDATE
+
+mysql5.1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'U8RQYDSHQE',
+      apiKey: '4e3ee6017aa53b87273a8f9c07c6fad8',
+      indexName: 'BlogIndex',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://charles.pub/2016/03/20/MYSQL常用基本命令结构化查询语言SQL/"/>
+
+
+
+
+
+  <title> MYSQL常用基本命令结构化查询语言SQL（Structured Query Language） | “运维 - 架构” </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b71d9b907f3535ada947168b45eb247b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">“运维 - 架构”</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/03/20/MYSQL常用基本命令结构化查询语言SQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                MYSQL常用基本命令结构化查询语言SQL（Structured Query Language）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-20T09:29:10+08:00">
+                2016-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/03/20/MYSQL常用基本命令结构化查询语言SQL/" class="leancloud_visitors" data-flag-title="MYSQL常用基本命令结构化查询语言SQL（Structured Query Language）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="SQL语句分类："><a href="#SQL语句分类：" class="headerlink" title="SQL语句分类："></a>SQL语句分类：</h1><ul>
+<li>DDL（Data Definition Language）数据定义语言：CREATE ALTER DROP</li>
+<li>DCL（Date Control Language）数据控制语言：GRANT REVOKE COMMIT ROLLBACK</li>
+<li>DML（Date Manipulation Language）数据操作语言：SELECT INSERT DELETE UPDATE</li>
+</ul>
+<p>mysql5.1及以前默认引擎为MyISAM ，mysql5.5.5以后默认为InnoDB</p>
+<h1 id="常用命令："><a href="#常用命令：" class="headerlink" title="常用命令："></a>常用命令：</h1><ul>
+<li>启动mysql命令：/etc/init.d/mysqld start</li>
+<li>查看mysql端口： ss -lnt|grep 3306</li>
+<li>查看mysql进程：ps -ef|grep mysql|grep -v grep</li>
+<li>优雅关闭数据库的方法：mysqladmin -uroot -p123456 shutdown</li>
+<li>配置文件修改登录提示符，在my.cnf [mysql]模块下添加如下内容，无需重启，退出当前session重新登录即可：prompt=\u@主机名 \r:\m:\s-&gt;</li>
+<li>多实例登录：（1）本地：mysql -u -p -S /data/3306/mysql.sock （2）远程：mysql -u -p -h -P3306</li>
+<li>添加超级管理员：grant all privileges on <em>.</em> to system@’localhost’ identified by ‘123456’ with grant option;</li>
+<li>设置密码：mysqladmin -u root password ‘123456’;</li>
+<li>多实例修改密码：mysqladmin -uroot -p’123456’ password ‘   ‘ -S /data/3306/mysql.sock<br>或者在MYSQL里面用sql语句：UPDATE mysql.user SET password=PASSWORD(“123456”) WHERE user=’root’ and host=’localhost’;<br>修改单用户密码，set password=PASSWORD(“123456”);</li>
+<li>忘记root密码修改方法：停止mysql服务，使用–skip-grant-tables启动MYSQL，用上述后两种方法修改密码：mysqld_safe –skip-grant-tables –user=mysql &amp;（多实例需要指定配置文件：mysqld_safe –defaults-file=/data/3306/my.cnf –skip-grant-tables &amp;  需要注意参CREATE DATABASE 数据库名 CHARACTER SET GBK COLLATE gbk_chinese_ci;数前后顺序）  再用空密码登录mysql </li>
+<li>创建数据库：create database 数据库名;  show databases like ‘  ‘;</li>
+<li>指定字符集：show character set;<br>CREATE DATABASE 数据库名 CHARACTER SET GBK COLLATE gbk_chinese_ci;</li>
+<li>use &lt;数据库名&gt; 相当于linux cd命令<br>select user();  相当于whoami   select database(); 相当于pwd</li>
+<li>drop user “user”@”主机域”  删除用户  drop database &lt;数据库名&gt;;  删除数据库</li>
+<li>grant all on dbname.* to username@’localhost’ identified by ‘passwd’;  flush privileges; show grants for ‘username’@’localhost’;  IP授权形式：  10.0.0.%   10.0.0.0/255.255.255.0</li>
+<li>回收权限：REVOKE INSERT ON <em>.</em> FROM ‘jeffrey’@’localhost’; flush privileges;  show grants for ‘username’@’localhost’;<br>常规情况下授权 select insert delete update 4个权限即可。</li>
+<li>desc &lt;表名&gt;; 查看表结构。   show create table &lt;表名&gt;; 查看创表的语句。</li>
+<li>primary key(id) 主键 一般主键配自增属性 auto_increment  KEY index_name(name) 普通索引<br>增加普通索引：alter table &lt;表名&gt; add index <code>索引名</code>(<code>字段</code>);  删除索引把add换成drop<br>对字段前N个字符创建普通索引：create index 索引名 on 表名(列(N));<br>联合索引具有前缀性，经常用于条件查询的放前面。</li>
+<li>insert into &lt;表名&gt; [(&lt;字段名1&gt;,&lt;字段名2&gt;..)] values(  ,  ); 数字可以不加引号，字符串需要加引号</li>
+<li>select &lt;字段1，字段2…&gt; from &lt;表&gt; where 条件  （limit 0,2;查部分数据，从第0行开始查两行）（order by 排序 desc降序 asc升序）（INTO OUTFILE ‘/tmp/a.txt’导出数据到文件）</li>
+<li>explain +select语句 获取select的相关信息，查看是否用索引，做优化：<br>（1）抓慢查询：<br>现场抓：mysql -uroot -p123456 -S /data/3306/mysql.sock -e “show full processlist;”|grep select -i<br>分析慢查询日志：<br>long_query_time = 1<br>log-slow-queries = /data/3306/slow.log<br>log_queries_not_using_indexes<br>每天零点定时任务切割日志：<br>cd  /data/3306<br>/bin/mv slow.log /backup/$(date +%F)_slow.log<br>mysqladmin -uroot -p123456 -S /data/3306/mysql.sock flush-logs<br>（2）explain语句检查索引执行情况<br>（3）对需要建索引的列建立索引<br>（4）分析慢查询的工具，每天发邮件。工具：mysqlsla </li>
+<li>profile 查询优化 SQL语句执行细节</li>
+<li>update 表名 set 字段=新值，…… where 条件（一定要注意加条件）<br>登录mysql时加入 -U 参数，使用安全模式，防止误更新 alias mysql=’mysql -U’</li>
+<li>delete from 表名 where 条件表达式 </li>
+<li>truncate table 表名 速度更快，直接清空对应数据的物理文件。</li>
+<li>alter table 表名 add 字段 类型 其他;</li>
+<li>rename table 原表名 to 新表名;</li>
+<li>show variables like “character_set%”; 查看mysql字符集</li>
+<li><p>mysqldump 备份数据库命令，恢复用mysql命令重定向&lt;<br>mysqldump -uroot -p123456 -S /data/3306/mysql.sock 库名 &gt; 备份路径.sql<br>备份完成检查：egrep -v “#|*|–|^$” 备份数据库文件路径<br>（1）-B 参数：表示接多个库，会加入建库及use库的过程。没有特殊情况一般都要加此参数。加入-B参数，后面可以直接接多个库名进行备份<br>（2）–compact 优化输出的大小，让容量更少，适合调试用。<br>（3）mysqldump …|gzip &gt; 路径.sql.gz   一般加入gzip管道压缩备份数据库<br>（4）–default-character-set=需要备份的数据库的字符集（备份出现乱码的时候用，一般不用）<br>（5）备份单表或多表：前面不加-B参数 前面加数据库名，后接表名，就是备份单表或多表<br>（6）-d 只备份表结构   -t 只备份数据  -T –tab=name 分离库表和数据成不同的文件，数据是文本，非SQL语句。<br>（7）-F 刷新bin-log日志，重新生成新的bin-log文件。可以理解为切割bin-log<br>（8）–master-data=1/2 在备份语句里添加change master语句和binlog文件对应的位置点。值为1为可执行的change master语句，为2是注释的change master语句。<br>（9）–single-transaction 适合innodb事务数据库备份，保持数据一致性<br>（10）-A 备份所有库<br>（11）-x 锁表 –lock-all-tables  -l –lock-tables 只读锁表<br>（12）-R 备份额外的存储过程和函数</p>
+</li>
+<li><p>生产场景，不同引擎mysqldump备份命令：<br>myisam引擎企业生产备份命令（适合所有引擎或混合引擎）：<br>mysqldump -uroot -p密码 -A -B -F -R–master-data=2 -x –events|gzip &gt; /opt/bak<em>$(date +%F).sql.gz  (-F也可以不用，与–master-data有重复)<br>innodb引擎备份命令：推荐使用：<br>mysqldump -uroot -p密码 -A -B -F -R –master-data=2 –events –single-transaction|gzip &gt; /opt/bak</em>$(date +%F).sql.gz (-F也可以不用，与–master-data有重复)</p>
+</li>
+<li><p>mysqldump命令逻辑备份，效率不是特别搞，简单、方便、可靠。适用与数据量不是特别大的场景，50G以内数据。  xtrabackup物理备份工具：全备和增量。   物理备份方案：从库停止SQL线程，打包，CP。</p>
+</li>
+<li><p>数据库恢复命令  source 备份数据库文件路径.sql （执行前，确保字符集正确），需要先登录mysql，use库。<br>数据库恢复标准命令 mysql -uroot -p密码 -S &lt; 备份文件; （如果备份没有加-B参数，需要建库，use库，mysql后需加数据库名） gzip -d 解压文件，会删除压缩原文件。 gunzip &lt;备份文件.sql.gz|mysql -u -p -S 此方法不会删除压缩源文件</p>
+</li>
+<li>生产场景常用命令：<br>show processlist;  查看正在执行的sql语句，看不全。<br>show full processlist; 查看正在执行的完整sql语句，完整显示<br>set global key_buffer_size = 32777218;  不重启数据库调整数据库参数，重启失效<br>show variables;  查看数据库的参数信息，例如my.cnf参数生效情况<br>kill ID  杀掉线程的命令，ID为线程号<br>show status; 查看当前回话的数据库状态信息<br>show global status;  查看整个数据库运行状态信息，很重要，要分析并做好监控。（工具mysqlreport）<br>show engine innodb status\G 显示INNODB引擎的性能状态（早起版本show innodb status;）</li>
+<li><p>mysqladmin的相关命令：<br>mysqladmin -uroot -p123456 status<br>mysqladmin -uroot -p123456  -S /data/3306/mysql.sock -i 1 status<br>mysqladmin -uroot -p123456 flush-logs<br>mysqladmin -uroot -p123456 processlist<br>mysqladmin -uroot -p123456 extended-status<br>mysqladmin -uroot -p123456 processlist -i 1 实时跟踪。<br>watch mysqladmin -uroot -p123456 -S /data/3306/mysql.sock processlist</p>
+</li>
+<li><p>mysqlbinlog -d 参数解析指定库的binlog日志 -r 生成文件，相当于重定向”&gt;”<br>mysqlbinlog –base64-output=”decode-rows” –verbose 解析行模式下binlog日志<br>mysqlbinlog mysql-bin.000020 –start-position=365 –stop-position=456 -r pos.sql<br>mysqlbinlog mysql-bin.000020 –start-datetime=’2014-10-16 17:14:15’ –stop-datetime=’2014-10-16 17:15:15’ -r time.sql</p>
+</li>
+<li><p>导出表数据到csv文件：<br>SELECT id,NAME,slug FROM location_area<br>INTO OUTFILE ‘/tmp/location_area.csv’<br>FIELDS TERMINATED BY ‘,’<br>OPTIONALLY ENCLOSED BY ‘“‘<br>LINES TERMINATED BY ‘\n’;</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/18/创建本地YUM仓库/" rel="next" title="创建本地YUM仓库">
+                <i class="fa fa-chevron-left"></i> 创建本地YUM仓库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/15/NOSQL - Memcached、Redis/" rel="prev" title="NOSQL - Memcached、Redis">
+                NOSQL - Memcached、Redis <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="qingyu.li" />
+          <p class="site-author-name" itemprop="name">qingyu.li</p>
+           
+              <p class="site-description motion-element" itemprop="description">简单不先于复杂，而是在复杂之后</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://piandeng.com/" title="Piandeng" target="_blank">Piandeng</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL语句分类："><span class="nav-number">1.</span> <span class="nav-text">SQL语句分类：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用命令："><span class="nav-number">2.</span> <span class="nav-text">常用命令：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qingyu.li</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("FqAp90PI86NxdOHOxWQ0VrFS-gzGzoHsz", "GKvXMFDzPRF3a0w9BaOEx52z");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+  
+
+</body>
+</html>

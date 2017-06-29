@@ -1,0 +1,2318 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Qingyu Li,李庆愉,运维,架构,devops" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="简单不先于复杂，而是在复杂之后">
+<meta property="og:type" content="website">
+<meta property="og:title" content="“运维 - 架构”">
+<meta property="og:url" content="http://charles.pub/page/2/index.html">
+<meta property="og:site_name" content="“运维 - 架构”">
+<meta property="og:description" content="简单不先于复杂，而是在复杂之后">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="“运维 - 架构”">
+<meta name="twitter:description" content="简单不先于复杂，而是在复杂之后">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'U8RQYDSHQE',
+      apiKey: '4e3ee6017aa53b87273a8f9c07c6fad8',
+      indexName: 'BlogIndex',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://charles.pub/page/2/"/>
+
+
+
+
+
+  <title> Qingyu Li,李庆愉,运维,架构,devops - “运维 - 架构”简单不先于复杂，而是在复杂之后 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b71d9b907f3535ada947168b45eb247b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">“运维 - 架构”</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/08/19/nginx安装配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/19/nginx安装配置/" itemprop="url">
+                  Nginx安装配置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-19T15:45:39+08:00">
+                2016-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/08/19/nginx安装配置/" class="leancloud_visitors" data-flag-title="Nginx安装配置">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="nginx安装"><a href="#nginx安装" class="headerlink" title="nginx安装"></a>nginx安装</h2><p>1、 安装依赖包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y pcre pcre-devel openssl openssl-devel</div></pre></td></tr></table></figure></p>
+<p>2、安装nginx，两种方法  </p>
+<ul>
+<li><p>官方yum仓库安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># CentOS 6 :</span></div><div class="line">rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm</div><div class="line"><span class="comment"># CentOS 7 :</span></div><div class="line"><span class="comment"># rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</span></div><div class="line">yum install -y nginx</div><div class="line">/etc/init.d/nginx start</div><div class="line">chkconfig nginx on</div></pre></td></tr></table></figure>
+</li>
+<li><p>编译安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">useradd nginx <span class="_">-s</span> /sbin/nologin -M</div><div class="line"><span class="built_in">cd</span> /home/root/tools</div><div class="line">wget http://nginx.org/download/nginx-1.6.3.tar.gz</div><div class="line">tar -zxvf nginx-1.6.3.tar.gz</div><div class="line"><span class="built_in">cd</span> nginx-1.6.3</div><div class="line">./configure --prefix=/application/nginx-1.6.3 --user=nginx --group=nginx --with-http_ssl_module --with-http_stub_status_module</div><div class="line">make</div><div class="line">make install</div><div class="line">ln <span class="_">-s</span> /application/nginx-1.6.3/ /application/nginx</div><div class="line"><span class="comment"># 启动</span></div><div class="line">/application/nginx/sbin/nginx</div><div class="line"><span class="comment"># 查看安装时的配置属性</span></div><div class="line">/application/nginx/sbin/nginx -V</div><div class="line"><span class="comment"># 加入开机自启动</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"/application/nginx/sbin/nginx"</span> &gt;&gt; /etc/rc.local</div></pre></td></tr></table></figure>
+</li>
+<li><p>常用命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 检查语法</span></div><div class="line">/application/nginx/sbin/nginx -t</div><div class="line"><span class="comment"># 平滑加载配置</span></div><div class="line">/application/nginx/sbin/nginx <span class="_">-s</span> reload</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="生产环境下基础配置"><a href="#生产环境下基础配置" class="headerlink" title="生产环境下基础配置"></a>生产环境下基础配置</h2>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/19/nginx安装配置/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/08/19/python 2.6升级2.7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/19/python 2.6升级2.7/" itemprop="url">
+                  python 2.6升级2.7
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-19T11:16:39+08:00">
+                2016-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/08/19/python 2.6升级2.7/" class="leancloud_visitors" data-flag-title="python 2.6升级2.7">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1）安装devtoolset"><a href="#1）安装devtoolset" class="headerlink" title="1）安装devtoolset"></a>1）安装devtoolset</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum groupinstall <span class="string">"Development tools"</span></div></pre></td></tr></table></figure>
+<h2 id="2）安装编译Python需要的包"><a href="#2）安装编译Python需要的包" class="headerlink" title="2）安装编译Python需要的包"></a>2）安装编译Python需要的包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel</div></pre></td></tr></table></figure>
+<h2 id="3）下载并解压Python-2-7-9的源代码"><a href="#3）下载并解压Python-2-7-9的源代码" class="headerlink" title="3）下载并解压Python 2.7.9的源代码"></a>3）下载并解压Python 2.7.9的源代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /opt</div><div class="line">wget --no-check-certificate https://www.python.org/ftp/python/2.7.9/Python-2.7.9.tar.xz</div><div class="line">tar xf Python-2.7.9.tar.xz</div><div class="line"><span class="built_in">cd</span> Python-2.7.9</div></pre></td></tr></table></figure>
+<h2 id="4）编译与安装Python-2-7-9"><a href="#4）编译与安装Python-2-7-9" class="headerlink" title="4）编译与安装Python 2.7.9"></a>4）编译与安装Python 2.7.9</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./configure --prefix=/usr/<span class="built_in">local</span></div><div class="line">make &amp;&amp; make altinstall</div></pre></td></tr></table></figure>
+<h2 id="5）将python命令指向Python-2-7-9"><a href="#5）将python命令指向Python-2-7-9" class="headerlink" title="5）将python命令指向Python 2.7.9"></a>5）将python命令指向Python 2.7.9</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mv /usr/<span class="built_in">local</span>/bin/python /usr/<span class="built_in">local</span>/bin/python.bak</div><div class="line">ln -sf /usr/<span class="built_in">local</span>/bin/python2.7 /usr/<span class="built_in">local</span>/bin/python</div><div class="line">mv /usr/bin/python /usr/bin/python.bak</div><div class="line">ln -sf /usr/<span class="built_in">local</span>/bin/python2.7 /usr/bin/python</div></pre></td></tr></table></figure>
+<h2 id="6）检查Python版本"><a href="#6）检查Python版本" class="headerlink" title="6）检查Python版本"></a>6）检查Python版本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">python -V</div><div class="line">Python 2.7.9</div></pre></td></tr></table></figure>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>1、由于yum是基于python2.6的，所以要修改yum配置,否则yum命令会报错。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vi /usr/bin/yum</div><div class="line"><span class="comment">#（原为#!/usr/bin/python）</span></div><div class="line"><span class="comment">#!/usr/bin/python2.6</span></div></pre></td></tr></table></figure></p>
+<p>2、根据情况，安装pip<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#安装easy_install</span></div><div class="line">wget http://peak.telecommunity.com/dist/ez_setup.py</div><div class="line">python ez_setup.py</div><div class="line">wget --no-check-certificate https://github.com/pypa/pip/archive/8.1.2.tar.gz</div><div class="line">tar zvxf 8.1.2</div><div class="line"><span class="built_in">cd</span> pip-8.1.2/</div><div class="line">python setup.py install</div><div class="line"><span class="comment">#安装完成后pip命令可能有多个版本，可以自行做软连接</span></div><div class="line"><span class="comment">#/usr/local/bin/pip2</span></div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/08/17/磁盘IO监控部署（Zabbix）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/17/磁盘IO监控部署（Zabbix）/" itemprop="url">
+                  磁盘IO监控部署（Zabbix）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-17T15:45:39+08:00">
+                2016-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/08/17/磁盘IO监控部署（Zabbix）/" class="leancloud_visitors" data-flag-title="磁盘IO监控部署（Zabbix）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="磁盘IO监控部署（Zabbix）"><a href="#磁盘IO监控部署（Zabbix）" class="headerlink" title="磁盘IO监控部署（Zabbix）"></a>磁盘IO监控部署（Zabbix）</h1><h2 id="一、在agentd上配置监控脚本"><a href="#一、在agentd上配置监控脚本" class="headerlink" title="一、在agentd上配置监控脚本"></a>一、在agentd上配置监控脚本</h2><h3 id="脚本代码"><a href="#脚本代码" class="headerlink" title="脚本代码"></a>脚本代码</h3><p>vim /etc/zabbix/scripts/discover_disk.pl<br><figure class="highlight perl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/perl</span></div><div class="line"><span class="comment"># Zabbix 2 - disk autodiscovery for linux</span></div><div class="line"><span class="comment"># all disks listed in /proc/diskstats are returned</span></div><div class="line"><span class="comment"># special processing on LVMs</span></div><div class="line"><span class="comment"># special processing on Proxmox VE disks (VM id and VM name are returned)</span></div><div class="line"><span class="comment"># rq : in Zabbix, create a regexp filter on which disks you want to monitor on your IT System</span></div><div class="line"><span class="comment"># ex : ^(hd[a-z]+|sd[a-z]+|vd[a-z]+|dm-[0-9]+|drbd[0-9]+)$</span></div><div class="line"><span class="comment">#      ^(loop[0-9]+|sr[0-9]*|fd[0-9]*)$</span></div><div class="line"></div><div class="line"><span class="comment"># Custom keys :</span></div><div class="line"><span class="comment">#UserParameter=custom.vfs.dev.read.ops[*],cat /proc/diskstats | grep "$1" | head -1 | awk '&#123;print $$4&#125;'</span></div><div class="line"><span class="comment">#UserParameter=custom.vfs.dev.read.ms[*],cat /proc/diskstats | grep "$1" | head -1 | awk '&#123;print $$7&#125;'</span></div><div class="line"><span class="comment">#UserParameter=custom.vfs.dev.write.ops[*],cat /proc/diskstats | grep "$1" | head -1 | awk '&#123;print $$8&#125;'</span></div><div class="line"><span class="comment">#UserParameter=custom.vfs.dev.write.ms[*],cat /proc/diskstats | grep "$1" | head -1 | awk '&#123;print $$11&#125;'</span></div><div class="line"><span class="comment">#UserParameter=custom.vfs.dev.io.active[*],cat /proc/diskstats | grep "$1" | head -1 | awk '&#123;print $$12&#125;'</span></div><div class="line"><span class="comment">#UserParameter=custom.vfs.dev.io.ms[*],cat /proc/diskstats | grep "$1" | head -1 | awk '&#123;print $$13&#125;'</span></div><div class="line"><span class="comment">#UserParameter=custom.vfs.dev.read.sectors[*],cat /proc/diskstats | grep "$1" | head -1 | awk '&#123;print $$6&#125;'</span></div><div class="line"><span class="comment">#UserParameter=custom.vfs.dev.write.sectors[*],cat /proc/diskstats | grep "$1" | head -1 | awk '&#123;print $$10&#125;'</span></div><div class="line"></div><div class="line"><span class="comment"># Discovery items creation :</span></div><div class="line"><span class="comment">#Disk &#123;#VMNAME&#125;:&#123;#DMNAME&#125; io spent      custom.vfs.dev.io.ms[&#123;#DISK&#125;]</span></div><div class="line"><span class="comment">#Disk &#123;#VMNAME&#125;:&#123;#DMNAME&#125; read bw       custom.vfs.dev.read.sectors[&#123;#DISK&#125;]</span></div><div class="line"><span class="comment">#Disk &#123;#VMNAME&#125;:&#123;#DMNAME&#125; read io       custom.vfs.dev.read.ops[&#123;#DEV&#125;]</span></div><div class="line"><span class="comment">#Disk &#123;#VMNAME&#125;:&#123;#DMNAME&#125; write bw      custom.vfs.dev.write.sectors[&#123;#DISK&#125;]</span></div><div class="line"><span class="comment">#Disk &#123;#VMNAME&#125;:&#123;#DMNAME&#125; write io      custom.vfs.dev.write.ops[&#123;#DEV&#125;]</span></div><div class="line"></div><div class="line"><span class="comment"># give disk dmname, returns Proxmox VM name</span></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">get_vmname_by_id</span></div><div class="line">  </span>&#123;</div><div class="line">  $vmname=<span class="string">`cat /etc/qemu-server/$_[0].conf | grep name | cut -d \: -f 2`</span>;</div><div class="line">  $vmname =~ <span class="regexp">s/^\s+//</span>; <span class="comment">#remove leading spaces</span></div><div class="line">  $vmname =~ <span class="regexp">s/\s+$//</span>; <span class="comment">#remove trailing spaces</span></div><div class="line">  <span class="keyword">return</span> $vmname</div><div class="line">  &#125;</div><div class="line"></div><div class="line">$first = <span class="number">1</span>;</div><div class="line"><span class="keyword">print</span> <span class="string">"&#123;\n"</span>;</div><div class="line"><span class="keyword">print</span> <span class="string">"\t\"data\":[\n\n"</span>;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="string">`cat /proc/diskstats`</span>)</div><div class="line">  &#123;</div><div class="line">  ($major,$minor,$disk) = <span class="regexp">m/^\s*([0-9]+)\s+([0-9]+)\s+(\S+)\s.*$/</span>;</div><div class="line">  $dmnamefile = <span class="string">"/sys/dev/block/$major:$minor/dm/name"</span>;</div><div class="line">  $vmid= <span class="string">""</span>;</div><div class="line">  $vmname = <span class="string">""</span>;</div><div class="line">  $dmname = $disk;</div><div class="line">  $diskdev = <span class="string">"/dev/$disk"</span>;</div><div class="line">  <span class="comment"># DM name</span></div><div class="line">  <span class="keyword">if</span> (-e $dmnamefile) &#123;</div><div class="line">    $dmname = <span class="string">`cat $dmnamefile`</span>;</div><div class="line">    $dmname =~ <span class="regexp">s/\n$//</span>; <span class="comment">#remove trailing \n</span></div><div class="line">    $diskdev = <span class="string">"/dev/mapper/$dmname"</span>;</div><div class="line">    <span class="comment"># VM name and ID</span></div><div class="line">    <span class="keyword">if</span> ($dmname =~ <span class="regexp">m/^.*--([0-9]+)--.*$/</span>) &#123;</div><div class="line">      $vmid = $1;</div><div class="line">      <span class="comment">#$vmname = get_vmname_by_id($vmid);</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  <span class="comment">#print("$major $minor $disk $diskdev $dmname $vmid $vmname \n");</span></div><div class="line"></div><div class="line">  <span class="keyword">print</span> <span class="string">"\t,\n"</span> <span class="keyword">if</span> <span class="keyword">not</span> $first;</div><div class="line">  $first = <span class="number">0</span>;</div><div class="line"></div><div class="line">  <span class="keyword">print</span> <span class="string">"\t&#123;\n"</span>;</div><div class="line">  <span class="keyword">print</span> <span class="string">"\t\t\"&#123;#DISK&#125;\":\"$disk\",\n"</span>;</div><div class="line">  <span class="keyword">print</span> <span class="string">"\t\t\"&#123;#DISKDEV&#125;\":\"$diskdev\",\n"</span>;</div><div class="line">  <span class="keyword">print</span> <span class="string">"\t\t\"&#123;#DMNAME&#125;\":\"$dmname\",\n"</span>;</div><div class="line">  <span class="keyword">print</span> <span class="string">"\t\t\"&#123;#VMNAME&#125;\":\"$vmname\",\n"</span>;</div><div class="line">  <span class="keyword">print</span> <span class="string">"\t\t\"&#123;#VMID&#125;\":\"$vmid\"\n"</span>;</div><div class="line">  <span class="keyword">print</span> <span class="string">"\t&#125;\n"</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">"\n\t]\n"</span>;</div><div class="line"><span class="keyword">print</span> <span class="string">"&#125;\n"</span>;</div></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/17/磁盘IO监控部署（Zabbix）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/08/16/从MySQL官方Yum仓库安装MySQL5.6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/16/从MySQL官方Yum仓库安装MySQL5.6/" itemprop="url">
+                  从MySQL官方Yum仓库安装MySQL5.6
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-16T10:52:39+08:00">
+                2016-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/08/16/从MySQL官方Yum仓库安装MySQL5.6/" class="leancloud_visitors" data-flag-title="从MySQL官方Yum仓库安装MySQL5.6">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="下载MySQL-Yum-Repository文件"><a href="#下载MySQL-Yum-Repository文件" class="headerlink" title="下载MySQL Yum Repository文件"></a>下载MySQL Yum Repository文件</h3><p><a href="http://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="external">http://dev.mysql.com/downloads/repo/yum/</a></p>
+<p>选择服务器对应的系统版本，例如：</p>
+<blockquote>
+<p>Red Hat Enterprise Linux 6 / Oracle Linux 6 (Architecture Independent), RPM Package</p>
+</blockquote>
+<p>点击Download下载，进入下级页面后，选择直接下载</p>
+<blockquote>
+<p>No thanks, just start my download.</p>
+</blockquote>
+<p>将下载好的文件上传至服务器后，执行如下代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">yum localinstall mysql57-community-release-el6-8.noarch.rpm</div><div class="line">yum clean all</div><div class="line">vim /etc/yum.repos.d/mysql-community.repo</div><div class="line"><span class="comment"># 将[mysql57-community]设置成enabled=0，[mysql56-community]设置成enabled=1</span></div><div class="line">yum makecache</div></pre></td></tr></table></figure>
+<p>配置好yum源后，即可yum安装mysql，mysql-server，mysql-devel</p>
+<h3 id="解决如下错误："><a href="#解决如下错误：" class="headerlink" title="解决如下错误："></a>解决如下错误：</h3><blockquote>
+<p>pip install MySQL-python<br>error: command ‘gcc’ failed with exit status 1</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install -y mysql-devel</div><div class="line">pip install MySQL-python -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/08/12/Docker — 从入门到实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/12/Docker — 从入门到实践/" itemprop="url">
+                  Docker — 从入门到实践
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-12T11:52:50+08:00">
+                2016-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/08/12/Docker — 从入门到实践/" class="leancloud_visitors" data-flag-title="Docker — 从入门到实践">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Docker-—-从入门到实践"><a href="#Docker-—-从入门到实践" class="headerlink" title="Docker — 从入门到实践"></a>Docker — 从入门到实践</h1><p>在线阅读：GitBook 或 Github。</p>
+<p>Gitbook:</p>
+<p><a href="https://www.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="external">https://www.gitbook.com/book/yeasy/docker_practice/details</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/08/12/生产环境MYSQL数据库Xtrabackup备份方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/12/生产环境MYSQL数据库Xtrabackup备份方案/" itemprop="url">
+                  生产环境MYSQL数据库Xtrabackup备份、恢复方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-12T10:52:39+08:00">
+                2016-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/08/12/生产环境MYSQL数据库Xtrabackup备份方案/" class="leancloud_visitors" data-flag-title="生产环境MYSQL数据库Xtrabackup备份、恢复方案">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="程序结构"><a href="#程序结构" class="headerlink" title="程序结构"></a>程序结构</h2><p>设计4个目录（bin、conf、log、var）：</p>
+<ul>
+<li>bin：存放运行备份的主脚本程序（*.sh）。</li>
+<li>conf：存放着程序运行的配置文件变量（*.conf）。</li>
+<li>log：存放的是备份时xtrabackup的输出内容（*.log）。</li>
+<li>var：存放了索引文件（*.index）和错误记录文件（*.err）。</li>
+<li>*.index：每当备份成功后都会记录一条信息到此文件中，此文件也是增量备份的一个基础文件，程序会用过此文件判断是增量备份还是全量备份。</li>
+<li>*.err：每当备份出错了会记录一条数据到此文件。如果需要对备份成功与否进行监控，可以通过此文件的变化来判断是否备份成（文件无变化就是备份成功了）。</li>
+</ul>
+<h2 id="先决条件：安装、正常使用Percona-Xtrabackup"><a href="#先决条件：安装、正常使用Percona-Xtrabackup" class="headerlink" title="先决条件：安装、正常使用Percona Xtrabackup"></a>先决条件：安装、正常使用Percona Xtrabackup</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 安装Xtrabackup官方yum源仓库</span></div><div class="line">yum install -y http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm</div><div class="line"><span class="comment"># 安装Xtrabackup</span></div><div class="line">yum install -y percona-xtrabackup-24</div><div class="line"><span class="comment"># mysql5.1版本，请安装percona-xtrabackup-20</span></div><div class="line"><span class="comment"># yum install percona-xtrabackup-20</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>为了安全起见，备份程序使用mysql用户来执行操作</strong></li>
+</ul>
+<h2 id="程序文件、代码"><a href="#程序文件、代码" class="headerlink" title="程序文件、代码"></a>程序文件、代码</h2>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/12/生产环境MYSQL数据库Xtrabackup备份方案/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/08/11/Openvz安装、部署/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/11/Openvz安装、部署/" itemprop="url">
+                  Openvz安装、部署
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-11T10:06:39+08:00">
+                2016-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/08/11/Openvz安装、部署/" class="leancloud_visitors" data-flag-title="Openvz安装、部署">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://wiki.openvz.org/" target="_blank" rel="external">http://wiki.openvz.org/</a></p>
+<h1 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">##  aliyun、epel和openvz.repo</span></div><div class="line"><span class="comment">##  如有依赖错误，则下载低版本的vzkernel</span></div><div class="line"></div><div class="line">yum  install  vzkernel </div><div class="line"></div><div class="line"><span class="comment"># 可以在包含openvz的title中稍作修改</span></div><div class="line">vim  /boot/grub/menu.lst</div><div class="line"></div><div class="line">yum  install  vzctl  vzquota  ploop</div><div class="line">调整内核参数：</div><div class="line"><span class="comment">##  编辑系统设置</span></div><div class="line">vim  /etc/sysctl.conf</div><div class="line"><span class="comment">## 设置相关参数</span></div><div class="line">net.ipv4.ip_forward = 1</div><div class="line">kernel.sysrq = 1</div><div class="line"><span class="comment"># sysctl -p</span></div><div class="line"></div><div class="line"><span class="comment">## 下载template：</span></div><div class="line"><span class="comment">## 模板下载地址：http://download.openvz.org/</span></div><div class="line"><span class="comment">## 拷贝至 /vz/template/cache/目录中</span></div><div class="line">mv  suse-13.1-x86_64.tar.gz  /vz/template/cache/</div><div class="line">重启机器进入openvz内核：</div><div class="line">shutdown  -r  now</div></pre></td></tr></table></figure>
+<h1 id="创建实例"><a href="#创建实例" class="headerlink" title="创建实例"></a>创建实例</h1><p>创建一个ID为2000的虚拟环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## 命令如下</span></div><div class="line">vzctl  create  2000  --ostemplate  suse-13.1-x86_64    --config unlimited</div><div class="line"></div><div class="line"><span class="comment"># vzctl set 101 --save --name server101</span></div><div class="line"><span class="comment"># vzctl set 101 --save --onboot yes</span></div><div class="line"><span class="comment"># vzctl set 101 --save --hostname server101.example.com</span></div><div class="line"><span class="comment"># vzctl set 101 --save --ipadd 192.168.1.101</span></div><div class="line"><span class="comment"># vzctl set 101 --save --searchdomain example.com</span></div><div class="line"><span class="comment"># vzctl set 101 --save --nameserver 8.8.8.8 --nameserver 8.8.4.4</span></div><div class="line"><span class="comment"># vzctl set 101 --save --cpus 4</span></div><div class="line"><span class="comment"># vzctl set 101 --save --ram 8G</span></div><div class="line"><span class="comment"># vzctl set 101 --save --swap 4G</span></div><div class="line"><span class="comment"># vzctl set 101 --save --diskspace 100G</span></div><div class="line"><span class="comment"># vzctl start 101</span></div><div class="line"><span class="comment"># vzctl exec 101 passwd</span></div><div class="line"></div><div class="line">创建的虚拟服务器开机启动：</div><div class="line">vzctl  <span class="built_in">set</span>  2000  --onboot  yes  --save</div><div class="line">为虚拟服务器设置hostname和IP：</div><div class="line"><span class="comment">## 设置网络</span></div><div class="line">vzctl  <span class="built_in">set</span>  2000  --ipadd=172.16.1.21  --save</div><div class="line">vzctl  <span class="built_in">set</span>  2000  --nameserver  114.114.114.114  --save</div><div class="line">vzctl  <span class="built_in">set</span>  2000  --hostname  suse.fuwo.com  --save</div><div class="line">vzctl  <span class="built_in">set</span>  2000  --diskspace  8G:8G    --save</div><div class="line">vzctl  start  2000</div><div class="line"></div><div class="line"><span class="comment"># 配置虚拟主机密码</span></div><div class="line">vzctl  <span class="built_in">exec</span>  2000  passwd      </div><div class="line">查看正在运行的VE/VPS：</div><div class="line"><span class="comment">##  查看虚拟机列表</span></div><div class="line">vzlist</div><div class="line"></div><div class="line"><span class="comment">## 启动、重启、关闭和断电关闭ID为2000的VE/VPS：</span></div><div class="line"></div><div class="line">vzctl  start  2000</div><div class="line">vzctl  restart  2000</div><div class="line">vzctl  stop  2000</div><div class="line"></div><div class="line"><span class="comment">## 删除虚拟机</span></div><div class="line">vzctl  destroy  2000    </div><div class="line"></div><div class="line"><span class="comment">## 计算ID为2000的VE/VPS用到的资源：</span></div><div class="line">vzcalc  -v  2000</div><div class="line"></div><div class="line"><span class="comment">## 可以直接编辑虚拟服务器的配置文件，位于/etc/vz/conf/100.conf</span></div><div class="line"><span class="comment">## 进入虚拟机：</span></div><div class="line">vzctl  enter  2000</div><div class="line"></div><div class="line">打开openvz的虚拟机的时间修改：</div><div class="line">vzctl <span class="built_in">set</span> 2000 --capability sys_time:on --setmode</div><div class="line">vzctl <span class="built_in">set</span> 2000 --capability sys_time:on --save</div><div class="line"></div><div class="line">vzctl <span class="built_in">set</span> CTID --diskspace <span class="variable">$SoftLimit</span>$:<span class="variable">$HardLimit</span>$ --save</div><div class="line">vzctl <span class="built_in">set</span> 101 --diskspace 6G:7G --save</div><div class="line">vzctl <span class="built_in">exec</span> 101 df -h</div><div class="line"></div><div class="line"><span class="comment"># 设置swap分区</span></div><div class="line">vzctl <span class="built_in">set</span> 33 --swappages 0:1024M --save</div><div class="line"></div><div class="line"><span class="comment"># 调整内存</span></div><div class="line">Guaranteed 1024MB and 2048MB Burstable</div><div class="line">vzctl <span class="built_in">set</span> <span class="variable">$&#123;veid&#125;</span> --vmguarpages 1024M --save</div><div class="line">vzctl <span class="built_in">set</span> <span class="variable">$&#123;veid&#125;</span> --oomguarpages 1024M --save</div><div class="line">vzctl <span class="built_in">set</span> <span class="variable">$&#123;veid&#125;</span> --privvmpages 1024M:2048M --save</div><div class="line"></div><div class="line"><span class="comment"># 修改时区</span></div><div class="line">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</div></pre></td></tr></table></figure>
+<h1 id="备份、恢复实例"><a href="#备份、恢复实例" class="headerlink" title="备份、恢复实例"></a>备份、恢复实例</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 添加yum源，安装vzdump工具</span></div><div class="line">vim /etc/yum.repos.d/solusvm.repo</div><div class="line">[soluslabs]</div><div class="line">name=Soluslab Repo</div><div class="line"><span class="comment">#baseurl=http://repo.soluslabs.com/centos/$releasever/os/$basearch</span></div><div class="line">mirrorlist=http://repo.soluslabs.com/centos/mirrors-soluslabs</div><div class="line">gpgcheck=0</div><div class="line">enabled=1</div><div class="line"></div><div class="line"><span class="comment"># 备份：</span></div><div class="line">vzdump -compress -dumpdir /vz/backup -all 或直接接单个CTID</div><div class="line">–compress 意思是: 压缩备份的文件 (压缩为一个.tgz文件).</div><div class="line">–dumpdir确定你想存储备份的文件夹，如果你不定义一个dumpdir，默认为/vz/dump或者/var/lib/vz/dump（依赖你的版本）。</div><div class="line">–stop 停止虚拟机，常见备份，然后启动虚拟机。如果你使用—stop你的虚拟机将会停掉几分钟.一个更快的方案是你使用…</div><div class="line">–<span class="built_in">suspend</span>:挂起虚拟机，虚拟机备份这时会拷贝via rsync到一个临时文件.虚拟机将会在定调几秒后立刻得以恢复，然后这个dump被创建使用的是临时文件夹下的拷贝。我推荐使用这种方法如果你不想等太久的话。</div><div class="line">你也可以省去–stop 和 –<span class="built_in">suspend</span>直接备份一个正在运行的虚拟机，大多数情况下这是没有问题的，但是可能会使备份不同意，因此请慎用!</div><div class="line">–all创建所有可用虚拟机的备份，如果你想备份一个特定虚拟机的备份，使用虚拟机的VEID来替换。</div><div class="line"></div><div class="line"><span class="comment"># 恢复命令：</span></div><div class="line">vzdump --restore vzdump-2000.tgz 2000</div><div class="line">恢复镜像后，重新修改IP地址和主机名</div><div class="line">vzctl <span class="built_in">set</span> 142 --hostname heyang.local --save</div><div class="line">vzctl <span class="built_in">set</span> 142 --ipdel 192.168.8.49 --save</div><div class="line">vzctl <span class="built_in">set</span> 142 --ipadd 192.168.8.58 --save</div><div class="line">vzctl start 142</div></pre></td></tr></table></figure>
+<h1 id="实例网络相关："><a href="#实例网络相关：" class="headerlink" title="实例网络相关："></a>实例网络相关：</h1><p>Using NAT for container with private IPs<br><a href="https://openvz.org/Using_NAT_for_container_with_private_IPs" target="_blank" rel="external">https://openvz.org/Using_NAT_for_container_with_private_IPs</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/08/05/Hexo搭建博客配置过程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/05/Hexo搭建博客配置过程/" itemprop="url">
+                  Hexo搭建博客配置过程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-05T16:18:58+08:00">
+                2016-08-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/08/05/Hexo搭建博客配置过程/" class="leancloud_visitors" data-flag-title="Hexo搭建博客配置过程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Hexo简介"><a href="#Hexo简介" class="headerlink" title="Hexo简介"></a>Hexo简介</h1><hr>
+<h2 id="什么是HEXO？"><a href="#什么是HEXO？" class="headerlink" title="什么是HEXO？"></a><strong>什么是HEXO？</strong></h2><p>Hexo是一款基于Node.js的静态博客生成程序，作者是台湾的tommy351。</p>
+<p>tommy351对Hexo的介绍：</p>
+<blockquote>
+<p>超快速度 Node.js 所带来的超快生成速度，让上百个页面在几秒内瞬间完成渲染。<br>支持 Markdown Hexo 支持 GitHub Flavored Markdown 的所有功能，甚至可以整合 Octopress 的大多数插件。<br>一键部署 只需一条指令即可部署到 GitHub Pages, Heroku 或其他网站。<br>丰富的插件 Hexo 拥有强大的插件系统，安装插件可以让 Hexo 支持 Jade, CoffeeScript。</p>
+</blockquote>
+<h2 id="为什么用Hexo？"><a href="#为什么用Hexo？" class="headerlink" title="为什么用Hexo？"></a>为什么用Hexo？</h2><ul>
+<li><p>免费<br>可以部署到GitHub、GitCafe、七牛，都是完全免费的。</p>
+</li>
+<li><p>简单<br>比部署WordPress要简单得多，只需要简单几部就能搭建好环境，仅需要记住几条简短的命令、简单的Markdown语法，即可写出精彩的文章。</p>
+</li>
+<li><p>稳定<br>再也不用去操心主机的运维了。</p>
+</li>
+<li><p>快速<br>同时部署到GitHub、GitCafe、七牛，在全球都可获得优秀的访问速度。</p>
+</li>
+</ul>
+<h1 id="Hexo安装和配置"><a href="#Hexo安装和配置" class="headerlink" title="Hexo安装和配置"></a>Hexo安装和配置</h1><hr>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/05/Hexo搭建博客配置过程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/07/25/Zabbix监控体系部署/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/25/Zabbix监控体系部署/" itemprop="url">
+                  Zabbix监控体系部署
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-25T18:45:20+08:00">
+                2016-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/07/25/Zabbix监控体系部署/" class="leancloud_visitors" data-flag-title="Zabbix监控体系部署">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Zabbix监控体系部署"><a href="#Zabbix监控体系部署" class="headerlink" title="Zabbix监控体系部署"></a>Zabbix监控体系部署</h1><h2 id="监控体系包含哪些"><a href="#监控体系包含哪些" class="headerlink" title="监控体系包含哪些"></a>监控体系包含哪些</h2><ul>
+<li>硬件监控</li>
+<li>系统监控</li>
+<li>网络监控</li>
+<li>应用监控</li>
+</ul>
+<h2 id="zabbix-服务端部署"><a href="#zabbix-服务端部署" class="headerlink" title="zabbix 服务端部署"></a>zabbix 服务端部署</h2><h3 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h3><ul>
+<li>zabbix_3.0 要求php版本至少在5.4以上</li>
+<li>php编译时，必须加上<code>--with-mysqli=mysqlnd</code>和<code>--with-gettext</code>，前者不装则安装zabbix时database type没有选项，默认出来的数据库是SqLite 3，且不能切换，后者不装则会报PHP gettext warning）。</li>
+</ul>
+<h3 id="1-安装配置NGINX"><a href="#1-安装配置NGINX" class="headerlink" title="1.安装配置NGINX"></a>1.安装配置NGINX</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm</div><div class="line"><span class="comment"># 安装一些依赖</span></div><div class="line">yum install pcre pcre-devel openssl openssl-devel -y</div><div class="line">yum install -y nginx</div><div class="line">/etc/init.d/nginx start</div><div class="line">chkconfig nginx on</div></pre></td></tr></table></figure>
+<h3 id="2-安装MySQL5-6"><a href="#2-安装MySQL5-6" class="headerlink" title="2.安装MySQL5.6"></a>2.安装MySQL5.6</h3><h4 id="配置mysql官方yum源"><a href="#配置mysql官方yum源" class="headerlink" title="配置mysql官方yum源"></a>配置mysql官方yum源</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># Centos6</div><div class="line">yum install -y http://dev.mysql.com/get/mysql57-community-release-el6-8.noarch.rpm</div><div class="line">yum clean all</div><div class="line"># 修改yum源mysql版本可用信息</div><div class="line">vim /etc/yum.repos.d/mysql-community.repo</div><div class="line"># 将[mysql57-community]设置成enabled=0，[mysql56-community]设置成enabled=1</div><div class="line">yum makecache</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/07/25/Zabbix监控体系部署/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/07/18/SaltStack安装、部署及实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/18/SaltStack安装、部署及实践/" itemprop="url">
+                  SaltStack安装、部署及实践
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-18T16:19:16+08:00">
+                2016-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/07/18/SaltStack安装、部署及实践/" class="leancloud_visitors" data-flag-title="SaltStack安装、部署及实践">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="Run-the-following-commands-to-install-the-SaltStack-repository-and-key"><a href="#Run-the-following-commands-to-install-the-SaltStack-repository-and-key" class="headerlink" title="Run the following commands to install the SaltStack repository and key:"></a>Run the following commands to install the SaltStack repository and key:</h2><h3 id="RedHat-Centos6"><a href="#RedHat-Centos6" class="headerlink" title="RedHat/Centos6:"></a>RedHat/Centos6:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el6.noarch.rpm</div></pre></td></tr></table></figure>
+<h3 id="RedHat-Centos7"><a href="#RedHat-Centos7" class="headerlink" title="RedHat/Centos7:"></a>RedHat/Centos7:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el7.noarch.rpm</div></pre></td></tr></table></figure>
+<h2 id="Run-yum-clean-expire-cache"><a href="#Run-yum-clean-expire-cache" class="headerlink" title="Run yum clean expire-cache"></a>Run <code>yum clean expire-cache</code></h2><h2 id="Install-the-salt-minion-salt-master-or-other-Salt-components"><a href="#Install-the-salt-minion-salt-master-or-other-Salt-components" class="headerlink" title="Install the salt-minion, salt-master, or other Salt components:"></a>Install the salt-minion, salt-master, or other Salt components:</h2><ul>
+<li><code>yum install salt-master</code></li>
+<li><code>yum install salt-minion</code></li>
+<li><code>yum install salt-ssh</code></li>
+<li><code>yum install salt-syndic</code></li>
+<li><code>yum install salt-cloud</code></li>
+<li><code>yum install salt-api</code></li>
+</ul>
+<h2 id="Automatically-start"><a href="#Automatically-start" class="headerlink" title="Automatically start"></a>Automatically start</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chkconfig salt-master on</div><div class="line">chkconfig salt-minion on</div></pre></td></tr></table></figure>
+<h2 id="其他安装方式：salt-bootstrap-项目，多平台一键部署SaltStack环境"><a href="#其他安装方式：salt-bootstrap-项目，多平台一键部署SaltStack环境" class="headerlink" title="其他安装方式：salt-bootstrap 项目，多平台一键部署SaltStack环境"></a>其他安装方式：salt-bootstrap 项目，多平台一键部署SaltStack环境</h2><h3 id="Master端安装："><a href="#Master端安装：" class="headerlink" title="Master端安装："></a>Master端安装：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">curl -L https://bootstrap.saltstack.com -o install_salt.sh</div><div class="line">sh install_salt.sh -P -M # 如果不需要安装Minion，只安装master，需要加上&quot;-N&quot;参数</div><div class="line"># sh install_salt.sh -h 查看可用脚本参数</div></pre></td></tr></table></figure>
+<h3 id="Minion端安装："><a href="#Minion端安装：" class="headerlink" title="Minion端安装："></a>Minion端安装：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">echo &quot;IPADDRESS salt&quot; &gt;&gt; /etc/hosts # IPADDRESS为Master服务器地址</div><div class="line">curl -L https://bootstrap.saltstack.com -o install_salt.sh</div><div class="line">sh install_salt.sh -P -i Minion # 只安装最新版Minion并指定ID为&quot;Minion&quot;</div></pre></td></tr></table></figure>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="minion配置修改"><a href="#minion配置修改" class="headerlink" title="minion配置修改"></a>minion配置修改</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sed -i &apos;s/#master: salt/master: IPADDRESS/g&apos; /etc/salt/minion  #IPADDRESS为Master服务器地址</div><div class="line">sed -i &apos;s/#id:/id: ID/g&apos; /etc/salt/minion  #ID为自定义客户端ID号，可用客户端IP地址</div><div class="line">service salt-master start</div><div class="line">service salt-minion start</div></pre></td></tr></table></figure>
+<h2 id="master服务端查看证书签证情况，并同意没有接受的签证请求"><a href="#master服务端查看证书签证情况，并同意没有接受的签证请求" class="headerlink" title="master服务端查看证书签证情况，并同意没有接受的签证请求"></a>master服务端查看证书签证情况，并同意没有接受的签证请求</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">salt-key -L</div><div class="line">salt-key -A -y</div><div class="line"># 更多的证书管理命令，可运行salt-key -h查看</div></pre></td></tr></table></figure>
+<h2 id="执行第一条SaltStack命令"><a href="#执行第一条SaltStack命令" class="headerlink" title="执行第一条SaltStack命令"></a>执行第一条SaltStack命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">salt &apos;ID&apos; test.ping # ID 为客户端ID，或者其他角色定义</div></pre></td></tr></table></figure>
+<h2 id="一些常用命令"><a href="#一些常用命令" class="headerlink" title="一些常用命令"></a>一些常用命令</h2>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/07/18/SaltStack安装、部署及实践/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+          
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="qingyu.li" />
+          <p class="site-author-name" itemprop="name">qingyu.li</p>
+           
+              <p class="site-description motion-element" itemprop="description">简单不先于复杂，而是在复杂之后</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://piandeng.com/" title="Piandeng" target="_blank">Piandeng</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qingyu.li</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("FqAp90PI86NxdOHOxWQ0VrFS-gzGzoHsz", "GKvXMFDzPRF3a0w9BaOEx52z");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+  
+
+</body>
+</html>

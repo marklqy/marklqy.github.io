@@ -1,0 +1,936 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="MySQL," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="编译安装MySQL5.6.32安装mysql5.6.321、安装依赖软件包12yum -y install ncurses-devel libaio-devel cmakerpm -qa ncurses-devel libaio-devel
+2、创建用户和组：12useradd -s /sbin/nologin -M mysqlmkdir -p /data/mysql
+4、安装mysql12345">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编译安装MySQL5.6.32">
+<meta property="og:url" content="http://charles.pub/2016/12/10/编译安装MySQL5.6.32/index.html">
+<meta property="og:site_name" content="“运维 - 架构”">
+<meta property="og:description" content="编译安装MySQL5.6.32安装mysql5.6.321、安装依赖软件包12yum -y install ncurses-devel libaio-devel cmakerpm -qa ncurses-devel libaio-devel
+2、创建用户和组：12useradd -s /sbin/nologin -M mysqlmkdir -p /data/mysql
+4、安装mysql12345">
+<meta property="og:updated_time" content="2017-05-24T05:55:57.473Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="编译安装MySQL5.6.32">
+<meta name="twitter:description" content="编译安装MySQL5.6.32安装mysql5.6.321、安装依赖软件包12yum -y install ncurses-devel libaio-devel cmakerpm -qa ncurses-devel libaio-devel
+2、创建用户和组：12useradd -s /sbin/nologin -M mysqlmkdir -p /data/mysql
+4、安装mysql12345">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'U8RQYDSHQE',
+      apiKey: '4e3ee6017aa53b87273a8f9c07c6fad8',
+      indexName: 'BlogIndex',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://charles.pub/2016/12/10/编译安装MySQL5.6.32/"/>
+
+
+
+
+
+  <title> 编译安装MySQL5.6.32 | “运维 - 架构” </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b71d9b907f3535ada947168b45eb247b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">“运维 - 架构”</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/12/10/编译安装MySQL5.6.32/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                编译安装MySQL5.6.32
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-10T10:36:20+08:00">
+                2016-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/12/10/编译安装MySQL5.6.32/" class="leancloud_visitors" data-flag-title="编译安装MySQL5.6.32">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="编译安装MySQL5-6-32"><a href="#编译安装MySQL5-6-32" class="headerlink" title="编译安装MySQL5.6.32"></a>编译安装MySQL5.6.32</h1><h2 id="安装mysql5-6-32"><a href="#安装mysql5-6-32" class="headerlink" title="安装mysql5.6.32"></a>安装mysql5.6.32</h2><p>1、安装依赖软件包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum -y install ncurses-devel libaio-devel cmake</div><div class="line">rpm -qa ncurses-devel libaio-devel</div></pre></td></tr></table></figure></p>
+<p>2、创建用户和组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">useradd -s /sbin/nologin -M mysql</div><div class="line">mkdir -p /data/mysql</div></pre></td></tr></table></figure></p>
+<p>4、安装mysql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">cd /tmp</div><div class="line">wget http://120.52.72.22/cdn.mysql.com/c3pr90ntc0td//Downloads/MySQL-5.6/mysql-5.6.32.tar.gz</div><div class="line">tar xf mysql-5.6.32.tar.gz</div><div class="line">cd mysql-5.6.32</div><div class="line"># 编译</div><div class="line">cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql-5.6.32 \</div><div class="line">-DMYSQL_DATADIR=/usr/local/mysql-5.6.32/data \</div><div class="line">-DMYSQL_UNIX_ADDR=/usr/local/mysql-5.6.32/tmp/mysql.sock \</div><div class="line">-DDEFAULT_CHARSET=utf8 \</div><div class="line">-DDEFAULT_COLLATION=utf8_general_ci \</div><div class="line">-DEXTRA_CHARSETS=gbk,gb2312,utf8,ascii \</div><div class="line">-DWITH_INNOBASE_STORAGE_ENGINE=1 \</div><div class="line">-DWITH_FEDERATED_STORAGE_ENGINE=1 \</div><div class="line">-DWITH_BLACKHOLE_STORAGE_ENGINE=1 \</div><div class="line">-DWITH_EXAMPLE_STORAGE_ENGINE=1 \</div><div class="line">-DWITH_PARTITION_STORAGE_ENGINE=1 \</div><div class="line">-DWITH_FAST_MUTEXES=1 \</div><div class="line">-DWITH_ZLIB=bundled \</div><div class="line">-DENABLED_LOCAL_INFILE=1 \</div><div class="line">-DWITH_READLINE=1 \</div><div class="line">-DWITH_EMBEDDED_SERVER=1 \</div><div class="line">-DWITH_DEBUG=0  </div><div class="line"># 安装</div><div class="line">make &amp;&amp; make install</div><div class="line"># 软连接</div><div class="line">ln -s /usr/local/mysql-5.6.32 /usr/local/mysql</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>5、配置my.cnf，优化参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line"># vim /data/mysql/my.cnf</div><div class="line"></div><div class="line">[client]</div><div class="line">port = 3306</div><div class="line">socket = /data/mysql/mysql.sock</div><div class="line">default-character-set = utf8</div><div class="line"></div><div class="line">[mysql]</div><div class="line">no-auto-rehash</div><div class="line"></div><div class="line">[mysqld]</div><div class="line">user    = mysql</div><div class="line">port    = 3306</div><div class="line">socket  = /data/mysql/mysql.sock</div><div class="line">basedir = /usr/local/mysql</div><div class="line">datadir = /data/mysql/data</div><div class="line">open_files_limit    = 1024</div><div class="line">back_log = 600</div><div class="line">max_connections = 800</div><div class="line">max_connect_errors = 3000</div><div class="line">external-locking = FALSE</div><div class="line">max_allowed_packet =8M</div><div class="line">sort_buffer_size = 1M</div><div class="line">join_buffer_size = 1M</div><div class="line">thread_cache_size = 100</div><div class="line">thread_concurrency = 2</div><div class="line">query_cache_size = 2M</div><div class="line">query_cache_limit = 1M</div><div class="line">query_cache_min_res_unit = 2k</div><div class="line">thread_stack = 192K</div><div class="line">tmp_table_size = 2M</div><div class="line">max_heap_table_size = 2M</div><div class="line">slow-query-log = 1</div><div class="line">long_query_time = 5</div><div class="line">log-error = /data/mysql/error.log</div><div class="line">slow-query-log-file = /data/mysql/slow.log</div><div class="line">pid-file = /data/mysql/ecstore.pid</div><div class="line">log-bin = /data/mysql/mysql-bin</div><div class="line">relay-log = /data/mysql/relay-bin</div><div class="line">relay-log-info-file = /data/mysql/relay-log.info</div><div class="line">binlog_cache_size = 1M</div><div class="line">max_binlog_cache_size = 1M</div><div class="line">max_binlog_size = 2M</div><div class="line">expire_logs_days = 7</div><div class="line">key_buffer_size = 16M</div><div class="line">read_buffer_size = 1M</div><div class="line">read_rnd_buffer_size = 1M</div><div class="line">bulk_insert_buffer_size = 1M</div><div class="line">lower_case_table_names = 1</div><div class="line">skip-name-resolve</div><div class="line">slave-skip-errors = 1032,1062</div><div class="line">replicate-ignore-db=mysql</div><div class="line">server-id = 1</div><div class="line">innodb_additional_mem_pool_size = 4M</div><div class="line">innodb_buffer_pool_size = 32M</div><div class="line">innodb_data_file_path = ibdata1:300M:autoextend</div><div class="line">innodb_file_io_threads = 4</div><div class="line">innodb_thread_concurrency = 8</div><div class="line">innodb_flush_log_at_trx_commit = 2</div><div class="line">innodb_log_buffer_size = 2M</div><div class="line">innodb_log_file_size = 4M</div><div class="line">innodb_log_files_in_group = 3</div><div class="line">innodb_max_dirty_pages_pct = 90</div><div class="line">innodb_lock_wait_timeout = 120</div><div class="line">innodb_file_per_table = 0</div><div class="line">explicit_defaults_for_timestamp=true</div><div class="line"></div><div class="line">[mysqldump]</div><div class="line">quick</div><div class="line">max_allowed_packet = 2M</div><div class="line"></div><div class="line">[mysqld_safe]</div><div class="line">log-error=/data/mysql/ecstore.err</div><div class="line">pid-file=/data/mysql/ecstore.pid</div></pre></td></tr></table></figure></p>
+<p>6、配置mysqld启动脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line"># vim /data/mysql/mysqld</div><div class="line"></div><div class="line">#!/bin/bash</div><div class="line">#Date: 2014-11-21</div><div class="line">#Author: Lachlan</div><div class="line">#Mail: 2857915@qq.com</div><div class="line">#Version: 1.3</div><div class="line">#Description:  MYSQL Startup script</div><div class="line">#NOTICE：CHANGE PORT,USERPASSWORD</div><div class="line"></div><div class="line">[ -f /etc/init.d/functions ] &amp;&amp; . /etc/init.d/functions</div><div class="line">PORT=3306</div><div class="line">RETVAL=0</div><div class="line">#remember change user and password</div><div class="line">mysql_user=&quot;root&quot;</div><div class="line">mysql_pwd=&quot;&quot;</div><div class="line">CmdPath=&quot;/usr/local/mysql/bin&quot;</div><div class="line">mysql_sock=&quot;/data/mysql/mysql.sock&quot;</div><div class="line"></div><div class="line">function Usage ()  </div><div class="line">&#123;  </div><div class="line">  echo &quot;Usage: $0 &#123;start|stop|restart&#125;&quot;</div><div class="line">  exit 1  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">function start_mysql()</div><div class="line">&#123;</div><div class="line">    if [ ! -e &quot;$mysql_sock&quot; ];then</div><div class="line">      echo  &quot;Starting MySQL...&quot;</div><div class="line">      /bin/sh $&#123;CmdPath&#125;/mysqld_safe --defaults-file=/data/mysql/my.cnf 2&gt;&amp;1 &gt; /dev/null &amp;</div><div class="line">      RETVAL=$?</div><div class="line">      [ $RETVAL -eq 0 ] &amp;&amp; action &quot;Starting MySQL&quot; /bin/true</div><div class="line">    else</div><div class="line">      echo  &quot;MySQL is already running...&quot;</div><div class="line">      action &quot;Starting MySQL&quot; /bin/false</div><div class="line">      exit</div><div class="line">    fi</div><div class="line">&#125;</div><div class="line"></div><div class="line">function stop_mysql()</div><div class="line">&#123;</div><div class="line">    if [ ! -e &quot;$mysql_sock&quot; ];then</div><div class="line">       echo &quot;MySQL has stopped...&quot;</div><div class="line">       action &quot;Stoping MySQL&quot; /bin/false</div><div class="line">       exit</div><div class="line">    else</div><div class="line">       echo   &quot;Stoping MySQL...&quot;</div><div class="line">       $&#123;CmdPath&#125;/mysqladmin -u $&#123;mysql_user&#125; -p$&#123;mysql_pwd&#125; -S /data/mysql/mysql.sock shutdown</div><div class="line">        RETVAL=$?</div><div class="line">      [ $RETVAL -eq 0 ] &amp;&amp; action &quot;Stoping MySQL&quot; /bin/true</div><div class="line">   fi</div><div class="line">&#125;</div><div class="line"></div><div class="line">function restart_mysql()</div><div class="line">&#123;</div><div class="line">    echo &quot;Restarting MySQL...&quot;</div><div class="line">    stop_mysql</div><div class="line">    sleep 2</div><div class="line">    start_mysql</div><div class="line">&#125;</div><div class="line"></div><div class="line">function main()</div><div class="line">&#123;</div><div class="line">if [ $# -ne 1 ];then  </div><div class="line">  Usage  </div><div class="line">fi  </div><div class="line">case $1 in</div><div class="line">start)</div><div class="line">     start_mysql</div><div class="line">;;</div><div class="line">stop)</div><div class="line">     stop_mysql</div><div class="line">;;</div><div class="line">restart)</div><div class="line">     restart_mysql</div><div class="line">;;</div><div class="line">*)</div><div class="line">    Usage</div><div class="line">esac</div><div class="line">&#125;</div><div class="line"></div><div class="line">main $*</div></pre></td></tr></table></figure></p>
+<p>7、安装后配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#更改权限</span></div><div class="line">mkdir -p /data/mysql/data</div><div class="line">chown mysql.mysql -R /data/mysql</div><div class="line">chmod 700 /data/mysql/mysqld</div><div class="line"><span class="built_in">echo</span> <span class="string">'export PATH=/usr/local/mysql/bin:$PATH'</span>&gt;&gt;/etc/profile</div><div class="line"><span class="built_in">source</span> /etc/profile</div><div class="line"></div><div class="line"><span class="comment">#初始化数据库</span></div><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/mysql/scripts/</div><div class="line">./mysql_install_db --basedir=/usr/<span class="built_in">local</span>/mysql --datadir=/data/mysql/data/ --user=mysql</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">#创建mysql账户</span></div><div class="line">grant all on *.* to bbcsql@<span class="string">'127.0.0.1'</span> identified by <span class="string">'bbc123#345'</span>;</div><div class="line">flush privileges;</div><div class="line"></div><div class="line"><span class="comment">#导入数据库,根据实际情况导入</span></div><div class="line"><span class="comment">#mysql -S /data/mysql/mysql.sock &lt; 数据库备份文件.sql</span></div><div class="line"></div><div class="line"><span class="comment">#启动mysql服务</span></div><div class="line">/data/mysql/mysqld start</div><div class="line"></div><div class="line"><span class="comment">#确认服务启动</span></div><div class="line">lsof -i :3306</div><div class="line"></div><div class="line"><span class="comment">#连接数据库</span></div><div class="line">mysql -S /data/mysql/mysql.sock</div></pre></td></tr></table></figure>
+<p>MySQL 版本 5.6.14</p>
+<p>公司有几台MySQL服务器的错误日志显示,有几个系统表不存在.<br>innodb_table_stats<br> innodb_index_stats<br> slave_master_info<br> slave_relay_log_info<br> slave_worker_info</p>
+<p>这是因为数据库初始化的时候,dba可能删除过ibdata1文件<br>虽然重启之后,数据库会自动创建一个ibdata1文件,但是上述系统表也是innodb引擎,所以不能访问了.<br>这虽然不会影响业务,但是使用innobackupex备份的时候,会写入错误日志.<br>最后错误日志里,都是这种信息.影响日常检查。</p>
+<p> 解决的方法.<br>1.删除上述系统表<br>drop table mysql.innodb_index_stats;<br> drop table mysql.innodb_table_stats;<br> drop table mysql.slave_master_info;<br> drop table mysql.slave_relay_log_info;<br> drop table mysql.slave_worker_info;</p>
+<p> 2.删除相关的.frm .ibd文件<br>rm -rf innodb_index_stats<em><br> rm -rf innodb_table_stats</em><br> rm -rf slave_master_info<em><br> rm -rf slave_relay_log_info</em><br> rm -rf slave_worker_info*</p>
+<p> 3.重新创建上述系统表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">CREATE TABLE `innodb_index_stats` (</div><div class="line">  `database_name` varchar(64) COLLATE utf8_bin NOT NULL,</div><div class="line">  `table_name` varchar(64) COLLATE utf8_bin NOT NULL,</div><div class="line">  `index_name` varchar(64) COLLATE utf8_bin NOT NULL,</div><div class="line">  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,</div><div class="line">  `stat_name` varchar(64) COLLATE utf8_bin NOT NULL,</div><div class="line">  `stat_value` bigint(20) unsigned NOT NULL,</div><div class="line">  `sample_size` bigint(20) unsigned DEFAULT NULL,</div><div class="line">  `stat_description` varchar(1024) COLLATE utf8_bin NOT NULL,</div><div class="line">  PRIMARY KEY (`database_name`,`table_name`,`index_name`,`stat_name`)</div><div class="line"> ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin STATS_PERSISTENT=0;</div><div class="line"></div><div class="line"> CREATE TABLE `innodb_table_stats` (</div><div class="line">  `database_name` varchar(64) COLLATE utf8_bin NOT NULL,</div><div class="line">  `table_name` varchar(64) COLLATE utf8_bin NOT NULL,</div><div class="line">  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,</div><div class="line">  `n_rows` bigint(20) unsigned NOT NULL,</div><div class="line">  `clustered_index_size` bigint(20) unsigned NOT NULL,</div><div class="line">  `sum_of_other_index_sizes` bigint(20) unsigned NOT NULL,</div><div class="line">  PRIMARY KEY (`database_name`,`table_name`)</div><div class="line"> ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin STATS_PERSISTENT=0;</div><div class="line"></div><div class="line"> CREATE TABLE `slave_master_info` (</div><div class="line">  `Number_of_lines` int(10) unsigned NOT NULL COMMENT &apos;Number of lines in the file.&apos;,</div><div class="line">  `Master_log_name` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT &apos;The name of the master binary log currently being read from the master.&apos;,</div><div class="line">  `Master_log_pos` bigint(20) unsigned NOT NULL COMMENT &apos;The master log position of the last read event.&apos;,</div><div class="line">  `Host` char(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT &apos;&apos; COMMENT &apos;The host name of the master.&apos;,</div><div class="line">  `User_name` text CHARACTER SET utf8 COLLATE utf8_bin COMMENT &apos;The user name used to connect to the master.&apos;,</div><div class="line">  `User_password` text CHARACTER SET utf8 COLLATE utf8_bin COMMENT &apos;The password used to connect to the master.&apos;,</div><div class="line">  `Port` int(10) unsigned NOT NULL COMMENT &apos;The network port used to connect to the master.&apos;,</div><div class="line">  `Connect_retry` int(10) unsigned NOT NULL COMMENT &apos;The period (in seconds) that the slave will wait before trying to reconnect to the master.&apos;,</div><div class="line">  `Enabled_ssl` tinyint(1) NOT NULL COMMENT &apos;Indicates whether the server supports SSL connections.&apos;,</div><div class="line">  `Ssl_ca` text CHARACTER SET utf8 COLLATE utf8_bin COMMENT &apos;The file used for the Certificate Authority (CA) certificate.&apos;,</div><div class="line">  `Ssl_capath` text CHARACTER SET utf8 COLLATE utf8_bin COMMENT &apos;The path to the Certificate Authority (CA) certificates.&apos;,</div><div class="line">  `Ssl_cert` text CHARACTER SET utf8 COLLATE utf8_bin COMMENT &apos;The name of the SSL certificate file.&apos;,</div><div class="line">  `Ssl_cipher` text CHARACTER SET utf8 COLLATE utf8_bin COMMENT &apos;The name of the cipher in use for the SSL connection.&apos;,</div><div class="line">  `Ssl_key` text CHARACTER SET utf8 COLLATE utf8_bin COMMENT &apos;The name of the SSL key file.&apos;,</div><div class="line">  `Ssl_verify_server_cert` tinyint(1) NOT NULL COMMENT &apos;Whether to verify the server certificate.&apos;,</div><div class="line">  `Heartbeat` float NOT NULL,</div><div class="line">  `Bind` text CHARACTER SET utf8 COLLATE utf8_bin COMMENT &apos;Displays which interface is employed when connecting to the MySQL server&apos;,</div><div class="line">  `Ignored_server_ids` text CHARACTER SET utf8 COLLATE utf8_bin COMMENT &apos;The number of server IDs to be ignored, followed by the actual server IDs&apos;,</div><div class="line">  `Uuid` text CHARACTER SET utf8 COLLATE utf8_bin COMMENT &apos;The master server uuid.&apos;,</div><div class="line">  `Retry_count` bigint(20) unsigned NOT NULL COMMENT &apos;Number of reconnect attempts, to the master, before giving up.&apos;,</div><div class="line">  `Ssl_crl` text CHARACTER SET utf8 COLLATE utf8_bin COMMENT &apos;The file used for the Certificate Revocation List (CRL)&apos;,</div><div class="line">  `Ssl_crlpath` text CHARACTER SET utf8 COLLATE utf8_bin COMMENT &apos;The path used for Certificate Revocation List (CRL) files&apos;,</div><div class="line">  `Enabled_auto_position` tinyint(1) NOT NULL COMMENT &apos;Indicates whether GTIDs will be used to retrieve events from the master.&apos;,</div><div class="line">  PRIMARY KEY (`Host`,`Port`)</div><div class="line"> ) ENGINE=InnoDB DEFAULT CHARSET=utf8 STATS_PERSISTENT=0 COMMENT=&apos;Master Information&apos;;</div><div class="line"></div><div class="line"> CREATE TABLE `slave_relay_log_info` (</div><div class="line">  `Number_of_lines` int(10) unsigned NOT NULL COMMENT &apos;Number of lines in the file or rows in the table. Used to version table definitions.&apos;,</div><div class="line">  `Relay_log_name` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT &apos;The name of the current relay log file.&apos;,</div><div class="line">  `Relay_log_pos` bigint(20) unsigned NOT NULL COMMENT &apos;The relay log position of the last executed event.&apos;,</div><div class="line">  `Master_log_name` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT &apos;The name of the master binary log file from which the events in the relay log file were read.&apos;,</div><div class="line">  `Master_log_pos` bigint(20) unsigned NOT NULL COMMENT &apos;The master log position of the last executed event.&apos;,</div><div class="line">  `Sql_delay` int(11) NOT NULL COMMENT &apos;The number of seconds that the slave must lag behind the master.&apos;,</div><div class="line">  `Number_of_workers` int(10) unsigned NOT NULL,</div><div class="line">  `Id` int(10) unsigned NOT NULL COMMENT &apos;Internal Id that uniquely identifies this record.&apos;,</div><div class="line">  PRIMARY KEY (`Id`)</div><div class="line"> ) ENGINE=InnoDB DEFAULT CHARSET=utf8 STATS_PERSISTENT=0 COMMENT=&apos;Relay Log Information&apos;;</div><div class="line"></div><div class="line"> CREATE TABLE `slave_worker_info` (</div><div class="line">  `Id` int(10) unsigned NOT NULL,</div><div class="line">  `Relay_log_name` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,</div><div class="line">  `Relay_log_pos` bigint(20) unsigned NOT NULL,</div><div class="line">  `Master_log_name` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,</div><div class="line">  `Master_log_pos` bigint(20) unsigned NOT NULL,</div><div class="line">  `Checkpoint_relay_log_name` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,</div><div class="line">  `Checkpoint_relay_log_pos` bigint(20) unsigned NOT NULL,</div><div class="line">  `Checkpoint_master_log_name` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,</div><div class="line">  `Checkpoint_master_log_pos` bigint(20) unsigned NOT NULL,</div><div class="line">  `Checkpoint_seqno` int(10) unsigned NOT NULL,</div><div class="line">  `Checkpoint_group_size` int(10) unsigned NOT NULL,</div><div class="line">  `Checkpoint_group_bitmap` blob NOT NULL,</div><div class="line">  PRIMARY KEY (`Id`)</div><div class="line"> ) ENGINE=InnoDB DEFAULT CHARSET=utf8 STATS_PERSISTENT=0 COMMENT=&apos;Worker Information&apos;;</div></pre></td></tr></table></figure></p>
+<p> 4.如果是Slave备机,停止复制,记录pos等信息<br>mysql&gt; stop slave;<br> Query OK, 0 rows affected (0.09 sec)</p>
+<p> 5.重启数据库</p>
+<p> 6.如果Slave启动报错,则使用步骤4的信息,重新change master</p>
+<p>再删除ibdata1文件的时候,一定要想起系统数据库还有5张innodb表…</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/05/ELK（Elastic Search + LogStash + Kibana）/" rel="next" title="ELK（Elastic Search + LogStash + Kibana）">
+                <i class="fa fa-chevron-left"></i> ELK（Elastic Search + LogStash + Kibana）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/19/Zabbix发送警告信息实现方式/" rel="prev" title="Zabbix发送警告信息实现方式">
+                Zabbix发送警告信息实现方式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="qingyu.li" />
+          <p class="site-author-name" itemprop="name">qingyu.li</p>
+           
+              <p class="site-description motion-element" itemprop="description">简单不先于复杂，而是在复杂之后</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://piandeng.com/" title="Piandeng" target="_blank">Piandeng</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#编译安装MySQL5-6-32"><span class="nav-number">1.</span> <span class="nav-text">编译安装MySQL5.6.32</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装mysql5-6-32"><span class="nav-number">1.1.</span> <span class="nav-text">安装mysql5.6.32</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qingyu.li</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("FqAp90PI86NxdOHOxWQ0VrFS-gzGzoHsz", "GKvXMFDzPRF3a0w9BaOEx52z");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+  
+
+</body>
+</html>
