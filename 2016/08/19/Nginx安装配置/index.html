@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo,Blog," />
+  <meta name="keywords" content="nginx," />
 
 
 
@@ -87,28 +87,28 @@
 
 
 
-<meta name="description" content="Hexo简介
-什么是HEXO？Hexo是一款基于Node.js的静态博客生成程序，作者是台湾的tommy351。
-tommy351对Hexo的介绍：
+<meta name="description" content="nginx安装1、 安装依赖包1yum install -y pcre pcre-devel openssl openssl-devel
+2、安装nginx，两种方法  
 
-超快速度 Node.js 所带来的超快生成速度，让上百个页面在几秒内瞬间完成渲染。支持 Markdown Hexo 支持 GitHub Flavored Markdown 的所有功能，甚至可以整合 Octopress 的大多数插件。一键部署 只需一">
+官方yum仓库安装
+1234567# CentOS 6 :rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo搭建博客配置过程">
-<meta property="og:url" content="http://charles.pub/2016/08/05/Hexo搭建博客配置过程/index.html">
+<meta property="og:title" content="Nginx安装配置">
+<meta property="og:url" content="http://charles.pub/2016/08/19/nginx安装配置/index.html">
 <meta property="og:site_name" content="“运维 - 架构”">
-<meta property="og:description" content="Hexo简介
-什么是HEXO？Hexo是一款基于Node.js的静态博客生成程序，作者是台湾的tommy351。
-tommy351对Hexo的介绍：
+<meta property="og:description" content="nginx安装1、 安装依赖包1yum install -y pcre pcre-devel openssl openssl-devel
+2、安装nginx，两种方法  
 
-超快速度 Node.js 所带来的超快生成速度，让上百个页面在几秒内瞬间完成渲染。支持 Markdown Hexo 支持 GitHub Flavored Markdown 的所有功能，甚至可以整合 Octopress 的大多数插件。一键部署 只需一">
-<meta property="og:updated_time" content="2017-09-05T09:48:35.602Z">
+官方yum仓库安装
+1234567# CentOS 6 :rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6">
+<meta property="og:updated_time" content="2017-05-24T06:43:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo搭建博客配置过程">
-<meta name="twitter:description" content="Hexo简介
-什么是HEXO？Hexo是一款基于Node.js的静态博客生成程序，作者是台湾的tommy351。
-tommy351对Hexo的介绍：
+<meta name="twitter:title" content="Nginx安装配置">
+<meta name="twitter:description" content="nginx安装1、 安装依赖包1yum install -y pcre pcre-devel openssl openssl-devel
+2、安装nginx，两种方法  
 
-超快速度 Node.js 所带来的超快生成速度，让上百个页面在几秒内瞬间完成渲染。支持 Markdown Hexo 支持 GitHub Flavored Markdown 的所有功能，甚至可以整合 Octopress 的大多数插件。一键部署 只需一">
+官方yum仓库安装
+1234567# CentOS 6 :rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6">
 
 
 
@@ -136,13 +136,13 @@ tommy351对Hexo的介绍：
 
 
 
-  <link rel="canonical" href="http://charles.pub/2016/08/05/Hexo搭建博客配置过程/"/>
+  <link rel="canonical" href="http://charles.pub/2016/08/19/nginx安装配置/"/>
 
 
 
 
 
-  <title> Hexo搭建博客配置过程 | “运维 - 架构” </title>
+  <title> Nginx安装配置 | “运维 - 架构” </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -329,7 +329,7 @@ tommy351对Hexo的介绍：
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/08/05/Hexo搭建博客配置过程/">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/08/19/nginx安装配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qingyu.li">
@@ -350,7 +350,7 @@ tommy351对Hexo的介绍：
             
             
               
-                Hexo搭建博客配置过程
+                Nginx安装配置
               
             
           </h1>
@@ -365,8 +365,8 @@ tommy351对Hexo的介绍：
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-05T16:18:58+08:00">
-                2016-08-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-19T15:45:39+08:00">
+                2016-08-19
               </time>
             
 
@@ -376,6 +376,28 @@ tommy351对Hexo的介绍：
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -383,7 +405,7 @@ tommy351对Hexo的介绍：
 
           
           
-             <span id="/2016/08/05/Hexo搭建博客配置过程/" class="leancloud_visitors" data-flag-title="Hexo搭建博客配置过程">
+             <span id="/2016/08/19/nginx安装配置/" class="leancloud_visitors" data-flag-title="Nginx安装配置">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -412,67 +434,35 @@ tommy351对Hexo的介绍：
       
 
       
-        <h1 id="Hexo简介"><a href="#Hexo简介" class="headerlink" title="Hexo简介"></a>Hexo简介</h1><hr>
-<h2 id="什么是HEXO？"><a href="#什么是HEXO？" class="headerlink" title="什么是HEXO？"></a><strong>什么是HEXO？</strong></h2><p>Hexo是一款基于Node.js的静态博客生成程序，作者是台湾的tommy351。</p>
-<p>tommy351对Hexo的介绍：</p>
-<blockquote>
-<p>超快速度 Node.js 所带来的超快生成速度，让上百个页面在几秒内瞬间完成渲染。<br>支持 Markdown Hexo 支持 GitHub Flavored Markdown 的所有功能，甚至可以整合 Octopress 的大多数插件。<br>一键部署 只需一条指令即可部署到 GitHub Pages, Heroku 或其他网站。<br>丰富的插件 Hexo 拥有强大的插件系统，安装插件可以让 Hexo 支持 Jade, CoffeeScript。</p>
-</blockquote>
-<h2 id="为什么用Hexo？"><a href="#为什么用Hexo？" class="headerlink" title="为什么用Hexo？"></a>为什么用Hexo？</h2><ul>
-<li><p>免费<br>可以部署到GitHub、GitCafe、七牛，都是完全免费的。</p>
-</li>
-<li><p>简单<br>比部署WordPress要简单得多，只需要简单几部就能搭建好环境，仅需要记住几条简短的命令、简单的Markdown语法，即可写出精彩的文章。</p>
-</li>
-<li><p>稳定<br>再也不用去操心主机的运维了。</p>
-</li>
-<li><p>快速<br>同时部署到GitHub、GitCafe、七牛，在全球都可获得优秀的访问速度。</p>
-</li>
-</ul>
-<h1 id="Hexo安装和配置"><a href="#Hexo安装和配置" class="headerlink" title="Hexo安装和配置"></a>Hexo安装和配置</h1><hr>
-<a id="more"></a>
-<h2 id="运行环境准备"><a href="#运行环境准备" class="headerlink" title="运行环境准备"></a>运行环境准备</h2><p>本系列文章以Hexo 3.0.0为例，操作系统为Windows 8.1 Pro VL x64 。</p>
-<p>首先需要安装以下程序：</p>
+        <h2 id="nginx安装"><a href="#nginx安装" class="headerlink" title="nginx安装"></a>nginx安装</h2><p>1、 安装依赖包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y pcre pcre-devel openssl openssl-devel</div></pre></td></tr></table></figure></p>
+<p>2、安装nginx，两种方法  </p>
 <ul>
-<li><p><a href="http://nodejs.cn/" target="_blank" rel="external">Node.js</a><br>下载最新版的 Node.js，一路next安装到C盘。<br>安装完成检查环境变量，如果出现问题，在系统PATH变量下添加<code>C:\Program Files\nodejs\node_global\</code></p>
+<li><p>官方yum仓库安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># CentOS 6 :</span></div><div class="line">rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm</div><div class="line"><span class="comment"># CentOS 7 :</span></div><div class="line"><span class="comment"># rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</span></div><div class="line">yum install -y nginx</div><div class="line">/etc/init.d/nginx start</div><div class="line">chkconfig nginx on</div></pre></td></tr></table></figure>
 </li>
-<li><p>Git<br>如果是Windows平台，则下载msysgit，安装建议勾选Git Bash Here，方便以后的操作，然后一路next即可。</p>
+<li><p>编译安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">useradd nginx <span class="_">-s</span> /sbin/nologin -M</div><div class="line"><span class="built_in">cd</span> /home/root/tools</div><div class="line">wget http://nginx.org/download/nginx-1.6.3.tar.gz</div><div class="line">tar -zxvf nginx-1.6.3.tar.gz</div><div class="line"><span class="built_in">cd</span> nginx-1.6.3</div><div class="line">./configure --prefix=/application/nginx-1.6.3 --user=nginx --group=nginx --with-http_ssl_module --with-http_stub_status_module</div><div class="line">make</div><div class="line">make install</div><div class="line">ln <span class="_">-s</span> /application/nginx-1.6.3/ /application/nginx</div><div class="line"><span class="comment"># 启动</span></div><div class="line">/application/nginx/sbin/nginx</div><div class="line"><span class="comment"># 查看安装时的配置属性</span></div><div class="line">/application/nginx/sbin/nginx -V</div><div class="line"><span class="comment"># 加入开机自启动</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"/application/nginx/sbin/nginx"</span> &gt;&gt; /etc/rc.local</div></pre></td></tr></table></figure>
 </li>
-<li><p>Atom、Notepad++ (本人用的MarkdownPad2)<br>文本编辑器，用于修改配置文件及写文章。</p>
+<li><p>常用命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 检查语法</span></div><div class="line">/application/nginx/sbin/nginx -t</div><div class="line"><span class="comment"># 平滑加载配置</span></div><div class="line">/application/nginx/sbin/nginx <span class="_">-s</span> reload</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><ol>
-<li>新建一个文件夹，例如<code>blog</code>。</li>
-<li>进入blog文件夹，右键点击<code>Git Bash Here</code>。</li>
-<li>安装Hexo<br>输入代码<br><code>$ npm install -g hexo --registry http://registry.cnpmjs.org</code><br>初始化blog文件夹<br><code>$ hexo init</code><br>安装依赖和插件<br><code>$ npm install --registry http://registry.cnpmjs.org</code><br>启动服务器进行本地预览<br><code>$ hexo s</code><br>当看到INFO  Hexo is running at <a href="http://0.0.0.0:4000/" target="_blank" rel="external">http://0.0.0.0:4000/</a>. Press Ctrl+C to stop.时就说明我们已经搭建起本地的hexo博客了，<br>在浏览器中打开 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> </li>
-<li>安装插件<br><code>$ npm install hexo-deployer-git --save</code></li>
-</ol>
-<h2 id="github配置"><a href="#github配置" class="headerlink" title="github配置"></a>github配置</h2><ol>
-<li><p>配置邮箱和username</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user.name <span class="string">"username"</span></div><div class="line">git config --global user.email <span class="string">"email"</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>Github SSH Key配置。<br>在推送文章到Github时，使用ssh进行验证可以免于输入账户和密码。</p>
+<h2 id="生产环境下基础配置"><a href="#生产环境下基础配置" class="headerlink" title="生产环境下基础配置"></a>生产环境下基础配置</h2><a id="more"></a>
 <ul>
-<li>首先在Git Bash使用命令<code>ssh-keygen -t rsa -C &quot;your email&quot;</code>生成公钥和私钥。</li>
-<li>添加私钥到ssh。这时有可能ssh-agent没有启动，可以现在Git Bash中运行命令eval “$(ssh-agent -s)来启动，然后运行ssh-add 私钥名称添加私钥。（默认的私钥名称是rsa，如果在生成私钥时设定了名称，就输入上次设定的名称）</li>
-<li>添加公钥到Github的账号。首先使用命令clip &lt; rsa.pub 将公钥的内容复制到剪贴板，然后登录Github，选择settings &gt; SSH Keys &gt; New SSH Key ，将公钥内容粘贴过去，点击 Add New SSH即可。</li>
-<li>验证ssh的配置是否成功。上述步骤完成后，在Git Bash中运行命令ssh -T git@github.com，根据提示信息判断ssh的配置是否成功。</li>
+<li><p>nginx.conf</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">user  www www;</div><div class="line">worker_processes  4;</div><div class="line">worker_cpu_affinity 0001 0010 0100 1000;</div><div class="line"></div><div class="line">error_log  /var/<span class="built_in">log</span>/nginx/error.log warn;</div><div class="line">pid        /var/run/nginx.pid;</div><div class="line"></div><div class="line">worker_rlimit_nofile 65535;</div><div class="line"></div><div class="line">events &#123;</div><div class="line">    worker_connections  65535;</div><div class="line">    use epoll;</div><div class="line">&#125;</div><div class="line"></div><div class="line">http &#123;</div><div class="line">    include       /etc/nginx/mime.types;</div><div class="line">    default_type  application/octet-stream;</div><div class="line"></div><div class="line">    log_format  main  <span class="string">'$remote_addr - $remote_port - [$time_iso8601] [$request_time] "$request" '</span></div><div class="line">                      <span class="string">'$upstream_status $status $body_bytes_sent '</span></div><div class="line">                      <span class="string">'"$http_user_agent" - "$http_referer" - $upstream_response_time - $upstream_addr'</span>;</div><div class="line"></div><div class="line">    access_log  /var/<span class="built_in">log</span>/nginx/access.log  main;</div><div class="line"></div><div class="line">    sendfile        on;</div><div class="line">    tcp_nopush     on;</div><div class="line">    tcp_nodelay	    on;</div><div class="line"></div><div class="line">    keepalive_timeout  60;</div><div class="line">    client_header_buffer_size 4k;</div><div class="line">    client_max_body_size  100m;</div><div class="line">    client_body_buffer_size 1024k;</div><div class="line"><span class="comment">#    limit_conn_zone $binary_remote_addr zone=perip:10m;</span></div><div class="line"><span class="comment">#    limit_req_zone $binary_remote_addr zone=allips:10m rate=5r/s;</span></div><div class="line"></div><div class="line">    <span class="comment">#open file cache</span></div><div class="line">    open_file_cache max=10240 inactive=20s; </div><div class="line">    open_file_cache_valid    30s; </div><div class="line">    open_file_cache_min_uses 2;</div><div class="line">    open_file_cache_errors   on;</div><div class="line"></div><div class="line">    <span class="comment"># hide the nginx version</span></div><div class="line">    server_tokens off;</div><div class="line">    </div><div class="line">    <span class="comment">#gzip</span></div><div class="line">    gzip  on;</div><div class="line">    gzip_buffers 4 8k;</div><div class="line">    gzip_comp_level 3;</div><div class="line">    gzip_min_length 1024;</div><div class="line">    gzip_types text/plain text/css application/x-javascript application/xml application/json application/octet-stream;</div><div class="line"></div><div class="line">    include /etc/nginx/conf.d/*.conf;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>常用的配置</p>
+<ul>
+<li><p>301跳转</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">     listen       80;</div><div class="line">     server_name  xxx; </div><div class="line">     rewrite ^/(.*) http://xxx/ permanent; </div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>匹配规则反向代理</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">location ~ ^/(item)/.* &#123;</div><div class="line">        add_header Access-Control-Allow-Origin *;</div><div class="line">        proxy_pass http://反向代理地址;</div><div class="line">        proxy_set_header Host <span class="variable">$http_host</span>;</div><div class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</div><div class="line">        proxy_set_header X-Scheme <span class="variable">$scheme</span>;</div><div class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</div><div class="line"></div><div class="line">        proxy_http_version 1.1;</div><div class="line">        proxy_set_header Connection <span class="string">""</span>;</div><div class="line"></div><div class="line">        proxy_connect_timeout 300;</div><div class="line">        proxy_read_timeout 300;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
-<li>在github上新建一个repository保存Blog的页面。这里需要注意的是repository 的name有个特别的限定，就是你的github的username.github.io。（例如，我的github的用户名是brookicv，那么我新建的repsoitory name就是 brookicv.github.io）</li>
-<li><p>修改配置文件。首先打开Blog根目录下面的<strong>_config.yml，在里面添加deploy到Github上所需要的信息（ 注意将username替换掉）</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repository: ssh://git@github.com/username/username.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
-</li>
-<li><p>将Blog部署到Github。在deploy之前，需要运行命令hexo generate重新生成（修改过_config.yml或者文章后都要记得执行下该命令），然后运行hexo deploy命令就会将Blog的内容推送到Githu。部署完成后，访问usernmae.github.io就可以查看你的Blog内容了。</p>
-</li>
-<li>hexo主题的使用。hexo有很多的主题，并且使用也非常的方便。例如要使用yilia这款主题，可以在Blog的根目录下运行<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>然后修改_config.yml的theme项为yilia就可以了。</p>
-<ol>
-<li>添加新文章。运行命令hexo new articlename会在source/_posts/articlename.md，编辑该md文件后，运行hexo generate和hexo deploy命令就可以在github上看到你的新文章。(命令可以简写hexo g -d)</li>
-</ol>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>Hexo的命令极简单，安装后只需要记住四个常用的即可。执行命令需要Git当前处于blog文件夹根目录下。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#generate 生成静态文件。</span></div><div class="line">hexo g</div><div class="line"><span class="comment">#server 启动服务器。</span></div><div class="line">hexo s</div><div class="line"><span class="comment">#deploy 部署网站。部署网站前，需要预先生成静态文件。</span></div><div class="line">hexo d</div><div class="line"><span class="comment">#clean 清除缓存文件 (db.json) 和已生成的静态文件 (public)。</span></div><div class="line">hexo clean</div><div class="line"><span class="comment">#新建文章</span></div><div class="line">hexo new <span class="string">"postName"</span></div><div class="line"><span class="comment">#新建页面</span></div><div class="line">hexo new page<span class="string">"pageName"</span> </div><div class="line"><span class="comment"># 查看帮助</span></div><div class="line">hexo <span class="built_in">help</span></div><div class="line"><span class="comment">#查看Hexo的版本</span></div><div class="line">hexo version </div><div class="line"><span class="comment">#更新Algolia搜索</span></div><div class="line">hexo algolia</div></pre></td></tr></table></figure></p>
-<p>其他<br>Q：如何卸载Hexo？<br>A：3.0.0版本执行<code>$ npm uninstall hexo-cli -g</code>，之前版本执行<code>$ npm uninstall hexo -g</code>。<br>Q：如何安装旧版本Hexo？<br>A：先卸载当前版本，以2.8.3为例，执行<code>npm install hexo@2.8.3 -g</code>，再初始化并安装依赖和插件。<br>Q：执行hexo server提示找不到该指令<br>A：在Hexo 3.0 后server被单独出来了，需要安装server，安装的命令如下：npm install hexo-server –save 安装此server后再试，问题解决。</p>
+</ul>
 
       
     </div>
@@ -496,9 +486,7 @@ tommy351对Hexo的介绍：
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
-          
-            <a href="/tags/Blog/" rel="tag"># Blog</a>
+            <a href="/tags/nginx/" rel="tag"># nginx</a>
           
         </div>
       
@@ -511,8 +499,8 @@ tommy351对Hexo的介绍：
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/25/Zabbix监控体系部署/" rel="next" title="Zabbix监控体系部署">
-                <i class="fa fa-chevron-left"></i> Zabbix监控体系部署
+              <a href="/2016/08/19/python 2.6升级2.7/" rel="next" title="python 2.6升级2.7">
+                <i class="fa fa-chevron-left"></i> python 2.6升级2.7
               </a>
             
           </div>
@@ -521,8 +509,8 @@ tommy351对Hexo的介绍：
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/11/Openvz安装、部署/" rel="prev" title="Openvz安装、部署">
-                Openvz安装、部署 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/08/挂载阿里云数据盘/" rel="prev" title="挂载阿里云数据盘">
+                挂载阿里云数据盘 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -666,7 +654,7 @@ tommy351对Hexo的介绍：
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo简介"><span class="nav-number">1.</span> <span class="nav-text">Hexo简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是HEXO？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是HEXO？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么用Hexo？"><span class="nav-number">1.2.</span> <span class="nav-text">为什么用Hexo？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo安装和配置"><span class="nav-number">2.</span> <span class="nav-text">Hexo安装和配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运行环境准备"><span class="nav-number">2.1.</span> <span class="nav-text">运行环境准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Hexo"><span class="nav-number">2.2.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#github配置"><span class="nav-number">2.3.</span> <span class="nav-text">github配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令"><span class="nav-number">2.4.</span> <span class="nav-text">常用命令</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx安装"><span class="nav-number">1.</span> <span class="nav-text">nginx安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生产环境下基础配置"><span class="nav-number">2.</span> <span class="nav-text">生产环境下基础配置</span></a></li></ol></div>
             
 
           </div>

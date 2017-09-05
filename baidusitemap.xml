@@ -4,6 +4,25 @@
 
     
   <url>
+    <loc>http://charles.pub/2016/08/05/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/</loc>
+    <lastmod>2017-09-05T09:48:35.602Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo搭建博客配置过程</title>
+        <pubTime>2016-08-05T08:18:58.000Z</pubTime>
+        
+        <tag>Hexo</tag>
+         
+        <tag>Blog</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://charles.pub/2017/09/05/PHP%20Webtatic%20Yum%20Repository/</loc>
     <lastmod>2017-09-05T09:26:07.656Z</lastmod>
     <data>
@@ -555,25 +574,6 @@
              
               <breadCrumb title="Linux" url="http://charles.pub/categories/Linux/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://charles.pub/2016/08/05/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/</loc>
-    <lastmod>2017-03-06T09:49:55.850Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo搭建博客配置过程</title>
-        <pubTime>2016-08-05T08:18:58.000Z</pubTime>
-        
-        <tag>Hexo</tag>
-         
-        <tag>Blog</tag>
-         
-         
-           
         </display>
     </data>
     </url>
