@@ -318,6 +318,177 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/07/18/SaltStack安装、部署及实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/18/SaltStack安装、部署及实践/" itemprop="url">
+                  SaltStack安装、部署及实践
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-18T16:19:16+08:00">
+                2016-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/07/18/SaltStack安装、部署及实践/" class="leancloud_visitors" data-flag-title="SaltStack安装、部署及实践">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="Run-the-following-commands-to-install-the-SaltStack-repository-and-key"><a href="#Run-the-following-commands-to-install-the-SaltStack-repository-and-key" class="headerlink" title="Run the following commands to install the SaltStack repository and key:"></a>Run the following commands to install the SaltStack repository and key:</h2><h3 id="RedHat-Centos6"><a href="#RedHat-Centos6" class="headerlink" title="RedHat/Centos6:"></a>RedHat/Centos6:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el6.noarch.rpm</div></pre></td></tr></table></figure>
+<h3 id="RedHat-Centos7"><a href="#RedHat-Centos7" class="headerlink" title="RedHat/Centos7:"></a>RedHat/Centos7:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el7.noarch.rpm</div></pre></td></tr></table></figure>
+<h2 id="Run-yum-clean-expire-cache"><a href="#Run-yum-clean-expire-cache" class="headerlink" title="Run yum clean expire-cache"></a>Run <code>yum clean expire-cache</code></h2><h2 id="Install-the-salt-minion-salt-master-or-other-Salt-components"><a href="#Install-the-salt-minion-salt-master-or-other-Salt-components" class="headerlink" title="Install the salt-minion, salt-master, or other Salt components:"></a>Install the salt-minion, salt-master, or other Salt components:</h2><ul>
+<li><code>yum install salt-master</code></li>
+<li><code>yum install salt-minion</code></li>
+<li><code>yum install salt-ssh</code></li>
+<li><code>yum install salt-syndic</code></li>
+<li><code>yum install salt-cloud</code></li>
+<li><code>yum install salt-api</code></li>
+</ul>
+<h2 id="Automatically-start"><a href="#Automatically-start" class="headerlink" title="Automatically start"></a>Automatically start</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chkconfig salt-master on</div><div class="line">chkconfig salt-minion on</div></pre></td></tr></table></figure>
+<h2 id="其他安装方式：salt-bootstrap-项目，多平台一键部署SaltStack环境"><a href="#其他安装方式：salt-bootstrap-项目，多平台一键部署SaltStack环境" class="headerlink" title="其他安装方式：salt-bootstrap 项目，多平台一键部署SaltStack环境"></a>其他安装方式：salt-bootstrap 项目，多平台一键部署SaltStack环境</h2><h3 id="Master端安装："><a href="#Master端安装：" class="headerlink" title="Master端安装："></a>Master端安装：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">curl -L https://bootstrap.saltstack.com -o install_salt.sh</div><div class="line">sh install_salt.sh -P -M # 如果不需要安装Minion，只安装master，需要加上&quot;-N&quot;参数</div><div class="line"># sh install_salt.sh -h 查看可用脚本参数</div></pre></td></tr></table></figure>
+<h3 id="Minion端安装："><a href="#Minion端安装：" class="headerlink" title="Minion端安装："></a>Minion端安装：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">echo &quot;IPADDRESS salt&quot; &gt;&gt; /etc/hosts # IPADDRESS为Master服务器地址</div><div class="line">curl -L https://bootstrap.saltstack.com -o install_salt.sh</div><div class="line">sh install_salt.sh -P -i Minion # 只安装最新版Minion并指定ID为&quot;Minion&quot;</div></pre></td></tr></table></figure>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="minion配置修改"><a href="#minion配置修改" class="headerlink" title="minion配置修改"></a>minion配置修改</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sed -i &apos;s/#master: salt/master: IPADDRESS/g&apos; /etc/salt/minion  #IPADDRESS为Master服务器地址</div><div class="line">sed -i &apos;s/#id:/id: ID/g&apos; /etc/salt/minion  #ID为自定义客户端ID号，可用客户端IP地址</div><div class="line">service salt-master start</div><div class="line">service salt-minion start</div></pre></td></tr></table></figure>
+<h2 id="master服务端查看证书签证情况，并同意没有接受的签证请求"><a href="#master服务端查看证书签证情况，并同意没有接受的签证请求" class="headerlink" title="master服务端查看证书签证情况，并同意没有接受的签证请求"></a>master服务端查看证书签证情况，并同意没有接受的签证请求</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">salt-key -L</div><div class="line">salt-key -A -y</div><div class="line"># 更多的证书管理命令，可运行salt-key -h查看</div></pre></td></tr></table></figure>
+<h2 id="执行第一条SaltStack命令"><a href="#执行第一条SaltStack命令" class="headerlink" title="执行第一条SaltStack命令"></a>执行第一条SaltStack命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">salt &apos;ID&apos; test.ping # ID 为客户端ID，或者其他角色定义</div></pre></td></tr></table></figure>
+<h2 id="一些常用命令"><a href="#一些常用命令" class="headerlink" title="一些常用命令"></a>一些常用命令</h2>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/07/18/SaltStack安装、部署及实践/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/07/10/OpenStack/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -639,6 +810,162 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/04/15/NOSQL - Memcached、Redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingyu.li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="“运维 - 架构”">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/15/NOSQL - Memcached、Redis/" itemprop="url">
+                  NOSQL - Memcached、Redis
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-15T10:25:10+08:00">
+                2016-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NoSQL/" itemprop="url" rel="index">
+                    <span itemprop="name">NoSQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/04/15/NOSQL - Memcached、Redis/" class="leancloud_visitors" data-flag-title="NOSQL - Memcached、Redis">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="随笔记录："><a href="#随笔记录：" class="headerlink" title="随笔记录："></a>随笔记录：</h1><p>防爬虫，分析web 软件： AWSTATS<br>搜索服务软件Sphinx<br>适用nginx的proxy_cache缓存功能取代squid   <a href="http://zyan.cc/nginx_cache">http://zyan.cc/nginx_cache</a></p>
+<h1 id="Memcache"><a href="#Memcache" class="headerlink" title="Memcache"></a>Memcache</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"># 安装</div><div class="line">rpm -qa libevent libevent-devel nc telnet</div><div class="line">yum install -y libevent libevent-devel nc telnet</div><div class="line">rpm -qa memcached</div><div class="line">yum install -y memcached</div><div class="line"></div><div class="line">which memcached  ==&gt; /usr/bin/memcached</div><div class="line"></div><div class="line"># 启动</div><div class="line">memcached -m 16m -p 11211 -d -u root -c 8192  ：</div><div class="line">memcached -h 查看启动相关参数</div><div class="line">-d 以守护进程（daemon）方式运行服务</div><div class="line">-u 指定运行memcached的用户</div><div class="line">-l 指定进程监听的服务器IP地址，可不设置</div><div class="line">-p 指定监听TCP端口号。默认为11211。修改端口号，即可启动多实例</div><div class="line">-P 设置保存memcached的pid文件，保存PID到指定文件</div><div class="line">-m 指定可以缓存数据的最大内存，默认为64m</div><div class="line">-M 服务内存不够时禁止LRU，如果内存满了会报错</div><div class="line">-c 最大的并发连接数，默认是1024</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/04/15/NOSQL - Memcached、Redis/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/04/15/分布式文件系统GlusterFS FastDFS、数据存储/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -763,162 +1090,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">tmpfs  /mnt/tmp  tmpfs size=50M 0 0</div><div class="line"></div><div class="line">mount -t tmpfs -o size=50m tmpfs /mnt</div><div class="line">mount -o remount,size=100m /mnt 重新挂载分配size大小</div></pre></td></tr></table></figure>
 
           
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://charles.pub/2016/04/15/NOSQL - Memcached、Redis/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingyu.li">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="“运维 - 架构”">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/15/NOSQL - Memcached、Redis/" itemprop="url">
-                  NOSQL - Memcached、Redis
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-15T10:25:10+08:00">
-                2016-04-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NoSQL/" itemprop="url" rel="index">
-                    <span itemprop="name">NoSQL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/04/15/NOSQL - Memcached、Redis/" class="leancloud_visitors" data-flag-title="NOSQL - Memcached、Redis">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="随笔记录："><a href="#随笔记录：" class="headerlink" title="随笔记录："></a>随笔记录：</h1><p>防爬虫，分析web 软件： AWSTATS<br>搜索服务软件Sphinx<br>适用nginx的proxy_cache缓存功能取代squid   <a href="http://zyan.cc/nginx_cache">http://zyan.cc/nginx_cache</a></p>
-<h1 id="Memcache"><a href="#Memcache" class="headerlink" title="Memcache"></a>Memcache</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"># 安装</div><div class="line">rpm -qa libevent libevent-devel nc telnet</div><div class="line">yum install -y libevent libevent-devel nc telnet</div><div class="line">rpm -qa memcached</div><div class="line">yum install -y memcached</div><div class="line"></div><div class="line">which memcached  ==&gt; /usr/bin/memcached</div><div class="line"></div><div class="line"># 启动</div><div class="line">memcached -m 16m -p 11211 -d -u root -c 8192  ：</div><div class="line">memcached -h 查看启动相关参数</div><div class="line">-d 以守护进程（daemon）方式运行服务</div><div class="line">-u 指定运行memcached的用户</div><div class="line">-l 指定进程监听的服务器IP地址，可不设置</div><div class="line">-p 指定监听TCP端口号。默认为11211。修改端口号，即可启动多实例</div><div class="line">-P 设置保存memcached的pid文件，保存PID到指定文件</div><div class="line">-m 指定可以缓存数据的最大内存，默认为64m</div><div class="line">-M 服务内存不够时禁止LRU，如果内存满了会报错</div><div class="line">-c 最大的并发连接数，默认是1024</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/04/15/NOSQL - Memcached、Redis/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1816,7 +1987,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1838,7 +2009,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
