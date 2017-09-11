@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://charles.pub/2016/08/20/nginx%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</loc>
+    <lastmod>2017-09-11T13:29:48.829Z</lastmod>
+    <data>
+        <display>
+        <title>Nginx安装配置</title>
+        <pubTime>2016-08-20T07:45:39.000Z</pubTime>
+        
+        <tag>nginx</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://charles.pub/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://charles.pub/2016/08/05/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/</loc>
     <lastmod>2017-09-05T09:48:35.602Z</lastmod>
     <data>
@@ -290,26 +310,6 @@
 
     
   <url>
-    <loc>http://charles.pub/2016/08/19/nginx%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2017-05-24T06:43:11.000Z</lastmod>
-    <data>
-        <display>
-        <title>Nginx安装配置</title>
-        <pubTime>2016-08-19T07:45:39.000Z</pubTime>
-        
-        <tag>nginx</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://charles.pub/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://charles.pub/2016/10/23/Nginx%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/</loc>
     <lastmod>2017-05-24T06:41:37.000Z</lastmod>
     <data>
@@ -540,7 +540,7 @@
 
     
   <url>
-    <loc>http://charles.pub/2015/10/17/Linux%20iptables%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE/</loc>
+    <loc>http://charles.pub/2015/10/17/Linux%E7%BD%91%E5%85%B3NAT%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2017-03-06T09:54:30.000Z</lastmod>
     <data>
         <display>
@@ -560,7 +560,7 @@
 
     
   <url>
-    <loc>http://charles.pub/2015/10/17/Linux%E7%BD%91%E5%85%B3NAT%E9%85%8D%E7%BD%AE/</loc>
+    <loc>http://charles.pub/2015/10/17/Linux%20iptables%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2017-03-06T09:54:30.000Z</lastmod>
     <data>
         <display>
