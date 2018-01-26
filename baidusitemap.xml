@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://charles.pub/2018/01/26/MongoDB%20Community%20Edition%20Installation/</loc>
+    <lastmod>2018-01-26T05:22:51.126Z</lastmod>
+    <data>
+        <display>
+        <title>MongoDB Community Edition Installation</title>
+        <pubTime>2018-01-26T04:57:39.000Z</pubTime>
+        
+        <tag>MongoDB</tag>
+         
+         
+           
+             
+              <breadCrumb title="NoSQL" url="http://charles.pub/categories/NoSQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://charles.pub/2016/08/20/nginx%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2017-09-11T13:29:48.829Z</lastmod>
     <data>
@@ -540,7 +560,7 @@
 
     
   <url>
-    <loc>http://charles.pub/2015/10/17/Linux%E7%BD%91%E5%85%B3NAT%E9%85%8D%E7%BD%AE/</loc>
+    <loc>http://charles.pub/2015/10/17/Linux%20iptables%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2017-03-06T09:54:30.000Z</lastmod>
     <data>
         <display>
@@ -560,7 +580,7 @@
 
     
   <url>
-    <loc>http://charles.pub/2015/10/17/Linux%20iptables%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE/</loc>
+    <loc>http://charles.pub/2015/10/17/Linux%E7%BD%91%E5%85%B3NAT%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2017-03-06T09:54:30.000Z</lastmod>
     <data>
         <display>
